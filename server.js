@@ -65,8 +65,8 @@ module.exports = ({
 
       trigger('fetch', components, locals).then((res) => {
         const content = renderApp(props, store)
-        const document = renderDocument(content, store)
-        resolve(document)
+        const result = renderDocument(content, store)
+        resolve({ result })
       }).catch((error) => {
         reject({ error, redirect })
       })
