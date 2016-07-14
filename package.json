@@ -32,6 +32,7 @@
     "es6-promise": "^3.2.1",
     "history": "^2.1.1",
     "mocha": "^2.4.5",
+    "phantomjs-prebuilt": "^2.1.7",
     "sinon": "^1.17.4",
     "tape": "^4.5.1",
     "testling": "^1.7.1"
