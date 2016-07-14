@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "",
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/everydayhero/boiler-room-runner.git"
+    "type": "git",
+    "url": "https://github.com/everydayhero/boiler-room-runner.git"
   },
   "main": "index.js",
   "scripts": {
