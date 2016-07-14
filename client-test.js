@@ -1,3 +1,4 @@
+require('es5-shim')
 const { polyfill } = require('es6-promise')
 typeof Promise === 'undefined' && polyfill()
 
