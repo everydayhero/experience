@@ -56,19 +56,25 @@ module.exports = ({
     match({ routes, location: route }, (
       error,
       redirect,
-      props = {}
+      props
     ) => {
-      if (error) return reject({ error, redirect })
+      if (error) {
+        return reject(error)
+      } else if (redirect) {
+        return resolve({ redirect })
+      } else if (!props) {
+        return reject(new Error(`Not found: Route ${route} could not be matched`))
+      }
 
-      const { components, params } = props
-      const locals = createLocals(params, store)
+      const { components, params, router } = props
+      const locals = createLocals({ params, router, store })
 
       trigger('fetch', components, locals).then((res) => {
         const content = renderApp(props, store)
-        const document = renderDocument(content, store)
-        resolve(document)
+        const result = renderDocument(content, store)
+        resolve({ result })
       }).catch((error) => {
-        reject({ error, redirect })
+        reject(error)
       })
     })
   })

@@ -16,7 +16,7 @@ module.exports = ({
       React.createElement('title', null, title),
       React.createElement('meta', { charSet: 'utf-8' }),
       React.createElement('meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }),
-      stylesheets.map((s) => React.createElement('link', { rel: 'stylesheet', href: s }))
+      stylesheets.map((s, i) => React.createElement('link', { rel: 'stylesheet', href: s, key: i }))
     ),
     React.createElement(
       'body',
@@ -34,7 +34,7 @@ module.exports = ({
           __html: JSON.stringify(state)
         }
       }),
-      scripts.map((s) => React.createElement('script', { src: s }))
+      scripts.map((s, i) => React.createElement('script', { src: s, key: i }))
     )
   )
 )
