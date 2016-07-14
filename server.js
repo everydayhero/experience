@@ -66,8 +66,8 @@ module.exports = ({
         return reject(new Error(`Not found: Route ${route} could not be matched`))
       }
 
-      const { components, params } = props
-      const locals = createLocals(params, store)
+      const { components, params, router } = props
+      const locals = createLocals({ params, router, store })
 
       trigger('fetch', components, locals).then((res) => {
         const content = renderApp(props, store)

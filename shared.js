@@ -1,6 +1,6 @@
 const { createStore } = require('redux')
 
-const defaultCreateLocals = (params, _store) => (params)
+const defaultCreateLocals = ({ params }) => (params)
 
 const defaultStore = () => createStore((state) => state)
 

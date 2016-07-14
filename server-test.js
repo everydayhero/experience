@@ -66,15 +66,16 @@ describe('createServerApp', () => {
         ]
       }
       const store = createStore((state) => state)
-      const createLocalsSpy = sinon.spy((params) => (params))
+      const createLocalsSpy = sinon.spy(({ params }) => (params))
       const app = createServerApp({
         routes,
         createLocals: createLocalsSpy
       })
 
       app('/foos/1').then(() => {
-        expect(createLocalsSpy.getCall(0).args[0].fooId).to.eq(1)
-        expect(createLocalsSpy.getCall(0).args[1]).to.eq(store)
+        const arg = createLocalsSpy.getCall(0).args[0]
+        expect(arg.params).to.eql({ fooId: 1 })
+        expect(arg.store).to.eql(store)
       })
     })
   })
