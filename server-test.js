@@ -121,5 +121,31 @@ describe('createServerApp', () => {
         done()
       }).catch(done)
     })
+
+    it('rejects with a "Not found" error when route cannot be matched', (done) => {
+      const app = createServerApp({ routes })
+      app('/blargoi').catch((error) => {
+        expect(error.message).to.contain('Not found')
+        done()
+      })
+    })
+
+    it('resolves with a redirect location when route is redirected', (done) => {
+      const routesWithRedirect = Object.assign({}, routes, {
+        childRoutes: routes.childRoutes.concat([
+          {
+            path: '/redir',
+            onEnter (_, replace) {
+              return replace('/blargy')
+            }
+          }
+        ])
+      })
+      const app = createServerApp({ routes: routesWithRedirect })
+      app('/redir').then(({ redirect }) => {
+        expect(redirect.pathname).to.eq('/blargy')
+        done()
+      }).catch(done)
+    })
   })
 })
