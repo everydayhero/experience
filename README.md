@@ -42,7 +42,7 @@ const app = createServerApp({
 // Now you have a function which takes a route and returns a Promise
 // resolving to the rendered HTML for that route.
 
-app.run('/foos/123').then((html) => html)
+app.run('/foos/123').then(({ result }) => result)
 ```
 
 ## Required params
@@ -63,9 +63,13 @@ A function which will take the result of calling `renderToString` on your app, a
 
 The history object to be used by React Router. Default is the `browserHistory` singleton exposed by React Router.
 
-`onRouteError`
+`onRouteError(error)`
 
 A function called in the event that React Router errored in trying to revolve a route transition.
+
+`onRouteRedirect(redirectLocation)`
+
+A function called in the event that React Router was redirected in the process of revolving a route transition.
 
 ### Both
 
@@ -73,7 +77,6 @@ A function called in the event that React Router errored in trying to revolve a 
 
 A Redux store which will be passed to a `<Provider />`
 
-`createLocals`
+`createLocals({ params, router, store })`
 
 A function which takes the params object from React Router, along with the store instance, and returns a locals object to be used by Redial.
-
