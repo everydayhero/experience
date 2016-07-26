@@ -149,4 +149,15 @@ describe('createServerApp', () => {
       }).catch(done)
     })
   })
+
+  describe('.empty()', () => {
+    it('returns the result of calling renderDocument with the provided assets array', () => {
+      const routes = { path: '/', component: () => React.createElement('div', null, '') }
+      const renderDocument = ({ content, assets = [] }) => `NAH ${assets[0]}`
+      const assets = ['MATE']
+      const app = createServerApp({ routes, assets, renderDocument })
+      const result = app.empty()
+      expect(result).to.eq('NAH MATE')
+    })
+  })
 })

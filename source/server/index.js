@@ -61,36 +61,43 @@ module.exports = ({
   renderDocument = defaultRenderDocument,
   renderApp = defaultRenderApp,
   createLocals = defaultCreateLocals
-}) => (route) => (
-  new Promise((resolve, reject) => {
-    match({ routes, location: route }, (
-      error,
-      redirect,
-      props
-    ) => {
-      if (error) {
-        return reject(error)
-      } else if (redirect) {
-        return resolve({ redirect })
-      } else if (!props) {
-        return reject(new Error(`Not found: Route ${route} could not be matched`))
-      }
+}) => {
+  const empty = () => renderDocument({ assets })
 
-      const { components, params, router } = props
-      const locals = createLocals({ params, router, store })
+  const app = (route) => (
+    new Promise((resolve, reject) => {
+      match({ routes, location: route }, (
+        error,
+        redirect,
+        props
+      ) => {
+        if (error) {
+          return reject(error)
+        } else if (redirect) {
+          return resolve({ redirect })
+        } else if (!props) {
+          return reject(new Error(`Not found: Route ${route} could not be matched`))
+        }
 
-      trigger('fetch', components, locals).then((res) => {
-        const content = renderApp({ props, store })
-        const state = store.getState()
-        const result = renderDocument({
-          assets,
-          content,
-          state
+        const { components, params, router } = props
+        const locals = createLocals({ params, router, store })
+
+        trigger('fetch', components, locals).then((res) => {
+          const content = renderApp({ props, store })
+          const state = store.getState()
+          const result = renderDocument({
+            assets,
+            content,
+            state
+          })
+          resolve({ result })
+        }).catch((error) => {
+          reject(error)
         })
-        resolve({ result })
-      }).catch((error) => {
-        reject(error)
       })
     })
-  })
-)
+  )
+
+  app.empty = empty
+  return app
+}
