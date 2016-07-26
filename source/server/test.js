@@ -5,7 +5,7 @@ const sinon = require('sinon')
 const React = require('react')
 const { createStore } = require('redux')
 
-const createServerApp = require('./server')
+const createServerApp = require('./')
 
 describe('createServerApp', () => {
   describe('the app definition', () => {
@@ -37,8 +37,8 @@ describe('createServerApp', () => {
       const routes = { path: '/', component: () => React.createElement('div', null, '') }
       const app = createServerApp({
         routes,
-        renderDocument (result) {
-          return `WOOT! ${result}`
+        renderDocument ({ content }) {
+          return `WOOT! ${content}`
         },
         renderApp () {
           return 'This is my thing'

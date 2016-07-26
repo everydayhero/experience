@@ -7,7 +7,7 @@ const {
   defaultCreateLocals,
   defaultStore,
   ensureRoutes
-} = require('./shared')
+} = require('../shared')
 
 // ClientAppDefinition {
 //   store = ReduxStore,

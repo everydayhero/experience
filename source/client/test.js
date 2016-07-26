@@ -9,7 +9,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { useRouterHistory } = require('react-router')
 
-const createClientApp = require('./client')
+const createClientApp = require('./')
 
 test('createClientApp() throws an exception when routes are undefined', (t) => {
   t.plan(1)

@@ -1,4 +1,4 @@
-const Document = require('./layouts/Document')
+const Document = require('./Document')
 const DocumentTitle = require('react-document-title')
 const React = require('react')
 const { Provider } = require('react-redux')
@@ -10,9 +10,9 @@ const {
   defaultCreateLocals,
   defaultStore,
   ensureRoutes
-} = require('./shared')
+} = require('../shared')
 
-const defaultRenderApp = (props, store) => (
+const defaultRenderApp = ({ store, props }) => (
   renderToString(
     React.createElement(
       Provider, { store },
@@ -23,17 +23,26 @@ const defaultRenderApp = (props, store) => (
   )
 )
 
-const defaultRenderDocument = (content, { getState = () => ({}) }) => (
-  '<!DOCTYPE html>' + renderToStaticMarkup(
+const defaultRenderDocument = ({
+  assets = [],
+  content = '',
+  state = {}
+}) => {
+  const styles = assets.filter((asset) => asset.match(/\.css$/))
+  const scripts = assets.filter((asset) => asset.match(/\.js$/))
+
+  return '<!DOCTYPE html>' + renderToStaticMarkup(
     React.createElement(
       Document, {
         title: DocumentTitle.rewind(),
-        state: getState(),
+        state,
+        scripts,
+        styles,
         content
       }
     )
   )
-)
+}
 
 // ServerAppDefinition {
 //   store = ReduxStore,
@@ -47,6 +56,7 @@ const defaultRenderDocument = (content, { getState = () => ({}) }) => (
 
 module.exports = ({
   store = defaultStore(),
+  assets = [],
   routes = ensureRoutes('createServerApp'),
   renderDocument = defaultRenderDocument,
   renderApp = defaultRenderApp,
@@ -70,8 +80,13 @@ module.exports = ({
       const locals = createLocals({ params, router, store })
 
       trigger('fetch', components, locals).then((res) => {
-        const content = renderApp(props, store)
-        const result = renderDocument(content, store)
+        const content = renderApp({ props, store })
+        const state = store.getState()
+        const result = renderDocument({
+          assets,
+          content,
+          state
+        })
         resolve({ result })
       }).catch((error) => {
         reject(error)

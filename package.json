@@ -6,11 +6,13 @@
     "type": "git",
     "url": "https://github.com/everydayhero/boiler-room-runner.git"
   },
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test:server": "mocha server-test.js",
-    "test:client": "browserify client-test.js -t [ babelify --presets [ es2015 ] ] | testling",
-    "test": "npm run test:server && npm run test:client"
+    "build": "babel-cli source -d dist",
+    "test:server": "mocha ./source/server/test.js",
+    "test:client": "browserify ./source/client/test.js -t [ babelify --presets [ es2015 ] ] | testling",
+    "test": "npm run test:server && npm run test:client",
+    "prepublish": "npm test && npm build"
   },
   "babel": {
     "presets": [
