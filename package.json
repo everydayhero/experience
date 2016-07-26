@@ -8,7 +8,7 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel source/**/*.js -d dist",
+    "build": "babel source -d dist",
     "test:server": "mocha ./source/server/test.js",
     "test:client": "browserify ./source/client/test.js -t [ babelify --presets [ es2015 ] ] | testling",
     "test": "npm run test:server && npm run test:client",
