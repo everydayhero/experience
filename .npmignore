@@ -1,3 +1,4 @@
 source
 bin
+**/test.js
 docker-compose.yml
