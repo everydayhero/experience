@@ -4,19 +4,19 @@ Redux for state management, Redial for data-fetching for multiple components
 and React Router for responding to history state changes.
 
 ```
-npm install boiler-room-runner@everydayhero/boiler-room-runner --save
+npm install boiler-room-runner --save
 ```
 
 ## In your client.js file
 
 ```
 const { render } = require('react-dom')
-const createClientApp = require('boiler-room-runner/client')
+const { createClient } = require('boiler-room-runner')
 
 const routes = require('./my-routes')
 const store = require('./my-store')
 
-const App = createClientApp({
+const App = createClient({
   store,
   routes
 })
@@ -29,12 +29,12 @@ render(<App />, document.getElementById('app'))
 ## In your server.js file
 
 ```
-const createServerApp = require('boiler-room-runner/server')
+const { createServer } = require('boiler-room-runner')
 
 const routes = require('./my-routes')
 const store = require('./my-store')
 
-const app = createServerApp({
+const app = createServer({
   store,
   routes
 })
