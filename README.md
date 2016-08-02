@@ -1,5 +1,7 @@
 # Runner
 
+[![Build status](https://badge.buildkite.com/35edf858022bf6c8ec20dc8a3433348f4a268d772991e2c913.svg)](https://buildkite.com/everyday-hero/boiler-room-runner-tests)
+
 Redux for state management, Redial for data-fetching for multiple components
 and React Router for responding to history state changes.
 
