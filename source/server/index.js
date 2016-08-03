@@ -62,7 +62,10 @@ module.exports = ({
   renderApp = defaultRenderApp,
   createLocals = defaultCreateLocals
 }) => {
-  const empty = () => renderDocument({ assets })
+  const empty = () => {
+    const state = store.getState()
+    return renderDocument({ assets, state })
+  }
 
   const app = (route) => (
     new Promise((resolve, reject) => {
