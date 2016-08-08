@@ -44,7 +44,7 @@ const app = createServer({
 // Now you have a function which takes a route and returns a Promise
 // resolving to the rendered HTML for that route.
 
-app.run('/foos/123').then(({ result }) => result)
+app('/foos/123').then(({ result }) => result)
 ```
 
 ## Required params
