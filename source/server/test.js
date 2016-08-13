@@ -3,6 +3,7 @@ const { expect } = require('chai')
 const sinon = require('sinon')
 
 const React = require('react')
+const { Link } = require('react-router')
 const { createStore } = require('redux')
 
 const createServerApp = require('./')
@@ -78,6 +79,23 @@ describe('createServerApp', () => {
         expect(arg.store).to.eql(store)
       })
     })
+
+    it('it takes a basepath option which will prefix all route matching and links', (done) => {
+      const routes = {
+        path: '/',
+        component: () => React.createElement(Link, { to: '/' })
+      }
+
+      const app = createServerApp({
+        routes,
+        basepath: '/mah-base'
+      })
+
+      app('/').then(({ result }) => {
+        expect(result).to.contain('/mah-base')
+        done()
+      }).catch(done)
+    })
   })
 
   it('returns a function which takes a route and returns a promise', () => {
@@ -144,7 +162,7 @@ describe('createServerApp', () => {
       })
       const app = createServerApp({ routes: routesWithRedirect })
       app('/redir').then(({ redirect }) => {
-        expect(redirect.pathname).to.eq('/blargy')
+        expect(redirect.pathname).to.eq('blargy')
         done()
       }).catch(done)
     })
