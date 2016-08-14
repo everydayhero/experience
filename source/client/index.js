@@ -1,6 +1,7 @@
 const React = require('react')
 const { Provider } = require('react-redux')
-const { Router, browserHistory, match } = require('react-router')
+const { Router, useRouterHistory, match } = require('react-router')
+const { createHistory: defaultCreateHistory } = require('history')
 const { trigger } = require('redial')
 
 const {
@@ -22,13 +23,18 @@ const {
 module.exports = ({
   store = defaultStore(),
   routes = ensureRoutes('createClientApp'),
-  history = browserHistory,
+  basepath = '/',
+  createHistory = defaultCreateHistory,
   createLocals = defaultCreateLocals,
   onRouteError = () => {},
   onRouteRedirect = () => {}
 }) => {
+  const history = useRouterHistory(createHistory)({
+    basename: basepath
+  })
+
   history.listen((location) => {
-    match({ routes, location }, (
+    match({ routes, location, basename: basepath }, (
       error,
       redirect,
       props

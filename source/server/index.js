@@ -58,6 +58,7 @@ module.exports = ({
   store = defaultStore(),
   assets = [],
   routes = ensureRoutes('createServerApp'),
+  basepath = '/',
   renderDocument = defaultRenderDocument,
   renderApp = defaultRenderApp,
   createLocals = defaultCreateLocals
@@ -69,7 +70,7 @@ module.exports = ({
 
   const app = (route) => (
     new Promise((resolve, reject) => {
-      match({ routes, location: route }, (
+      match({ routes, location: route, basename: basepath }, (
         error,
         redirect,
         props
