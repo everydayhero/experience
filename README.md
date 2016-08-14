@@ -61,9 +61,9 @@ A function which will take the result of calling `renderToString` on your app, a
 
 ### Client
 
-`history`
+`createHistory`
 
-The history object to be used by React Router. Default is the `browserHistory` singleton exposed by React Router.
+A function which returns a history object to be used by React Router. Default is the `createHistory` function exported by the history module.
 
 `onRouteError(error)`
 
@@ -78,6 +78,10 @@ A function called in the event that React Router was redirected in the process o
 `store`
 
 A Redux store which will be passed to a `<Provider />`
+
+`basepath`
+
+A path that will be prepended to all route-matching and href generation. If your app is not hosted at `/` you'll need to use this option to tell your app where all paths start from. Default is `/`.
 
 `createLocals({ params, router, store })`
 
