@@ -2,6 +2,7 @@ const React = require('react')
 const { Provider } = require('react-redux')
 const { Router, useRouterHistory, match } = require('react-router')
 const { createHistory: defaultCreateHistory } = require('history')
+const { syncHistoryWithStore } = require('react-router-redux')
 const { trigger } = require('redial')
 
 const {
@@ -54,9 +55,11 @@ module.exports = ({
     })
   })
 
+  const syncedHistory = syncHistoryWithStore(history, store)
+
   return () => (
     React.createElement(Provider, { store },
-      React.createElement(Router, { history, routes })
+      React.createElement(Router, { history: syncedHistory, routes })
     )
   )
 }
