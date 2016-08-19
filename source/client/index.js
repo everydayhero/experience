@@ -1,4 +1,5 @@
 const React = require('react')
+const withScroll = require('scroll-behavior')
 const { Provider } = require('react-redux')
 const { Router, useRouterHistory, match } = require('react-router')
 const { createHistory: defaultCreateHistory } = require('history')
@@ -55,7 +56,10 @@ module.exports = ({
     })
   })
 
-  const syncedHistory = syncHistoryWithStore(history, store)
+  const hashIgnoringHistory = withScroll(history, (_prevLoc, { hash } = {}) => (
+    !hash
+  ))
+  const syncedHistory = syncHistoryWithStore(hashIgnoringHistory, store)
 
   return () => (
     React.createElement(Provider, { store },

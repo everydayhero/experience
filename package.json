@@ -29,7 +29,8 @@
     "react-router": "^2.4.1",
     "react-router-redux": "^4.0.5",
     "redial": "^0.4.1",
-    "redux": "^3.5.2"
+    "redux": "^3.5.2",
+    "scroll-behavior": "^0.8.1"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
