@@ -176,3 +176,45 @@ test('createClientApp() take an optional basepath param to prefix all matching a
   })
 })
 
+test('default setup allows navigation', (t) => {
+  t.plan(2)
+
+  const Root = ({ children }) => (
+    React.createElement('div', {},
+      React.createElement(Link, {
+        to: '/__testling/', id: 'navigation-home-link'
+      }, 'Home'),
+      React.createElement(Link, {
+        to: '/__testling/foo', id: 'navigation-foo-link'
+      }, 'Foo'),
+      children
+    )
+  )
+
+  const routes = {
+    path: '/__testling',
+    component: Root,
+    indexRoute: {
+      component: () => React.createElement('div', 'Home!')
+    },
+    childRoutes: [
+      {
+        path: 'foo',
+        component: () => React.createElement('div', 'Foo!')
+      }
+    ]
+  }
+
+  const App = createClientApp({
+    routes
+  })
+
+  mount(App, (elem) => {
+    const homeLink = elem.querySelector('#navigation-home-link')
+    const fooLink = elem.querySelector('#navigation-foo-link')
+    fooLink.click()
+    t.equal(global.location.pathname, '/__testling/foo')
+    homeLink.click()
+    t.equal(global.location.pathname, '/__testling/')
+  })
+})
