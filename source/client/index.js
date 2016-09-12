@@ -2,8 +2,7 @@ const React = require('react')
 const withScroll = require('scroll-behavior')
 const { Provider } = require('react-redux')
 const { Router, useRouterHistory, match } = require('react-router')
-const { createHistory: defaultCreateHistory } = require('history')
-const { syncHistoryWithStore } = require('react-router-redux')
+const { createHistory } = require('history')
 const { trigger } = require('redial')
 
 const {
@@ -26,16 +25,16 @@ module.exports = ({
   store = defaultStore(),
   routes = ensureRoutes('createClientApp'),
   basepath = '/',
-  createHistory = defaultCreateHistory,
+  history = createHistory(),
   createLocals = defaultCreateLocals,
   onRouteError = () => {},
   onRouteRedirect = () => {}
 }) => {
-  const history = useRouterHistory(createHistory)({
+  const basedHistory = useRouterHistory(() => history)({
     basename: basepath
   })
 
-  history.listen((location) => {
+  basedHistory.listen((location) => {
     match({ routes, location, basename: basepath }, (
       error,
       redirect,
@@ -57,14 +56,13 @@ module.exports = ({
     })
   })
 
-  const hashIgnoringHistory = withScroll(history, (_prevLoc, { hash } = {}) => (
+  const hashIgnoringHistory = withScroll(basedHistory, (_prevLoc, { hash } = {}) => (
     !hash
   ))
-  const syncedHistory = syncHistoryWithStore(hashIgnoringHistory, store)
 
   return () => (
     React.createElement(Provider, { store },
-      React.createElement(Router, { history: syncedHistory, routes })
+      React.createElement(Router, { history: hashIgnoringHistory, routes })
     )
   )
 }
