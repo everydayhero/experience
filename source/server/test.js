@@ -192,7 +192,7 @@ describe('createServerApp', () => {
       })
       const app = createServerApp({ routes: routesWithRedirect })
       app('/redir').then(({ redirect }) => {
-        expect(redirect.pathname).to.eq('blargy')
+        expect(redirect.pathname).to.eq('/blargy')
         done()
       }).catch(done)
     })

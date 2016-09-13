@@ -24,7 +24,7 @@ const {
 module.exports = ({
   store = defaultStore(),
   routes = ensureRoutes('createClientApp'),
-  basepath = '/',
+  basepath = '',
   history = createHistory(),
   createLocals = defaultCreateLocals,
   onRouteError = () => {},
