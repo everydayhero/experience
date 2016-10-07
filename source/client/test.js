@@ -8,6 +8,7 @@ const test = require('tape')
 const sinon = require('sinon')
 const { render } = require('react-dom')
 const { Link } = require('react-router')
+const { createStore } = require('redux')
 
 const mount = (App, test) => {
   const elem = document.createElement('div')
@@ -97,7 +98,31 @@ test('createClientApp() calls redial functions on history change', (t) => {
     const link = elem.querySelector('#foo-link')
     link.click()
     t.ok(hooks.fetch.called, 'fetch called')
+    global.history.replaceState({}, '', '/__testling')
   })
+})
+
+test('createClientApp() calls redial functions with { state, dispatch, query, params }', (t) => {
+  t.plan(2)
+
+  const hooks = {
+    fetch: sinon.spy(() => Promise.resolve())
+  }
+  const App = provideHooks(hooks)(
+    () => React.createElement('div')
+  )
+
+  const routes = {
+    path: '/__testling',
+    component: App
+  }
+  const store = createStore(() => ({ foo: 'Foo' }))
+
+  createClientApp({ routes, store })
+
+  const arg = hooks.fetch.getCall(0).args[0]
+  t.is(store.dispatch, arg.dispatch)
+  t.is('Foo', arg.state.foo)
 })
 
 test('createClientApp() takes an optional createLocals function to prepare redial locals', (t) => {
