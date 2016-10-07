@@ -52,7 +52,7 @@ describe('createServerApp', () => {
       }).catch(done)
     })
 
-    it('takes an optional createLocals function which is called with the router params and store to produce locals for redial', () => {
+    it('takes an optional createLocals function which is called with the router params and store to produce locals for redial', (done) => {
       const routes = {
         path: '/',
         component: ({ children }) => children,
@@ -70,17 +70,19 @@ describe('createServerApp', () => {
       const createLocalsSpy = sinon.spy(({ params }) => (params))
       const app = createServerApp({
         routes,
+        store,
         createLocals: createLocalsSpy
       })
 
       app('/foos/1').then(() => {
         const arg = createLocalsSpy.getCall(0).args[0]
-        expect(arg.params).to.eql({ fooId: 1 })
-        expect(arg.store).to.eql(store)
-      })
+        expect(arg.params).to.eql({ fooId: '1' })
+        expect(arg.store).to.eq(store)
+        done()
+      }).catch(done)
     })
 
-    it('calls createLocals with the query from the passed location', () => {
+    it('calls createLocals with the query from the passed location', (done) => {
       const routes = {
         path: '/',
         component: ({ children }) => children,
@@ -89,13 +91,11 @@ describe('createServerApp', () => {
         },
         childRoutes: [
           {
-            path: '/foos/:fooId',
+            path: '/foos',
             component: () => React.createElement('div')
           }
         ]
       }
-      const store = createStore((state) => state)
-
       const createLocalsSpy = sinon.spy((args) => args)
 
       const app = createServerApp({
@@ -106,8 +106,8 @@ describe('createServerApp', () => {
       app('/foos?foo=bar').then(() => {
         const arg = createLocalsSpy.getCall(0).args[0]
         expect(arg.query).to.eql({ foo: 'bar' })
-        expect(arg.store).to.eql(store)
-      })
+        done()
+      }).catch(done)
     })
 
     it('it takes a basepath option which will prefix all route matching and links', (done) => {
