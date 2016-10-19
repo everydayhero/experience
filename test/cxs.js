@@ -1,9 +1,9 @@
 
 import test from 'ava'
 import hash from 'murmurhash-js/murmurhash3_gc'
-import prefixer from 'inline-style-prefixer/static'
+import prefix from 'inline-style-prefixer/static'
 import jsdom from 'jsdom-global'
-import cxs, { cache, styleId } from '../src'
+import cxsync, { cache, styleId } from '../src'
 
 jsdom('<html></html>')
 
@@ -14,32 +14,37 @@ const style = {
 }
 
 test.beforeEach(() => {
-  cxs.clearCache()
+  cxsync.clearCache()
 })
 
 test('does not throw', t => {
   t.notThrows(() => {
-    cxs(style)
+    cxsync(style)
   })
 })
 
 test('returns a classname', t => {
-  const cx = cxs(style)
+  const cx = cxsync(style)
+  t.is(typeof cx, 'string')
+})
+
+test('returns a classname when passed multiple style objects', t => {
+  const cx = cxsync(style, {background: 'red'}, {width: '100%'})
   t.is(typeof cx, 'string')
 })
 
 test('returns a consistent hashed classname', t => {
   t.plan(2)
-  const hashname = hash(JSON.stringify(style), 128)
-  const cx = cxs(style)
-  const cxtwo = cxs(style)
-  t.is(cx, `cxs-${hashname}`)
+  const hashname = hash(JSON.stringify(prefix(style)), 128)
+  const cx = cxsync(style)
+  const cxtwo = cxsync(style)
+  t.is(cx, `cxsync-${hashname}`)
   t.is(cx, cxtwo) // Double-double checking
 })
 
 test('attaches a style tag and CSSStyleSheet', async t => {
   t.plan(1)
-  cxs.attach()
+  cxsync.attach()
   const getTag = () => {
     return new Promise((resolve, reject) => {
       setTimeout(() => {
@@ -49,7 +54,7 @@ test('attaches a style tag and CSSStyleSheet', async t => {
     })
   }
   // Travis error with CSSStyleSheet is undefined
-  // t.true(cxs.sheet instanceof CSSStyleSheet)
+  // t.true(cxsync.sheet instanceof CSSStyleSheet)
   t.is(await getTag(), 'STYLE')
 })
 
@@ -57,8 +62,8 @@ test('Adds px unit to number values', t => {
   const sx = {
     fontSize: 32
   }
-  cxs(sx)
-  const rules = cxs.rules
+  cxsync(sx)
+  const rules = cxsync.rules
   t.regex(rules[0].css, /font-size:32px}$/)
 })
 
@@ -70,8 +75,8 @@ test('creates pseudoclass rules', t => {
       color: 'magenta'
     }
   }
-  cxs(sx)
-  const rules = cxs.rules
+  cxsync(sx)
+  const rules = cxsync.rules
   t.is(rules.length, 2)
   const hoverRule = Object.keys(cache).reduce((a, b) => /:hover$/.test(b) ? cache[b] : null, null)
   t.regex(hoverRule.selector, /:hover$/)
@@ -79,7 +84,7 @@ test('creates pseudoclass rules', t => {
 
 test('does not extract common declarations for pseudoclass rules', t => {
   t.plan(3)
-  const cx = cxs({
+  const cx = cxsync({
     textDecoration: 'none',
     ':hover': {
       textDecoration: 'underline'
@@ -87,7 +92,7 @@ test('does not extract common declarations for pseudoclass rules', t => {
   })
   t.regex(cx, /text\-decoration\-none/)
   t.false(/text\-decoration\-underline/.test(cx))
-  t.regex(cxs.css, /underline/)
+  t.regex(cxsync.css, /underline/)
 })
 
 test('creates @media rules', t => {
@@ -98,8 +103,8 @@ test('creates @media rules', t => {
       color: 'magenta'
     }
   }
-  cxs(sx)
-  const rules = cxs.rules
+  cxsync(sx)
+  const rules = cxsync.rules
   t.is(rules.length, 2)
   t.regex(rules[1].css, /^@media/)
 })
@@ -118,8 +123,8 @@ test('keeps @media rules order', t => {
       color: 'black'
     }
   }
-  cxs(sx)
-  const rules = cxs.rules
+  cxsync(sx)
+  const rules = cxsync.rules
   t.is(rules.length, 4)
   t.regex(rules[1].css, /32/)
   t.regex(rules[2].css, /48/)
@@ -128,7 +133,7 @@ test('keeps @media rules order', t => {
 
 test('creates @keyframe rules', t => {
   t.plan(2)
-  cxs({
+  cxsync({
     animationName: 'rainbow',
     animationTimingFunction: 'linear',
     animationDuration: '1s',
@@ -143,15 +148,15 @@ test('creates @keyframe rules', t => {
       }
     }
   })
-  t.regex(cxs.css, /@keyframes rainbow { from/)
-  t.false(/@keyframes.*@keyframes/.test(cxs.css))
+  t.regex(cxsync.css, /@keyframes rainbow { from/)
+  t.false(/@keyframes.*@keyframes/.test(cxsync.css))
 })
 
 test('creates nested selectors', t => {
   t.plan(4)
   let cx
   t.notThrows(() => {
-    cx = cxs({
+    cx = cxsync({
       color: 'blue',
       'h1': {
         fontSize: 32,
@@ -165,8 +170,8 @@ test('creates nested selectors', t => {
     })
   })
   t.false(/h1/.test(cx))
-  t.regex(cxs.css, /h1/)
-  t.regex(cxs.css, /a:hover/)
+  t.regex(cxsync.css, /h1/)
+  t.regex(cxsync.css, /a:hover/)
 })
 
 test('dedupes repeated styles', t => {
@@ -175,75 +180,69 @@ test('dedupes repeated styles', t => {
     fontSize: 32
   }
 
-  cxs(style)
-  cxs(dupe)
-  cxs(dupe)
+  cxsync(style)
+  cxsync(dupe)
+  cxsync(dupe)
 
-  t.is(cxs.rules.length, 2)
+  t.is(cxsync.rules.length, 2)
 })
 
 test('handles array values', t => {
   t.pass(2)
   t.notThrows(() => {
-    cxs({
+    cxsync({
       color: [ 'blue', 'var(--blue)' ]
     })
   })
-  t.regex(cxs.css, /var/)
+  t.regex(cxsync.css, /var/)
 })
 
-test('handles prefixed styles with array values', t => {
+test('prefixes styles with array values', t => {
   t.pass(3)
   t.notThrows(() => {
-    const prefixed = prefixer({
-      display: 'flex'
-    })
-    cxs(prefixed)
+    cxsync({ display: 'flex' })
   })
-  t.regex(cxs.css, /\-webkit\-flex/)
-  t.regex(cxs.css, /\-ms\-flexbox/)
+  t.regex(cxsync.css, /\-webkit\-flex/)
+  t.regex(cxsync.css, /\-ms\-flexbox/)
 })
 
-test('handles prefixed styles (including ms) in keys', t => {
+test('prefixes styles (including ms) in keys', t => {
   t.pass(3)
   t.notThrows(() => {
-    const prefixed = prefixer({
-      alignItems: 'center'
-    })
-    cxs(prefixed)
+    cxsync({ alignItems: 'center' })
   })
-  t.regex(cxs.css, /\-webkit\-align-items/)
-  t.regex(cxs.css, /\-ms\-flex-align/)
+  t.regex(cxsync.css, /\-webkit\-align-items/)
+  t.regex(cxsync.css, /\-ms\-flex-align/)
 })
 
 test('ignores null values', t => {
-  cxs({
+  cxsync({
     color: 'tomato',
     padding: null
   })
-  const css = cxs.css
+  const css = cxsync.css
   t.is(css.includes('null'), false)
 })
 
 test('handles 0 values', t => {
-  cxs({
+  cxsync({
     padding: 0,
     fontFamily: 0,
     border: 0
   })
-  const css = cxs.css
+  const css = cxsync.css
   t.is(css.includes('border'), true)
 })
 
 test('should handle ::-moz-inner-focus', t => {
-  cxs({
+  cxsync({
     color: 'tomato',
     '::-moz-inner-focus': {
       border: 0,
       padding: 0
     }
   })
-  const css = cxs.css
+  const css = cxsync.css
   t.is(css.includes('-moz-inner-focus'), true)
 })
 

@@ -1,5 +1,6 @@
-
 import hash from 'murmurhash-js/murmurhash3_gc'
+import prefix from 'inline-style-prefixer/static'
+import merge from 'lodash/merge'
 import createRules from './create-rules'
 
 export let styleTag = null
@@ -10,11 +11,15 @@ export let options = {
 }
 
 const randomHex = () => Math.floor(Math.random() * 16777215).toString(16)
-export const styleId = 'cxs-' + hash(randomHex(), 128)
+const hashed = (str) => 'cxsync-' + hash(str, 128)
+const styleReducer = (a, b) => (a.indexOf(b) > -1) ? a : [ ...a, b ]
 
-const cxs = (style) => {
+export const styleId = hashed(randomHex())
+
+const cxsync = (...rest) => {
+  const style = prefix(merge({}, ...rest))
   const classNames = []
-  const hashname = 'cxs-' + hash(JSON.stringify(style), 128)
+  const hashname = hashed(JSON.stringify(style))
   const rules = createRules(hashname, style)
 
   rules.forEach(r => { cache[r.id] = r })
@@ -23,50 +28,39 @@ const cxs = (style) => {
     .filter(r => !(/\s/.test(r.selector)))
     .forEach(r => classNames.push(r.selector.replace(/^\./, '')))
 
-  if (options.autoAttach) {
-    cxs.attach()
-  }
-  return classNames.reduce((a, b) => {
-    if (a.indexOf(b) > -1) return a
-    return [ ...a, b ]
-  }, []).join(' ')
+  if (options.autoAttach) cxsync.attach()
+
+  return classNames.reduce(styleReducer, []).join(' ')
 }
 
-const attach = () => {
+cxsync.attach = () => {
   if (typeof document === 'undefined') {
-    // console.warn('Cannot attach stylesheet without a document')
     return
   }
 
-  const rules = cxs.rules
+  const rules = cxsync.rules
   styleTag = styleTag || document.getElementById(styleId)
 
   if (styleTag === null) {
     styleTag = document.createElement('style')
     styleTag.id = styleId
     document.head.appendChild(styleTag)
-    cxs.sheet = styleTag.sheet
+    cxsync.sheet = styleTag.sheet
   }
 
-  // Insert all rules
-  // note: filtering for new rules does not seem to have a huge performance impact
-  // .filter(rule => [].slice.call(cxs.sheet.cssRules).map(r => r.selectorText).indexOf(rule.selector) < 0)
   rules
+    .filter(rule => [].slice.call(cxsync.sheet.cssRules).map(r => r.selectorText).indexOf(rule.selector) < 0)
     .forEach(rule => {
       try {
-        cxs.sheet.insertRule(rule.css, cxs.sheet.cssRules.length)
+        cxsync.sheet.insertRule(rule.css, cxsync.sheet.cssRules.length)
       } catch (e) {}
     })
 }
 
-cxs.attach = attach
+cxsync.options = options
+cxsync.clearCache = () => { cache = {} }
 
-cxs.options = options
-cxs.clearCache = () => {
-  cache = {}
-}
-
-Object.defineProperty(cxs, 'rules', {
+Object.defineProperty(cxsync, 'rules', {
   get () {
     return Object.keys(cache || {})
       .map(k => cache[k] || false)
@@ -75,13 +69,12 @@ Object.defineProperty(cxs, 'rules', {
   }
 })
 
-Object.defineProperty(cxs, 'css', {
+Object.defineProperty(cxsync, 'css', {
   get () {
-    return cxs.rules
+    return cxsync.rules
       .map(r => r.css)
       .join('')
   }
 })
 
-export default cxs
-
+export default cxsync

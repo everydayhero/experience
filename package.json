@@ -1,6 +1,6 @@
 {
-  "name": "cxs",
-  "version": "1.0.0",
+  "name": "cxsync",
+  "version": "1.0.1",
   "description": "A CSS-in-JS solution for functional CSS in functional UI components",
   "main": "dist/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "test": "standard && ava -v"
   },
   "keywords": [],
-  "author": "Brent Jackson",
+  "author": "Ben O'Neal",
   "license": "MIT",
   "devDependencies": {
     "ava": "^0.15.2",
@@ -47,7 +47,8 @@
   },
   "dependencies": {
     "add-px-to-style": "^1.0.0",
-    "lodash.debounce": "^4.0.6",
+    "inline-style-prefixer": "^2.0.4",
+    "lodash": "^4.16.4",
     "murmurhash-js": "^1.0.0"
   },
   "ava": {
@@ -66,5 +67,17 @@
       "beforeEach",
       "afterEach"
     ]
-  }
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/benoneal/cxsync.git"
+  },
+  "bugs": {
+    "url": "https://github.com/benoneal/cxsync/issues"
+  },
+  "homepage": "https://github.com/benoneal/cxsync#readme"
 }
