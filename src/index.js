@@ -20,6 +20,7 @@ const cxsync = (...rest) => {
   const style = prefix(merge({}, ...rest))
   const classNames = []
   const hashname = hashed(JSON.stringify(style))
+  if (cache[hashname]) return hashname
   const rules = createRules(hashname, style)
 
   rules.forEach(r => { cache[r.id] = r })
@@ -49,7 +50,6 @@ cxsync.attach = () => {
   }
 
   rules
-    .filter(rule => [].slice.call(cxsync.sheet.cssRules).map(r => r.selectorText).indexOf(rule.selector) < 0)
     .forEach(rule => {
       try {
         cxsync.sheet.insertRule(rule.css, cxsync.sheet.cssRules.length)
