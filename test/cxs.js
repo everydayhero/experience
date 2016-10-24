@@ -82,18 +82,18 @@ test('creates pseudoclass rules', t => {
   t.regex(hoverRule.selector, /:hover$/)
 })
 
-test('does not extract common declarations for pseudoclass rules', t => {
-  t.plan(3)
-  const cx = cxsync({
-    textDecoration: 'none',
-    ':hover': {
-      textDecoration: 'underline'
-    }
-  })
-  t.regex(cx, /text\-decoration\-none/)
-  t.false(/text\-decoration\-underline/.test(cx))
-  t.regex(cxsync.css, /underline/)
-})
+// test('does not extract common declarations for pseudoclass rules', t => {
+//   t.plan(3)
+//   const cx = cxsync({
+//     textDecoration: 'none',
+//     ':hover': {
+//       textDecoration: 'underline'
+//     }
+//   })
+//   t.regex(cx, /text\-decoration\-none/)
+//   t.false(/text\-decoration\-underline/.test(cx))
+//   t.regex(cxsync.css, /underline/)
+// })
 
 test('creates @media rules', t => {
   t.plan(2)

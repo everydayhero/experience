@@ -1,4 +1,3 @@
-
 import addPx from 'add-px-to-style'
 
 export const isNested = s => /\s|:|^@|^\d|^from$|^to$/.test(s)
@@ -11,15 +10,12 @@ const createRules = (name, style, parent) => {
 
   // Create styles array
   const styles = Object.keys(style)
-    .filter(key => style[key] !== null)
-    .filter(key => isArr(style[key]) || !isObj(style[key]))
-    .map(key => {
-      return {
-        key,
-        prop: kebab(key),
-        value: parseValue(key, style[key])
-      }
-    })
+    .filter((key) => isArrayOrNotObject(style[key]))
+    .map((key) => ({
+      key,
+      prop: kebab(key),
+      value: parseValue(key, style[key])
+    }))
     .reduce((a, b) => isArr(b.value)
         ? [...a, ...b.value.map(v => ({ ...b, value: v }))]
         : [...a, b]
@@ -49,9 +45,8 @@ const createRules = (name, style, parent) => {
 
 const createNestedRules = (name, style, parent) => {
   return Object.keys(style)
-    .filter(key => !!style[key])
-    .filter(key => !isArr(style[key]) && isObj(style[key]))
-    .map(key => {
+    .filter((key) => isObjectAndNotArray(style[key]))
+    .map((key) => {
       if (/^:/.test(key)) {
         return createRules(name + key, style[key], parent)
       } else if (/^@keyframes/.test(key)) {
@@ -78,10 +73,12 @@ const createRuleset = (selector, styles, parent) => {
   return parent ? `${parent} { ${ruleset} }` : ruleset
 }
 
-const isObj = v => typeof v === 'object'
-const isArr = v => Array.isArray(v)
+const isObj = (v) => typeof v === 'object'
+const isArr = (v) => Array.isArray(v)
 const parseValue = (prop, val) => typeof val === 'number' ? addPx(prop, val) : val
 const kebab = (str) => str.replace(/([A-Z]|^ms)/g, g => '-' + g.toLowerCase())
+const exists = (v) => (v !== null && typeof v !== 'undefined')
+const isArrayOrNotObject = (v) => exists(v) && (isArr(v) || !isObj(v))
+const isObjectAndNotArray = (v) => exists(v) && !isArr(v) && isObj(v)
 
 export default createRules
-

@@ -3,30 +3,42 @@ import prefix from 'inline-style-prefixer/static'
 import merge from 'lodash/merge'
 import createRules from './create-rules'
 
-export let styleTag = null
-export let cache = {}
-
 export let options = {
   autoAttach: true
 }
 
-const randomHex = () => Math.floor(Math.random() * 16777215).toString(16)
+export let styleTag = null
+export let cache = {}
+
+const { floor, random } = Math
+const randomHex = () => floor(random() * 16777215).toString(16)
 const hashed = (str) => 'cxsync-' + hash(str, 128)
 const styleReducer = (a, b) => (a.indexOf(b) > -1) ? a : [ ...a, b ]
+const propertyFilter = ({ selector }) => !(/:/.test(selector)) && !(/\s/.test(selector))
 
 export const styleId = hashed(randomHex())
 
+const createStyleTag = () => {
+  styleTag = styleTag || document.getElementById(styleId)
+  if (!styleTag) {
+    styleTag = document.createElement('style')
+    styleTag.id = styleId
+    document.head.appendChild(styleTag)
+  }
+  return styleTag.sheet
+}
+
 const cxsync = (...rest) => {
-  const style = prefix(merge({}, ...rest))
-  const classNames = []
+  const style = merge({}, ...rest)
   const hashname = hashed(JSON.stringify(style))
   if (cache[hashname]) return hashname
-  const rules = createRules(hashname, style)
+
+  const classNames = []
+  const rules = createRules(hashname, prefix(style))
 
   rules.forEach(r => { cache[r.id] = r })
 
-  rules.filter(r => !(/:/.test(r.selector)))
-    .filter(r => !(/\s/.test(r.selector)))
+  rules.filter(propertyFilter)
     .forEach(r => classNames.push(r.selector.replace(/^\./, '')))
 
   if (options.autoAttach) cxsync.attach()
@@ -35,29 +47,20 @@ const cxsync = (...rest) => {
 }
 
 cxsync.attach = () => {
-  if (typeof document === 'undefined') {
-    return
-  }
+  if (typeof document === 'undefined') return
 
-  const rules = cxsync.rules
-  styleTag = styleTag || document.getElementById(styleId)
+  const sheet = createStyleTag()
+  const selectors = [].slice.call(sheet.cssRules).map(r => r.selectorText)
 
-  if (styleTag === null) {
-    styleTag = document.createElement('style')
-    styleTag.id = styleId
-    document.head.appendChild(styleTag)
-    cxsync.sheet = styleTag.sheet
-  }
-
-  rules
-    .forEach(rule => {
+  cxsync.rules
+    .filter(({ selector }) => selectors.indexOf(selector) === -1)
+    .forEach(({ css }) => {
       try {
-        cxsync.sheet.insertRule(rule.css, cxsync.sheet.cssRules.length)
+        sheet.insertRule(css, sheet.cssRules.length)
       } catch (e) {}
     })
 }
 
-cxsync.options = options
 cxsync.clearCache = () => { cache = {} }
 
 Object.defineProperty(cxsync, 'rules', {
