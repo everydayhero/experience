@@ -9,7 +9,10 @@ Everything that CXS offers, except:
 - it always prefixes all styles (so it's useful in production)
 - it correctly handles IE's `ms` vendor prefix
 - it only appends new selectors (that don't already exist in the `<head>`)
+- it only prefixes necessary properties (those required by the environment) and only when necessary
+- it handles `content: ''` to not require `content: '""'`
+- it `console.warn`s when you attempt to use a property or value that isn't supported in the current environmnet
 
 TODO: 
-- handle `content: ''` to not require `content: '""'`
-- media query ordering
+- media query smart ordering (hard problem)
+- handle server-side rendering by doing all the vendor prefixing

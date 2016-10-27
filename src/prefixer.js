@@ -50,6 +50,7 @@ export const prefixProperty = (property, prefix = jsPrefix) => {
 
 export const prefixValue = (property, value) => {
   if (typeof value !== 'string' || !isNaN(parseInt(value, 10))) return value
+  if (property === 'content' && value === '') value = '""'
   const cacheKey = property + value
   if (cacheKey in cache) return cache[cacheKey]
 

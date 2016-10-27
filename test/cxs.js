@@ -67,6 +67,15 @@ test('Adds px unit to number values', t => {
   t.regex(rules[0].css, /font-size:32px}$/)
 })
 
+test('handles content prop with empty string', t => {
+  const sx = {
+    content: ''
+  }
+  cxsync(sx)
+  const rules = cxsync.rules
+  t.regex(rules[0].css, /content:""}$/)
+})
+
 test('creates pseudoclass rules', t => {
   t.plan(2)
   const sx = {
