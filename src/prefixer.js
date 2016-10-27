@@ -55,8 +55,9 @@ export const prefixValue = (property, value) => {
   if (cacheKey in cache) return cache[cacheKey]
 
   const tryValue = (value) => {
+    supportedProperties[property] = null
     supportedProperties[property] = value
-    return supportedProperties[property] === value
+    return !!supportedProperties[property].length
   }
 
   try {
