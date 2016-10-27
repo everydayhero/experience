@@ -197,23 +197,23 @@ test('handles array values', t => {
   t.regex(cxsync.css, /var/)
 })
 
-test('prefixes styles with array values', t => {
-  t.pass(3)
-  t.notThrows(() => {
-    cxsync({ display: 'flex' })
-  })
-  t.regex(cxsync.css, /\-webkit\-flex/)
-  t.regex(cxsync.css, /\-ms\-flexbox/)
-})
+// test('prefixes styles with array values', t => {
+//   t.pass(3)
+//   t.notThrows(() => {
+//     cxsync({ display: 'flex' })
+//   })
+//   t.regex(cxsync.css, /\-webkit\-flex/)
+//   t.regex(cxsync.css, /\-ms\-flexbox/)
+// })
 
-test('prefixes styles (including ms) in keys', t => {
-  t.pass(3)
-  t.notThrows(() => {
-    cxsync({ alignItems: 'center' })
-  })
-  t.regex(cxsync.css, /\-webkit\-align-items/)
-  t.regex(cxsync.css, /\-ms\-flex-align/)
-})
+// test('prefixes styles (including ms) in keys', t => {
+//   t.pass(3)
+//   t.notThrows(() => {
+//     cxsync({ alignItems: 'center' })
+//   })
+//   t.regex(cxsync.css, /\-webkit\-align-items/)
+//   t.regex(cxsync.css, /\-ms\-flex-align/)
+// })
 
 test('ignores null values', t => {
   cxsync({

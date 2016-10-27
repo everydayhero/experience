@@ -1,6 +1,6 @@
 {
   "name": "cxsync",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A CSS-in-JS solution for functional CSS in functional UI components",
   "main": "dist/index.js",
   "scripts": {
@@ -49,7 +49,8 @@
     "add-px-to-style": "^1.0.0",
     "inline-style-prefixer": "^2.0.4",
     "lodash": "^4.16.4",
-    "murmurhash-js": "^1.0.0"
+    "murmurhash-js": "^1.0.0",
+    "react-prefixer": "^1.1.4"
   },
   "ava": {
     "require": [

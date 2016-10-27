@@ -1,6 +1,16 @@
-import addPx from 'add-px-to-style'
-
-export const isNested = s => /\s|:|^@|^\d|^from$|^to$/.test(s)
+import { prefixProperty, prefixValue, prefixAllFlat } from './prefixer'
+import {
+  isBrowser,
+  isAnimation,
+  isPseudoSelector,
+  isMediaQuery,
+  isNotSelector,
+  isArr,
+  parseValue,
+  kebab,
+  isArrayOrNotObject,
+  isObjectAndNotArray
+} from './utils'
 
 const createRules = (name, style, parent) => {
   // Extract nested rules
@@ -8,23 +18,24 @@ const createRules = (name, style, parent) => {
 
   if (!name) return rules
 
-  // Create styles array
+  if (!isBrowser) style = prefixAllFlat(style)
+
   const styles = Object.keys(style)
     .filter((key) => isArrayOrNotObject(style[key]))
     .map((key) => ({
       key,
-      prop: kebab(key),
-      value: parseValue(key, style[key])
+      prop: kebab(prefixProperty(key)),
+      value: prefixValue(key, parseValue(key, style[key]))
     }))
     .reduce((a, b) => isArr(b.value)
-        ? [...a, ...b.value.map(v => ({ ...b, value: v }))]
-        : [...a, b]
+      ? [...a, ...b.value.map((v) => ({ ...b, value: prefixValue(b.prop, v) }))]
+      : [...a, b]
     , [])
 
   // Add base rule
-  const selector = /^([0-9]|from|to)/.test(name) ? name : '.' + name
+  const selector = isNotSelector(name) ? name : '.' + name
 
-  if (/^@keyframes/.test(parent)) {
+  if (isAnimation(parent)) {
     return [{
       id: name + parent,
       order: 3,
@@ -47,9 +58,9 @@ const createNestedRules = (name, style, parent) => {
   return Object.keys(style)
     .filter((key) => isObjectAndNotArray(style[key]))
     .map((key) => {
-      if (/^:/.test(key)) {
+      if (isPseudoSelector(key)) {
         return createRules(name + key, style[key], parent)
-      } else if (/^@keyframes/.test(key)) {
+      } else if (isAnimation(key)) {
         const subrules = createRules(null, style[key], key)
         return [{
           id: key,
@@ -57,7 +68,7 @@ const createNestedRules = (name, style, parent) => {
           selector: key,
           css: `${key} { ${subrules.map(r => r.css).join('')} }`
         }]
-      } else if (/^@/.test(key)) {
+      } else if (isMediaQuery(key)) {
         return createRules(name, style[key], key)
       } else {
         const selector = name ? `${name} ${key}` : key
@@ -72,13 +83,5 @@ const createRuleset = (selector, styles, parent) => {
   const ruleset = `${selector}{${declarations.join(';')}}`
   return parent ? `${parent} { ${ruleset} }` : ruleset
 }
-
-const isObj = (v) => typeof v === 'object'
-const isArr = (v) => Array.isArray(v)
-const parseValue = (prop, val) => typeof val === 'number' ? addPx(prop, val) : val
-const kebab = (str) => str.replace(/([A-Z]|^ms)/g, g => '-' + g.toLowerCase())
-const exists = (v) => (v !== null && typeof v !== 'undefined')
-const isArrayOrNotObject = (v) => exists(v) && (isArr(v) || !isObj(v))
-const isObjectAndNotArray = (v) => exists(v) && !isArr(v) && isObj(v)
 
 export default createRules

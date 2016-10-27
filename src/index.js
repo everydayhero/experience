@@ -1,20 +1,18 @@
-import hash from 'murmurhash-js/murmurhash3_gc'
-import prefix from 'inline-style-prefixer/static'
 import merge from 'lodash/merge'
 import createRules from './create-rules'
+import {
+  hasDocument,
+  randomHex,
+  hashed,
+  styleReducer,
+  propertyFilter
+} from './utils'
 
 export let options = {
   autoAttach: true
 }
-
 export let styleTag = null
 export let cache = {}
-
-const { floor, random } = Math
-const randomHex = () => floor(random() * 16777215).toString(16)
-const hashed = (str) => 'cxsync-' + hash(str, 128)
-const styleReducer = (a, b) => (a.indexOf(b) > -1) ? a : [ ...a, b ]
-const propertyFilter = ({ selector }) => !(/:/.test(selector)) && !(/\s/.test(selector))
 
 export const styleId = hashed(randomHex())
 
@@ -34,7 +32,7 @@ const cxsync = (...rest) => {
   if (cache[hashname]) return hashname
 
   const classNames = []
-  const rules = createRules(hashname, prefix(style))
+  const rules = createRules(hashname, style)
 
   rules.forEach(r => { cache[r.id] = r })
 
@@ -47,7 +45,7 @@ const cxsync = (...rest) => {
 }
 
 cxsync.attach = () => {
-  if (typeof document === 'undefined') return
+  if (!hasDocument()) return
 
   const sheet = createStyleTag()
   const selectors = [].slice.call(sheet.cssRules).map(r => r.selectorText)
