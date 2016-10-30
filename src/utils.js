@@ -4,11 +4,11 @@ import hash from 'murmurhash-js/murmurhash3_gc'
 const { floor, random } = Math
 
 export const exists = (v) => (v !== null && typeof v !== 'undefined')
-export const isNested = (key) => /\s|:|^@|^\d|^from$|^to$/.test(key)
-export const isAnimation = (key) => /^@k/.test(key)
-export const isPseudoSelector = (key) => /^:/.test(key)
-export const isMediaQuery = (key) => /^@/.test(key)
-export const isNotSelector = (key) => /^([0-9]|from|to)/.test(key)
+export const isNested = (key = '') => /\s|:|^@|^\d|^from$|^to$/.test(key)
+export const isAnimation = (key = '') => key[0] === '@' && key[1] === 'k'
+export const isPseudoSelector = (key = '') => key[0] === ':'
+export const isMediaQuery = (key = '') => key[0] === '@'
+export const isNotSelector = (key = '') => /^([0-9]|from|to)/.test(key)
 export const isObj = (v) => typeof v === 'object'
 export const isArr = (v) => Array.isArray(v)
 export const isArrayOrNotObject = (v) => exists(v) && (isArr(v) || !isObj(v))

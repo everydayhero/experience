@@ -1,10 +1,12 @@
 import merge from 'lodash/merge'
+import uniq from 'lodash/uniq'
+import sortBy from 'lodash/sortBy'
+import filter from 'lodash/filter'
 import createRules from './create-rules'
 import {
   hasDocument,
   randomHex,
   hashed,
-  styleReducer,
   propertyFilter
 } from './utils'
 
@@ -41,7 +43,7 @@ const cxsync = (...rest) => {
 
   if (options.autoAttach) cxsync.attach()
 
-  return classNames.reduce(styleReducer, []).join(' ')
+  return uniq(classNames).join(' ')
 }
 
 cxsync.attach = () => {
@@ -63,10 +65,7 @@ cxsync.clearCache = () => { cache = {} }
 
 Object.defineProperty(cxsync, 'rules', {
   get () {
-    return Object.keys(cache || {})
-      .map(k => cache[k] || false)
-      .filter(r => r.css.length)
-      .sort((a, b) => a.order - b.order)
+    return sortBy(filter(cache, (v) => !!v && v.css.length), ['order'])
   }
 })
 

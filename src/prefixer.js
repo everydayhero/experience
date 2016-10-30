@@ -1,6 +1,7 @@
 import reduce from 'lodash/reduce'
 import each from 'lodash/each'
 import find from 'lodash/find'
+import startsWith from 'lodash/startsWith'
 import { isBrowser, isStyleProp, isObj } from './utils'
 import {
   PREFIXABLE_PROPS,
@@ -17,7 +18,8 @@ const VENDORS = {
   chrome: 'webkit',
   safari: 'Webkit',
   firefox: 'Moz',
-  msie: 'ms'
+  msie: 'ms',
+  node: ''
 }
 
 const jsPrefix = (() => {
@@ -38,7 +40,7 @@ export const prefixProperty = (property, prefix = jsPrefix) => {
     cache[cacheKey] = property
   } else if (ALTERNATE_PROPS[property] in supportedProperties) {
     cache[cacheKey] = ALTERNATE_PROPS[property]
-  } else if (find(PREFIXABLE_PROPS, (p) => property.indexOf(p) === 0) && prefixed in supportedProperties) {
+  } else if (find(PREFIXABLE_PROPS, (p) => startsWith(property, p)) && prefixed in supportedProperties) {
     cache[cacheKey] = prefixed
   } else {
     console.warn(`CXSync: No valid version of property ${property} found, using provided but it is not supported.`)
@@ -55,7 +57,7 @@ export const prefixValue = (property, value) => {
   if (cacheKey in cache) return cache[cacheKey]
 
   const tryValue = (value) => {
-    supportedProperties[property] = null
+    supportedProperties[property] = ''
     supportedProperties[property] = value
     return !!supportedProperties[property].length
   }
@@ -71,7 +73,7 @@ export const prefixValue = (property, value) => {
 
   if (tryValue(value)) {
     cache[cacheKey] = value
-  } else if (find(PREFIXABLE_VALUES, (v) => value.indexOf(v) === 0) && tryValue(prefixed)) {
+  } else if (find(PREFIXABLE_VALUES, (v) => startsWith(value, v)) && tryValue(prefixed)) {
     cache[cacheKey] = prefixed
   } else if (alternate) {
     cache[cacheKey] = alternate
@@ -85,7 +87,7 @@ export const prefixValue = (property, value) => {
 
 const prefixAllFlatReducer = (res, val, prop) => {
   if (isStyleProp(prop) && !isObj(val)) {
-    each({...VENDORS, server: ''}, (prefix) => {
+    each(VENDORS, (prefix) => {
       const prefixed = prefixProperty(prop, prefix)
       res[prefixed] = prefixValue(prefixed, val)
     })
