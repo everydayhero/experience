@@ -23,10 +23,14 @@ const VENDORS = {
 }
 
 const jsPrefix = (() => {
-  if (typeof navigator === 'undefined') return ''
+  if (typeof navigator === 'undefined') {
+    console.warn('CXSync: No navigator found: I hope you are running this on the server.')
+    return ''
+  }
   const ua = navigator.userAgent.toLowerCase()
-  const match = /(opera|msie|firefox|chrome|safari)/.exec(ua)[0]
-  return match ? VENDORS[match] : ''
+  const match = /(opera|msie|firefox|chrome|safari|node)/.exec(ua)
+  if (!match) console.warn('CXSync: No vendor match found: This browser is not officially supported and vendor prefixes will be absent.')
+  return match ? VENDORS[match[0]] : ''
 })()
 
 const cssPrefix = `-${jsPrefix.toLowerCase()}-`
