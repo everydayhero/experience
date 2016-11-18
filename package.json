@@ -22,14 +22,16 @@
   "author": "Brad Parker <hi@bradparker.com>",
   "license": "ISC",
   "dependencies": {
-    "react": "^0.14.8",
     "react-document-title": "^2.0.1",
-    "react-dom": "^0.14.8",
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redial": "^0.4.1",
     "redux": "^3.5.2",
     "scroll-behavior": "^0.8.1"
+  },
+  "peerDependencies": {
+    "react": "^0.14.0 || ^15.0.0",
+    "react-dom": "^0.14.0 || ^15.0.0"
   },
   "devDependencies": {
     "babel-cli": "^6.11.4",
@@ -43,6 +45,8 @@
     "mocha": "^2.4.5",
     "phantomjs-prebuilt": "^2.1.7",
     "sinon": "^1.17.4",
+    "react": "^15.0.0",
+    "react-dom": "^15.0.0",
     "tape": "^4.5.1",
     "testling": "^1.7.1"
   }
