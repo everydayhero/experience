@@ -1,5 +1,4 @@
 const Document = require('./Document')
-const DocumentTitle = require('react-document-title')
 const React = require('react')
 const { Provider } = require('react-redux')
 const { RouterContext, match } = require('react-router')
@@ -34,7 +33,7 @@ const defaultRenderDocument = ({
   return '<!DOCTYPE html>' + renderToStaticMarkup(
     React.createElement(
       Document, {
-        title: DocumentTitle.rewind(),
+        title: 'My App',
         state,
         scripts,
         styles,
