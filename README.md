@@ -49,7 +49,7 @@ app('/foos/123').then(({ result }) => result)
 
 ## Required params
 
-The only property needed to init both the server and client apps is a React Router routes configuration. You can provide this in any form that react Router accpets.
+The only property needed to init both the server and client apps is a React Router `routes` configuration. You can provide this in any form that react Router accpets.
 
 ## Optional Params
 
@@ -58,6 +58,16 @@ The only property needed to init both the server and client apps is a React Rout
 `renderDocument`
 
 A function which will take the result of calling `renderToString` on your app, along with the store, and return the final markup.
+
+`createStore`
+
+A function which will take the `initialState` option as it's only arg and return a redux store. You must leave the `store` option (see below) blank for this to be used.
+
+Use this option if you want a new instance of your redux store per server request (this is very likely what you want).
+
+`initialState`
+
+To be used with `createStore`, this will be passed to createStore to initialize your redux store.
 
 ### Client
 
@@ -77,7 +87,7 @@ A function called in the event that React Router was redirected in the process o
 
 `store`
 
-A Redux store which will be passed to a `<Provider />`
+A Redux store which will be passed to a `<Provider />`.
 
 `basepath`
 
