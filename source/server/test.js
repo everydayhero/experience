@@ -110,6 +110,33 @@ describe('createServerApp', () => {
       }).catch(done)
     })
 
+    it('takes createStore() and initalState options to create a fresh store for each request, unless the store option is provided', (done) => {
+      const routes = { path: '/', component: () => React.createElement('div', null, '') }
+      const stores = []
+
+      const app = createServerApp({
+        routes,
+        initialState: { foo: 'Foo' },
+        createStore (initialState) {
+          const storeInstance = createStore((state) => state, initialState)
+          stores.push(storeInstance)
+          return storeInstance
+        }
+      })
+
+      Promise.all([
+        app('/'),
+        app('/')
+      ]).then(() => {
+        const store1 = stores[0]
+        const store2 = stores[1]
+        expect(store1.getState().foo).to.eq('Foo')
+        expect(store2.getState().foo).to.eq('Foo')
+        expect(store1).to.not.eq(store2)
+        done()
+      }).catch(done)
+    })
+
     it('it takes a basepath option which will prefix all route matching and links', (done) => {
       const routes = {
         path: '/',

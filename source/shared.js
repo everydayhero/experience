@@ -7,7 +7,9 @@ const defaultCreateLocals = ({ params, store, query }) => ({
   query
 })
 
-const defaultStore = () => createStore((state) => state, {})
+const defaultStore = (state = {}) => (
+  createStore((state) => state, state)
+)
 
 const ensureRoutes = (name) => {
   throw new Error(`No routes key was found on options passed to ${name}`)
