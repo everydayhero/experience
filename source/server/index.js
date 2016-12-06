@@ -49,26 +49,33 @@ const defaultRenderDocument = ({
 //   renderDocument = HTML -> ReduxStore -> HTML,
 //   renderApp = RenderProps -> ReduxStore -> HTML,
 //   createLocals = Params -> ReduxStore -> Locals,
+//   createStore = State -> ReduxStore,
+//   initialState = State
 // }
 
 // createServerApp :: ServerAppDefinition -> (Route -> Promise (HTML))
 
 module.exports = ({
-  store = defaultStore(),
+  store,
   assets = [],
   routes = ensureRoutes('createServerApp'),
   basepath = '',
   renderDocument = defaultRenderDocument,
   renderApp = defaultRenderApp,
-  createLocals = defaultCreateLocals
+  createLocals = defaultCreateLocals,
+  createStore = defaultStore,
+  initialState = {}
 }) => {
   const empty = () => {
-    const state = store.getState()
+    const storeInstance = store || createStore(initialState)
+    const state = storeInstance.getState()
     return renderDocument({ assets, state })
   }
 
   const app = (route) => (
     new Promise((resolve, reject) => {
+      const storeInstance = store || createStore(initialState)
+
       match({ routes, location: route, basename: basepath }, (
         error,
         redirect,
@@ -84,11 +91,11 @@ module.exports = ({
 
         const { components, params, location } = props
         const { query } = location
-        const locals = createLocals({ params, query, store })
+        const locals = createLocals({ params, query, store: storeInstance })
 
         trigger('fetch', components, locals).then((res) => {
-          const content = renderApp({ props, store })
-          const state = store.getState()
+          const content = renderApp({ props, store: storeInstance })
+          const state = storeInstance.getState()
           const result = renderDocument({
             assets,
             content,
