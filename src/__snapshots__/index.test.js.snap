@@ -1,0 +1,9 @@
+exports[`radius should only accept between 3 and 5 1`] = `"Please provide a number greater than 3 and less than 5"`;
+
+exports[`radius should only accept between 3 and 5 2`] = `"Please provide a number greater than 3 and less than 5"`;
+
+exports[`scale should only accept exponents -1 or above 1`] = `"Please provide a number greater than 1 and less than 10"`;
+
+exports[`size should only accept between 1 and 10 as an exponent 1`] = `"Please provide a number greater than 1 and less than 10"`;
+
+exports[`size should only accept between 1 and 10 as an exponent 2`] = `"Please provide a number greater than 1 and less than 10"`;
