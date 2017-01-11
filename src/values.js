@@ -148,15 +148,6 @@ export const color = {
 }
 
 /**
- * Type
- */
-
-export const type = {
-  normal: 600,
-  bold: 800
-}
-
-/**
  * Opacity
  */
 
@@ -173,3 +164,61 @@ export const shadows = [
   'none',
   `0 ${rems(1)} ${rems(2)} ${rems(3)} ${opacify(0.1, dark)}`
 ]
+
+/**
+ * Font
+ */
+
+const defaultFontFamily = "-apple-system,BlinkMacSystemFont,'avenir next',avenir,helvetica,'helvetica neue',ubuntu,roboto,noto,'segoe ui',arial,sans-serif"
+const sansSerif = "'Proxima Nova'," + defaultFontFamily
+
+export const font = {
+  scale,
+  family: {
+    sansSerif,
+    display: sansSerif,
+    prose: sansSerif,
+    ui: sansSerif
+  },
+  weight: {
+    normal: 600,
+    bold: 800
+  }
+}
+
+/**
+ * Leading
+ */
+
+export const leading = {
+  display: 1,
+  ui: 1.25,
+  prose: 1.5
+}
+
+/**
+ * Tracking
+ */
+
+export const tracking = {
+  display: '-.3em',
+  normal: 0
+}
+
+/**
+ * Measure
+ */
+
+export const measure = {
+  narrow: '20em',
+  normal: '30em',
+  wide: '40em'
+}
+
+/**
+ * Border
+ */
+
+export const border = {
+  width: rems(1)
+}
