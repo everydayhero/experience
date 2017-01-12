@@ -181,7 +181,7 @@ export const font = {
     ui: sansSerif
   },
   weight: {
-    normal: 600,
+    normal: 500,
     bold: 800
   }
 }
