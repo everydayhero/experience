@@ -2,24 +2,24 @@ import {
   radius,
   size,
   scale
-} from './values'
+} from '../values'
 
 describe('size', () => {
-  it('should default to 1', () => {
+  it('should default to 1rem', () => {
     const actual = size()
-    const expected = 1
+    const expected = '1rem'
     expect(actual).toEqual(expected)
   })
 
   it('should only use round numbers', () => {
     const actualRounded = size(3)
     const actualFloating = size(2.5)
-    const expected = 0.5
+    const expected = '0.5rem'
     expect(actualRounded).toEqual(expected)
     expect(actualFloating).toEqual(expected)
   })
 
-  it('should only accept between 1 and 10 as an exponent', () => {
+  it('should only accept between 0 and 10 as an exponent', () => {
     const actualMin = () => size(-1)
     const actualMax = () => size(11)
     expect(actualMin).toThrowErrorMatchingSnapshot()

@@ -1,10 +1,10 @@
 import {
   opacify
-} from './utils'
+} from '../utils'
 
 import {
   green
-} from './values'
+} from '../values'
 
 describe(opacify, () => {
   it('should default to return an rgba value from a hex', () => {
