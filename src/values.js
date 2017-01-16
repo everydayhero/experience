@@ -4,8 +4,6 @@ import {
   isInRange,
   calcExponent,
   calcModularScale,
-  rem,
-  em,
   addUnit,
   opacify
 } from './utils.js'
@@ -21,20 +19,11 @@ export { base } from './constants.js'
  * Size
  */
 
-export const size = (exponent = 4) => pipe(
-  isInRange(1, 10),
-  calcExponent(2)
-)(exponent)
-
-export const rems = pipe(
-  size,
-  rem
-)
-
-export const ems = pipe(
-  size,
-  em
-)
+export const size = (exponent = 4, unit = 'rem') => pipe(
+  isInRange(0, 10),
+  calcExponent(2),
+  addUnit(unit)
+)(exponent, unit)
 
 /**
  * Type Scale
@@ -162,7 +151,7 @@ export const opacity = {
 
 export const shadows = [
   'none',
-  `0 ${rems(1)} ${rems(2)} ${rems(3)} ${opacify(0.1, dark)}`
+  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(0.1, dark)}`
 ]
 
 /**
@@ -220,5 +209,5 @@ export const measure = {
  */
 
 export const border = {
-  width: rems(1)
+  width: size(1)
 }

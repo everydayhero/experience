@@ -29,9 +29,6 @@ export const calcModularScale = curry((scale, exponent) =>
 
 export const addUnit = curry((unit, value) => `${value}${unit}`)
 
-export const rem = addUnit('rem')
-export const em = addUnit('em')
-
 /**
  * Color Utilities
  */
