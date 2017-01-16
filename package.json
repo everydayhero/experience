@@ -1,6 +1,6 @@
 {
-  "name": "rug",
   "version": "1.0.1",
+  "name": "the-rug",
   "description": "\"…really tied the room together, did it not?\"",
   "main": "dist/index.js",
   "repository": {
