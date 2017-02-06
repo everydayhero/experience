@@ -42,11 +42,11 @@ module.exports = ({
     ) => {
       if (error) {
         return onRouteError(error)
-      } else if (!props) {
-        return onRouteError(new Error(`Not found: Route ${location.pathname} failed to match`))
       } else if (redirect) {
         return onRouteRedirect(redirect)
-      }
+      } else if (!props) {
+        return onRouteError(new Error(`Not found: Route ${location.pathname} failed to match`))
+      } 
 
       const { params, components, location } = props
       const { query } = location
