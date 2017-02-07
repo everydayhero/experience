@@ -5,7 +5,9 @@ import {
   calcExponent,
   calcModularScale,
   addUnit,
-  opacify
+  opacify,
+  tint,
+  shade
 } from './utils.js'
 
 export { base } from './constants.js'
@@ -133,7 +135,15 @@ export const color = {
   success,
   highlight,
   warning,
-  danger
+  danger,
+  shade: {
+    dark: shade(0.2),
+    darker: shade(0.4)
+  },
+  tint: {
+    light: tint(0.7),
+    lighter: tint(0.85)
+  }
 }
 
 /**

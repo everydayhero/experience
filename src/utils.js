@@ -34,5 +34,7 @@ export const addUnit = curry((unit, value) => `${value}${unit}`)
  */
 
 export const opacify = curry((decimal, colorStr) => Color(colorStr).clearer(1 - decimal).rgbString())
-export const whiten = curry((decimal, colorStr) => Color(colorStr).whiten(decimal).rgbString())
-export const blacken = curry((decimal, colorStr) => Color(colorStr).blacken(decimal).rgbString())
+export const tint = curry((decimal, colorStr) => Color(colorStr).mix(Color('white'), 1 - decimal).rgbString())
+export const shade = curry((decimal, colorStr) => Color(colorStr).mix(Color('black'), 1 - decimal).rgbString())
+export const lighten = curry((decimal, colorStr) => Color(colorStr).lighten(decimal).rgbString())
+export const darken = curry((decimal, colorStr) => Color(colorStr).darken(decimal).rgbString())
