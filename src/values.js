@@ -107,7 +107,6 @@ const highlight = blue
 const success = green
 const warning = orange
 const danger = red
-const focused = '#2EB6EA'
 
 /**
  * All Colors
