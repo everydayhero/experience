@@ -1,6 +1,6 @@
 {
   "name": "cxsync",
-  "version": "1.0.9",
+  "version": "2.0.0",
   "description": "A CSS-in-JS solution for functional CSS in functional UI components",
   "main": "dist/index.js",
   "scripts": {
@@ -12,7 +12,7 @@
     "perf": "karma start",
     "standard": "standard",
     "test-watch": "ava -v --watch",
-    "test": "standard && ava -v"
+    "test": "ava -v"
   },
   "keywords": [],
   "author": "Ben O'Neal",
