@@ -1,0 +1,49 @@
+{
+  "name": "the-stranger",
+  "version": "1.2.0",
+  "description": "A wrapper around existing CSS in JS solutions with as little complexity as possible",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "babel --out-dir dist --ignore src/__tests__ src",
+    "prebuild": "rimraf dist",
+    "prepublish": "npm run build",
+    "size": "npm run build && bundle-size ./",
+    "test": "jest",
+    "test:watch": "jest --watch"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "Luke Brooker",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.16.0",
+    "bundle-size": "^1.1.5",
+    "enzyme": "^2.7.0",
+    "jest-cli": "^16.0.1",
+    "react": "^15.4.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-test-renderer": "^15.4.2",
+    "rimraf": "^2.5.4"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2"
+  },
+  "dependencies": {
+    "cxs": "3.0.0",
+    "cxsync": "^1.0.9",
+    "inline-style-prefixer": "^2.0.5",
+    "lodash": "^4.17.4",
+    "recompose": "^0.21.2",
+    "the-rug": "^1.0.2"
+  },
+  "standard": {
+    "env": {
+      "jest": true
+    }
+  }
+}
