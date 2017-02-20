@@ -9,5 +9,13 @@ module.exports = {
     new DotenvPlugin({
       path: `./${process.env.ENV_FILE || '.env.default'}`
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.md$/,
+        use: ['babel-loader', 'react-markdown-loader']
+      }
+    ]
+  }
 }
