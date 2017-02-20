@@ -23,10 +23,7 @@ const VENDORS = {
 }
 
 const jsPrefix = (() => {
-  if (typeof navigator === 'undefined') {
-    console.warn('CXSync: No navigator found: I hope you are running this on the server.')
-    return ''
-  }
+  if (typeof navigator === 'undefined') return ''
   const ua = navigator.userAgent.toLowerCase()
   const match = /(opera|msie|firefox|chrome|safari|node)/.exec(ua)
   if (!match) console.warn('CXSync: No vendor match found: This browser is not officially supported and vendor prefixes will be absent.')
@@ -47,7 +44,6 @@ export const prefixProperty = (property, prefix = jsPrefix) => {
   } else if (find(PREFIXABLE_PROPS, (p) => startsWith(property, p)) && prefixed in supportedProperties) {
     cache[cacheKey] = prefixed
   } else {
-    console.warn(`CXSync: No valid version of property ${property} found, using provided but it is not supported.`)
     cache[cacheKey] = property
   }
 
@@ -82,7 +78,6 @@ export const prefixValue = (property, value) => {
   } else if (alternate) {
     cache[cacheKey] = alternate
   } else {
-    console.warn(`CXSync: No valid version of value ${value} for property ${property} found, using provided but it is not supported.`)
     cache[cacheKey] = value
   }
 
