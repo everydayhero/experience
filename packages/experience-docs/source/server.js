@@ -13,7 +13,20 @@ export default ({ assets }) => {
   })
 
   app.staticRoutes = [
-    '/'
+    '/',
+    '/principles',
+    '/logo',
+    '/colors',
+    '/typography',
+    '/icons',
+    '/illustration',
+    '/photography',
+    '/motion',
+    '/voice',
+    '/layout',
+    '/shape',
+    '/components',
+    '/components/input'
   ]
 
   return app
