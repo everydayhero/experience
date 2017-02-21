@@ -6,6 +6,7 @@
   "scripts": {
     "start": "brb serve --config='./webpack.shared.config'",
     "build": "brb build --config='./webpack.shared.config'",
+    "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do",
     "lint": "standard"
   },
   "author": "everydayhero",

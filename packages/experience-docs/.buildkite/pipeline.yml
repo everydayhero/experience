@@ -1,0 +1,94 @@
+---
+steps:
+  - name: ":docker:"
+    command: "bin/buildkite bin/ci build"
+    agents:
+      queue: native
+      docker: builder
+
+  - type: "waiter"
+
+  - name: ":pill:"
+    command: "bin/buildkite bin/ci run bin/test"
+    agents:
+      queue: elastic
+
+  - type: "waiter"
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release prepare staging"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - name: ":rocket: Staging"
+    type: "manual"
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release releasing staging"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - type: "waiter"
+
+  - name: ":hash:"
+    command: "bin/buildkite bin/ci tag staging"
+    branches: "master release/*"
+    agents:
+      queue: native
+      docker: builder
+
+  - type: "waiter"
+
+  - name: ":shipit:"
+    command: "bin/buildkite bin/ci deploy staging all:50%"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - type: "waiter"
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release released staging"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release prepare production"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - name: ":rocket: Production"
+    type: "manual"
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release releasing production"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - name: ":hash:"
+    command: "bin/buildkite bin/ci tag production"
+    branches: "master release/*"
+    agents:
+      queue: native
+      docker: builder
+
+  - type: "waiter"
+
+  - name: ":shipit:"
+    command: "bin/buildkite bin/ci deploy production app:10% clock,worker:20%"
+    branches: "master release/*"
+    agents:
+      queue: elastic
+
+  - type: "waiter"
+
+  - name: ":speech_balloon:"
+    command: "bin/buildkite bin/ci manage-release released production"
+    branches: "master release/*"
+    agents:
+      queue: elastic
