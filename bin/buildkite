@@ -2,11 +2,6 @@
 
 set -u
 
-if grep -q 'XXX' $0; then
-  echo "I'm an unconfigured script at $0, configure me please"
-  exit 1
-fi
-
 export ANNOUNCE_ROBOT_SLACK_CHANNEL="experience"
 export ANNOUNCE_EMAIL_FROM="experience@everydayhero.com"
 export ANNOUNCE_EMAIL_FROM_NAME="Everydayhero Experience Team"
