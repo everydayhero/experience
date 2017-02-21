@@ -14,6 +14,8 @@ steps:
     agents:
       queue: elastic
 
+  - wait
+
   - label: ":shipit: Deploy experience docs"
     command: "bin/buildkite bin/ci run bin/deploy-experience-docs"
     agents:
