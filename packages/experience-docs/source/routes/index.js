@@ -1,7 +1,9 @@
 import React from 'react'
-import { Route } from 'react-router'
+import {Route, IndexRoute} from 'react-router'
 
-import Home from './Home'
+import Navigation from '../components/Navigation'
+
+import Home from '../content/home.md'
 import Principles from '../content/principles.md'
 import Logo from '../content/logo.md'
 import Colors from '../content/colors.md'
@@ -16,8 +18,18 @@ import Shape from '../content/shape.md'
 import ComponentsSummary from '../content/components.md'
 import Input from '../content/components/input.md'
 
+const App = ({children}) => (
+  <div id='page-wrapper'>
+    <Navigation />
+
+    <div id='content-wrapper'>{children}</div>
+  </div>
+)
+
 export default (
-  <Route path='/' component={Home}>
+  <Route path='/' component={App}>
+    <IndexRoute component={Home} />
+
     <Route path='principles' component={Principles} />
     <Route path='logo' component={Logo} />
     <Route path='colors' component={Colors} />
