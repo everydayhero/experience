@@ -11,5 +11,6 @@ steps:
 
   - label: ":shipit: Deploy experience docs"
     command: "bin/buildkite bin/ci run bin/deploy-experience-docs"
+    branches: "master release/*"
     agents:
       queue: elastic
