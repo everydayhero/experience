@@ -1,0 +1,3 @@
+[submodule "packages/experience-docs/.pipeline"]
+	path = packages/experience-docs/.pipeline
+	url = git@github.com:everydayhero/plain-pipeline.git
