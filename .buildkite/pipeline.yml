@@ -9,6 +9,11 @@ steps:
 
   - wait
 
+  - label: ":mocha: Unit Tests"
+    command: "bin/buildkite bin/ci run bin/units"
+    agents:
+      queue: elastic
+
   - label: ":shipit: Deploy experience docs"
     command: "bin/buildkite bin/ci run bin/deploy-experience-docs"
     agents:
