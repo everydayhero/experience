@@ -1,5 +1,4 @@
 import React from 'react'
-import cxsync from 'cxsync'
 
 const renderStyles = (styles) => (
   styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)
@@ -23,7 +22,6 @@ export default ({
       {head.title.toComponent()}
       {head.meta.toComponent()}
       {renderStyles(styles)}
-      <style dangerouslySetInnerHTML={{ __html: cxsync.css || '' }} />
       <script dangerouslySetInnerHTML={{
         __html: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

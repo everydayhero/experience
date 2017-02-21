@@ -14,7 +14,15 @@ module.exports = {
     rules: [
       {
         test: /\.md$/,
-        use: ['babel-loader', 'react-markdown-loader']
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['latest', 'stage-0', 'react']
+            }
+          },
+          'react-markdown-loader'
+        ]
       }
     ]
   }
