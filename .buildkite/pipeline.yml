@@ -1,14 +1,15 @@
 ---
 steps:
-  - name: ":docker: build image"
+
+  - label: ":docker: build image"
     command: "bin/buildkite bin/ci build"
     agents:
       queue: native
       docker: builder
 
-  - type: "waiter"
+  - wait
 
-  - name: ":shipit: Deploy experience docs"
-    command: "bin/buildkite bin/ci deploy-experience-docs"
+  - label: ":shipit: Deploy experience docs"
+    command: "bin/buildkite bin/ci run bin/deploy-experience-docs"
     agents:
       queue: elastic
