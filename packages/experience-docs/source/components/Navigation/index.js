@@ -1,6 +1,5 @@
 import React from 'react'
 import {Link} from 'react-router'
-import {logo} from '@edh/brand-assets'
 
 const NAVIGATION_CONTENT = [
   {route: '/', title: 'Home'},
@@ -26,8 +25,6 @@ const NAVIGATION_CONTENT = [
 
 const Navigation = ({routes = NAVIGATION_CONTENT, id = 'primary'}) => (
   <nav id={`navigation-${id}`}>
-    <img src={logo('standard')} />
-
     {routes.map((navItem, index) => {
       const link = (
         <Link

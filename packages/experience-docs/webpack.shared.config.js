@@ -1,6 +1,5 @@
 const { DefinePlugin } = require('webpack')
 const DotenvPlugin = require('dotenv-webpack')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 module.exports = {
   plugins: [
@@ -9,12 +8,7 @@ module.exports = {
     }),
     new DotenvPlugin({
       path: `./${process.env.ENV_FILE || '.env.default'}`
-    }),
-    new CopyWebpackPlugin([
-      {from: '../node_modules/@edh/brand-assets/dist/*.svg'},
-      {from: '../node_modules/@edh/brand-assets/dist/*.png'},
-      {from: '../node_modules/@edh/brand-assets/dist/*.eps'}
-    ])
+    })
   ],
   module: {
     rules: [

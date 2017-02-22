@@ -1,3 +1,7 @@
+---
+imports:
+  Logo: '../components/Logo/index.js'
+---
 # Logo
 
 Our logo mark is comprised of two important elements: hearts and connection. Everyday heroes are passionate about the causes they support and enjoy connecting with a community of like minded people.
@@ -8,17 +12,41 @@ Our logo mark is comprised of two important elements: hearts and connection. Eve
 
 The primary logo consists of the heart logomark, and the Everydayhero name, in lowercase. Wherever possible, this is the preferred logo for use.
 
+```render html
+<Logo type='standard-padded' />
+```
+
 ### Heart Logomark
 
 The Everydayhero heart logomark acts as a short-form signature, and is only used in specific contexts.
+
+```render html
+<Logo type='mark-standard-padded' />
+```
 
 ### “Powered by” Logo
 
 When Everydayhero’s brand is diminished, such as for campaign pages, bespoke sites for charities and events, and white-label products, the “powered by everydayhero” logo should be displayed centred towards the bottom of the primary content. 
 
+```render html
+<Logo type='powered-by-padded' />
+```
+
 ### Reversed logos
 
 The preferred logo application is full colour on a white background. In any context where a white background is not possible, the reversed logo or logomark should be used.
+
+```render html
+<Logo type='inverted-padded-background' />
+```
+
+```render html
+<Logo type='mark-inverted-padded-background' />
+```
+
+```render html
+<Logo type='powered-by-inverted-padded-background' />
+```
 
 ### Everydayhero in writing
 
