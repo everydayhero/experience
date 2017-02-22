@@ -2,9 +2,9 @@ import transform from 'lodash/transform'
 
 const buildAbsoluteResourceUrls = (resources) => (
   transform(resources, (result, resource) => {
-    result['svg'][resource] = require(`./images/${resource}.svg`)
-    result['png'][resource] = require(`./images/${resource}.png`)
-    result['eps'][resource] = require(`./images/${resource}.eps`)
+    result['svg'][resource] = require(`../images/${resource}.svg`)
+    result['png'][resource] = require(`../images/${resource}.png`)
+    result['eps'][resource] = require(`../images/${resource}.eps`)
   }, {svg: {}, png: {}, eps: {}})
 )
 
