@@ -21,7 +21,8 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-helmet": "^3.2.2",
-    "react-markdown-loader": "^1.1.10"
+    "react-markdown-loader": "^1.1.10",
+    "@edh/brand-assets": "1.0.0-1"
   },
   "devDependencies": {
     "enzyme": "^2.4.1",
