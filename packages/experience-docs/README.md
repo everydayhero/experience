@@ -10,22 +10,20 @@
 
 -->
 
-## Usage
-
-The Experience project assumes that `yarn` is available globally. If you don't have it, check it out at the [Yarn website](https://yarnpkg.com/docs/getting-started).
-
 ### Setup
 
 ```shell
-yarn
+npm install
 ```
+
+(Note: if you're using this inside the experience monorepo, `lerna bootstrap` will have already taken care of that for you)
 
 This will install dependencies.
 
 ### Development
 
 ```shell
-yarn start
+npm start
 ```
 
 This will run a local development server at [http://localhost:8080](http://localhost:8080).
