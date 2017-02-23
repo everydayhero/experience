@@ -1,5 +1,7 @@
+import {resolve} from 'path'
 import React from 'react'
 import {Link} from 'react-router'
+import {comp} from '@edh/stranger'
 
 const NAVIGATION_CONTENT = [
   {route: '/', title: 'Home'},
@@ -23,16 +25,21 @@ const NAVIGATION_CONTENT = [
   }
 ]
 
-const Navigation = ({routes = NAVIGATION_CONTENT, id = 'primary'}) => (
-  <nav id={`navigation-${id}`}>
+const Navigation = ({
+  routes = NAVIGATION_CONTENT,
+  id = 'primary',
+  activeRoute
+}) => (
+  <StyledNavigation id={`navigation-${id}`}>
     {routes.map((navItem, index) => {
       const link = (
-        <Link
+        <StyledNavigationLink
           key={`${id}-${index}`}
           to={navItem.route}
+          active={activeRoute && navItem.route === resolve(activeRoute)}
         >
           {navItem.title}
-        </Link>
+        </StyledNavigationLink>
       )
       if (navItem.routes) {
         return <div key={`${id}-${index}`}>
@@ -46,7 +53,37 @@ const Navigation = ({routes = NAVIGATION_CONTENT, id = 'primary'}) => (
       }
       return link
     })}
-  </nav>
+  </StyledNavigation>
 )
 
 export default Navigation
+
+const StyledNavigation = comp(({
+  traits: {
+    size,
+    color
+  }
+}) => ({
+}))('nav')
+
+const StyledNavigationLink = comp(({
+  props: {
+    active
+  },
+  traits: {
+    size,
+    color,
+    font,
+    leading,
+    radius
+  }
+}) => ({
+  display: 'block',
+  padding: size(2),
+  fontSize: font.scale(0),
+  lineHeight: leading.ui,
+  color: active ? color.lightest : color.dark,
+  background: active ? color.highlight : color.lightest,
+  borderRadius: radius(3)
+}))(Link, {removeProps: ['active'], cancelPassStyles: true})
+

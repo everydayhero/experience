@@ -1,6 +1,7 @@
 import React from 'react'
 
 const LOGOS = {
+  'standard': require('@edh/brand-assets/images/standard.svg'),
   'standard-padded': require('@edh/brand-assets/images/standard-padded.svg'),
   'standard-padded-markup': require('./images/standard-padded-markup.svg'),
   'mark-standard-padded': require('@edh/brand-assets/images/mark-standard-padded.svg'),
