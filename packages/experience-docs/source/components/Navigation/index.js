@@ -33,13 +33,13 @@ const Navigation = ({
   <StyledNavigation id={`navigation-${id}`}>
     {routes.map((navItem, index) => {
       const link = (
-        <StyledNavigationLink
+        <NavigationLink
           key={`${id}-${index}`}
           to={navItem.route}
           active={activeRoute && navItem.route === resolve(activeRoute)}
         >
           {navItem.title}
-        </StyledNavigationLink>
+        </NavigationLink>
       )
       if (navItem.routes) {
         return <div key={`${id}-${index}`}>
@@ -64,7 +64,20 @@ const StyledNavigation = comp(({
     color
   }
 }) => ({
+  margin: `${size(3)} 0`
 }))('nav')
+
+const NavigationLink = ({
+  to,
+  active,
+  children
+}) => (
+  <ActiveUnderline active={active}>
+    <StyledNavigationLink to={to} active={active}>
+      {children}
+    </StyledNavigationLink>
+  </ActiveUnderline>
+)
 
 const StyledNavigationLink = comp(({
   props: {
@@ -78,12 +91,25 @@ const StyledNavigationLink = comp(({
     radius
   }
 }) => ({
-  display: 'block',
-  padding: size(2),
+  display: 'inline-block',
+  margin: `${size(2)} ${size(4)}`,
   fontSize: font.scale(0),
   lineHeight: leading.ui,
-  color: active ? color.lightest : color.dark,
-  background: active ? color.highlight : color.lightest,
-  borderRadius: radius(3)
+  color: active ? color.darkest : color.dark,
+  fontWeight: active && font.weight.bold,
+  borderBottom: `2px solid ${active ? color.lightgreen : 'transparent'}`
 }))(Link, {removeProps: ['active'], cancelPassStyles: true})
+
+const ActiveUnderline = comp(({
+  props: {
+    active
+  },
+  traits: {
+    size,
+    color
+  }
+}) => ({
+  display: 'block',
+  marginLeft: size(1)
+}))('span')
 

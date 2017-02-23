@@ -8,7 +8,7 @@ const Header = ({
   activeRoute
 }) => (
   <StyledHeader>
-    <Logo type='standard' />
+    <HeaderLogo type='standard' />
 
     <Navigation activeRoute={activeRoute} />
   </StyledHeader>
@@ -21,6 +21,15 @@ const StyledHeader = comp(({
     size
   }
 }) => ({
-  padding: size(2),
-  flex: '0 1 8rem'
+  padding: `${size(4)} ${size(3)}`,
+  flex: '0 0 10rem'
 }))('header')
+
+const HeaderLogo = comp(({
+  traits: {
+    size
+  }
+}) => ({
+  display: 'block',
+  margin: `${size(2)} 0`
+}))(Logo)
