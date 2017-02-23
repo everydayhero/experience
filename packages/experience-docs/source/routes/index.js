@@ -1,7 +1,9 @@
 import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
-import Navigation from '../components/Navigation'
+import PageWrapper from '../components/PageWrapper'
+import Header from '../components/Header'
+import StyledContent from '../components/StyledContent'
 
 import Home from '../content/home.md'
 import Principles from '../content/principles.md'
@@ -18,12 +20,15 @@ import Shape from '../content/shape.md'
 import ComponentsSummary from '../content/components.md'
 import Input from '../content/components/input.md'
 
-const App = ({children}) => (
-  <div id='page-wrapper'>
-    <Navigation />
+const App = ({
+  children,
+  location
+}) => (
+  <PageWrapper>
+    <StyledContent>{children}</StyledContent>
 
-    <div id='content-wrapper'>{children}</div>
-  </div>
+    <Header activeRoute={location.pathname} />
+  </PageWrapper>
 )
 
 export default (

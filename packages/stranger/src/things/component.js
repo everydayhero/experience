@@ -4,7 +4,7 @@ import getContext from 'recompose/getContext'
 import pipe from 'lodash/fp/pipe'
 import omit from 'lodash/omit'
 import merge from 'lodash/merge'
-import rug from 'the-rug'
+import rug from '@edh/rug'
 import { addRule } from '../'
 
 export const strangerComp = (styles = {}) =>

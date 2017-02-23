@@ -1,4 +1,5 @@
 import React from 'react'
+import stranger from '@edh/stranger'
 
 const renderStyles = (styles) => (
   styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)
@@ -22,6 +23,9 @@ export default ({
       {head.title.toComponent()}
       {head.meta.toComponent()}
       {renderStyles(styles)}
+      <style dangerouslySetInnerHTML={{
+        __html: stranger.renderCssToString()
+      }} />
       <script dangerouslySetInnerHTML={{
         __html: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -29,6 +33,19 @@ export default ({
           j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
           })(window,document,'script','dataLayer','GTM-PN6K34');`
+      }} />
+
+      <script dangerouslySetInnerHTML={{
+        __html: `
+          (function(d) {
+            var config = {
+              kitId: 'ord6jrb',
+              scriptTimeout: 3000,
+              async: true
+            },
+            h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+        })(document);
+        `
       }} />
     </head>
     <body>
