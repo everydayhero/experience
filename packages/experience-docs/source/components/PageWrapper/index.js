@@ -6,7 +6,7 @@ const PageWrapper = comp(({
   }
 }) => ({
   fontFamily: `"proxima-nova", ${font.family.ui}`,
-  '@media screen and (min-width: 420px)': {
+  '@media screen and (min-width: 36em)': {
     display: 'flex',
     margin: '0 auto',
     flexDirection: 'row-reverse'

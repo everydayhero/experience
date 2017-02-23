@@ -12,8 +12,8 @@ const LOGOS = {
   'powered-by-inverted-padded-background': require('./images/powered-by-inverted-padded-background.svg')
 }
 
-const Logo = ({type = 'standard'}) => (
-  <img src={LOGOS[type]} />
+const Logo = ({type = 'standard', ...props}) => (
+  <img {...props} src={LOGOS[type]} />
 )
 
 export default Logo

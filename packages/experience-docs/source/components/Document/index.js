@@ -1,4 +1,5 @@
 import React from 'react'
+import stranger from '@edh/stranger'
 
 const renderStyles = (styles) => (
   styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)
@@ -22,6 +23,9 @@ export default ({
       {head.title.toComponent()}
       {head.meta.toComponent()}
       {renderStyles(styles)}
+      <style dangerouslySetInnerHTML={{
+        __html: stranger.renderCssToString()
+      }} />
       <script dangerouslySetInnerHTML={{
         __html: `
           (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

@@ -12,9 +12,7 @@ const Content = ({children}) => (
 export default Content
 
 const StyledContentWrapper = comp({
-  '@media screen and (min-width: 420px)': {
-    flex: '1'
-  }
+  flex: '1'
 })('div')
 
 const StyledContent = comp(({
@@ -26,12 +24,10 @@ const StyledContent = comp(({
     measure
   }
 }) => ({
-  padding: size(4),
+  padding: size(5),
   color: color.darkest,
-  '@media screen and (min-width: 420px)': {
-    maxWidth: measure.wide,
-    margin: '0 auto'
-  },
+  maxWidth: measure.wide,
+  margin: '0 auto',
   ' pre': {
     display: 'none'
   },

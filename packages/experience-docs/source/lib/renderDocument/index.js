@@ -1,7 +1,8 @@
-import Document from '../../components/Document'
 import Helmet from 'react-helmet'
 import { createElement } from 'react'
 import { renderToStaticMarkup } from 'react-dom/server'
+
+import Document from '../../components/Document'
 
 module.exports = ({
   assets,

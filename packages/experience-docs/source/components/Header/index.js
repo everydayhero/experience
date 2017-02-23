@@ -21,8 +21,8 @@ const StyledHeader = comp(({
     size
   }
 }) => ({
-  padding: `${size(4)} ${size(3)}`,
-  flex: '0 0 10rem'
+  padding: `${size(5)}`,
+  flex: '0 0 14rem'
 }))('header')
 
 const HeaderLogo = comp(({
@@ -31,5 +31,5 @@ const HeaderLogo = comp(({
   }
 }) => ({
   display: 'block',
-  margin: `${size(2)} 0`
-}))(Logo)
+  marginBottom: size(5)
+}))(Logo, {cancelPassStyles: true})

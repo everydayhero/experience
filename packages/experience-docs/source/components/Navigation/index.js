@@ -92,7 +92,7 @@ const StyledNavigationLink = comp(({
   }
 }) => ({
   display: 'inline-block',
-  margin: `${size(2)} ${size(4)}`,
+  margin: `${size(2)} 0`,
   fontSize: font.scale(0),
   lineHeight: leading.ui,
   color: active ? color.darkest : color.dark,
@@ -111,5 +111,5 @@ const ActiveUnderline = comp(({
 }) => ({
   display: 'block',
   marginLeft: size(1)
-}))('span')
+}))('span', {removeProps: ['active']})
 
