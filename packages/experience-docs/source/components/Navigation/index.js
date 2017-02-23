@@ -7,7 +7,7 @@ const NAVIGATION_CONTENT = [
   {route: '/', title: 'Home'},
   {route: '/principles', title: 'Principles'},
   {route: '/logo', title: 'Logo'},
-  {route: '/colors', title: 'Colours'},
+  {route: '/colors', title: 'Colors'},
   {route: '/typography', title: 'Typography'},
   {route: '/icons', title: 'Icons'},
   {route: '/illustration', title: 'Illustration'},
