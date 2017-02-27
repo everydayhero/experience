@@ -2,7 +2,9 @@ import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
 import PageWrapper from '../components/PageWrapper'
+import ContentWrapper from '../components/ContentWrapper'
 import Header from '../components/Header'
+import Navigation from '../components/Navigation'
 import StyledContent from '../components/StyledContent'
 
 import Home from '../content/home.md'
@@ -25,9 +27,11 @@ const App = ({
   location
 }) => (
   <PageWrapper>
-    <StyledContent>{children}</StyledContent>
-
-    <Header activeRoute={location.pathname} />
+    <Header />
+    <ContentWrapper>
+      <StyledContent>{children}</StyledContent>
+      <Navigation activeRoute={location.pathname} />
+    </ContentWrapper>
   </PageWrapper>
 )
 

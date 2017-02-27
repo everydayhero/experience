@@ -1,4 +1,6 @@
 import pipe from 'lodash/fp/pipe'
+import rgb2string from 'pure-color/convert/rgb2string'
+import reduce from 'lodash/reduce'
 
 import {
   isInRange,
@@ -6,16 +8,10 @@ import {
   calcModularScale,
   addUnit,
   opacify,
-  tint,
-  shade
+  getContrastColor
 } from './utils.js'
 
 export { base } from './constants.js'
-
-/**
- * Functial Values
- * ***************
- */
 
 /**
  * Size
@@ -59,92 +55,132 @@ export const radius = (
  * ****************
  */
 
+const brandColors = {
+  green: [27, 171, 107],
+  charcoal: [32, 58, 68],
+  grey: [122, 137, 143],
+  white: [255, 255, 255],
+  lightgreen: [86, 216, 130],
+  blue: [36, 145, 187],
+  lightblue: [210, 240, 247],
+  silver: [235, 241, 243],
+  cyan: [115, 212, 250],
+  pink: [238, 99, 143],
+  red: [250, 107, 107],
+  yellow: [250, 206, 95],
+  orange: [248, 148, 99],
+  purple: [156, 138, 212]
+}
+
+const buildColors = (colors) => reduce(colors, (acc, color) => ({
+  ...acc,
+  [color]: rgb2string(brandColors[color])
+}), {})
+
 /**
  * Primary Colors
  */
 
-export const green = '#0DA74E'
-export const blue = '#2EB6EA'
-export const lightgreen = '#4BD672'
+export const primary = buildColors([
+  'green',
+  'charcoal',
+  'grey',
+  'white'
+])
 
 /**
  * Secondary Colors
  */
 
-const yellow = '#F9DA40'
-const orange = '#FD9927'
-const pink = '#FD669E'
+export const secondary = buildColors([
+  'lightgreen',
+  'blue',
+  'lightblue',
+  'silver'
+])
 
 /**
  * Tertiary Colors
  */
 
-const greenblue = '#1FB09F'
-const bluepurple = '#5A95E8'
-const purple = '#A986D9'
-const red = '#F75B66'
-const redorange = '#FE732C'
-const orangeyellow = '#FCBA14'
-
-/**
- * Neutral Colors
- */
-
-const dark = '#62757C'
-const darker = '#415760'
-const darkest = '#203A44'
-
-const light = '#F2F3F4'
-const lighter = '#F8F9F9'
-const lightest = '#FFFFFF'
-
-/**
- * State Based Colors
- */
-
-const primary = green
-const highlight = blue
-const success = green
-const warning = orange
-const danger = red
+export const tertiary = buildColors([
+  'cyan',
+  'pink',
+  'red',
+  'yellow',
+  'orange',
+  'purple'
+])
 
 /**
  * All Colors
  */
 
 export const color = {
-  green,
-  blue,
-  lightgreen,
-  yellow,
-  orange,
-  pink,
-  greenblue,
-  bluepurple,
-  purple,
-  red,
-  redorange,
-  orangeyellow,
-  dark,
-  darker,
-  darkest,
-  light,
-  lighter,
-  lightest,
-  primary,
-  success,
-  highlight,
-  warning,
-  danger,
-  shade: {
-    dark: shade(0.2),
-    darker: shade(0.4)
+  ...primary,
+  ...secondary,
+  ...tertiary,
+  cta: {
+    darker: primary.green,
+    dark: primary.green,
+    medium: secondary.blue,
+    light: secondary.blue,
+    lighter: primary.white
   },
-  tint: {
-    light: tint(0.7),
-    lighter: tint(0.85)
+  text: {
+    darker: primary.charcoal,
+    dark: primary.grey,
+    medium: secondary.blue,
+    light: secondary.lightblue,
+    lighter: primary.white
+  },
+  bg: {
+    darker: primary.charcoal,
+    dark: primary.charcoal,
+    medium: secondary.lightblue,
+    light: secondary.silver,
+    lighter: primary.white
+  },
+  border: {
+    darker: primary.grey,
+    dark: primary.grey,
+    medium: secondary.silver,
+    light: secondary.silver,
+    lighter: primary.white
+  },
+  action: {
+    darker: primary.grey,
+    dark: primary.grey,
+    medium: secondary.blue,
+    light: primary.white,
+    lighter: primary.white
+  },
+  callout: {
+    darker: secondary.blue,
+    dark: secondary.blue,
+    medium: secondary.blue,
+    light: secondary.lightgreen,
+    lighter: secondary.lightgreen
+  },
+  accent: {
+    darker: secondary.blue,
+    dark: secondary.blue,
+    medium: secondary.lightblue,
+    light: secondary.lightgreen,
+    lighter: secondary.lightgreen
+  },
+  status: {
+    darker: tertiary.red,
+    dark: tertiary.orange,
+    medium: tertiary.yellow,
+    light: tertiary.cyan,
+    lighter: tertiary.pink
   }
 }
+
+const contrast = (colorName) => (
+  getContrastColor({dark: color.charcoal, light: color.white})(brandColors[colorName])
+)
 
 /**
  * Opacity
@@ -161,7 +197,7 @@ export const opacity = {
 
 export const shadows = [
   'none',
-  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(0.1, dark)}`
+  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(0.2, color.grey)}`
 ]
 
 /**
@@ -209,6 +245,7 @@ export const tracking = {
  */
 
 export const measure = {
+  minimum: '16em',
   narrow: '20em',
   normal: '30em',
   wide: '40em'

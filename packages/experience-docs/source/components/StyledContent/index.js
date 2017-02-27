@@ -24,10 +24,10 @@ const StyledContent = comp(({
     measure
   }
 }) => ({
-  padding: size(5),
-  color: color.darkest,
+  color: color.text.darker,
   maxWidth: measure.wide,
-  margin: '0 auto',
+  minWidth: measure.minimum,
+  margin: `0 auto ${size(5)}`,
   ' pre': {
     display: 'none'
   },
@@ -38,12 +38,12 @@ const StyledContent = comp(({
   },
   ' h2': {
     margin: `${size(4)} 0 ${size(3)} 0`,
-    fontSize: font.scale(3),
+    fontSize: font.scale(2),
     fontWeight: font.weight.bold
   },
   ' h3': {
     margin: `${size(4)} 0 ${size(3)} 0`,
-    fontSize: font.scale(2),
+    fontSize: font.scale(1),
     fontWeight: font.weight.bold
   },
   ' p': {
@@ -56,8 +56,14 @@ const StyledContent = comp(({
   ' ul li': {
     listStyle: 'disc'
   },
+  ' ul ul': {
+    paddingLeft: size(4)
+  },
   ' ol li': {
     listStyle: 'decimal'
+  },
+  ' ol ol': {
+    paddingLeft: size(4)
   }
 }))('div')
 

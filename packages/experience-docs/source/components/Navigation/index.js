@@ -60,11 +60,10 @@ export default Navigation
 
 const StyledNavigation = comp(({
   traits: {
-    size,
-    color
+    size
   }
 }) => ({
-  margin: `${size(3)} 0`
+  margin: `0 ${size(5)} ${size(3)} 0`
 }))('nav')
 
 const NavigationLink = ({
@@ -95,9 +94,9 @@ const StyledNavigationLink = comp(({
   margin: `${size(2)} 0`,
   fontSize: font.scale(0),
   lineHeight: leading.ui,
-  color: active ? color.darkest : color.dark,
+  color: active ? color.text.darker : color.text.dark,
   fontWeight: active && font.weight.bold,
-  borderBottom: `2px solid ${active ? color.lightgreen : 'transparent'}`
+  borderBottom: `${size(1)} solid ${active ? color.accent.light : 'transparent'}`
 }))(Link, {removeProps: ['active'], cancelPassStyles: true})
 
 const ActiveUnderline = comp(({
@@ -105,8 +104,7 @@ const ActiveUnderline = comp(({
     active
   },
   traits: {
-    size,
-    color
+    size
   }
 }) => ({
   display: 'block',

@@ -1,7 +1,11 @@
 ---
 imports:
   Logo: '../components/Logo/index.js'
+  Status: '../components/Status/index.js'
 ---
+```render html
+<Status status='amber' />
+```
 # Logo
 
 Our logo mark is comprised of two important elements: hearts and connection. Everyday heroes are passionate about the causes they support and enjoy connecting with a community of like minded people.
