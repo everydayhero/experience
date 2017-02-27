@@ -97,6 +97,10 @@ const Content = comp(({
     fontWeight: font.weight.bold,
     textDecoration: 'underline',
     color: color.action.medium
+  },
+  ' blockquote': {
+    borderLeft: `${size(2)} solid ${color.border.light}`,
+    paddingLeft: size(4)
   }
 }))('div')
 
