@@ -18,6 +18,7 @@ const StyledHeader = comp(({
     size
   }
 }) => ({
+  flex: 1,
   padding: `${size(4)} 0 ${size(5)}`
 }))('header')
 

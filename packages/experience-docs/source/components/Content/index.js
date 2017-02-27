@@ -1,21 +1,6 @@
-import React from 'react'
 import {comp} from '@edh/stranger'
 
-const Content = ({children}) => (
-  <StyledContentWrapper>
-    <StyledContent>
-      {children}
-    </StyledContent>
-  </StyledContentWrapper>
-)
-
-export default Content
-
-const StyledContentWrapper = comp({
-  flex: '1'
-})('div')
-
-const StyledContent = comp(({
+const Content = comp(({
   traits: {
     size,
     color,
@@ -25,6 +10,7 @@ const StyledContent = comp(({
     media
   }
 }) => ({
+  flex: '1',
   maxWidth: measure.wide,
   minWidth: measure.minimum,
   marginBottom: size(5),
@@ -113,3 +99,5 @@ const StyledContent = comp(({
     color: color.action.medium
   }
 }))('div')
+
+export default Content

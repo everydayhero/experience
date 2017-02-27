@@ -70,7 +70,7 @@ const StyledNavigation = comp(({
     size
   }
 }) => ({
-  margin: `0 ${size(6)} ${size(3)} 0`
+  margin: `${size(4)} ${size(6)} ${size(3)} 0`
 }))('nav')
 
 const NavigationLink = ({
@@ -117,4 +117,3 @@ const ActiveUnderline = comp(({
   display: 'block',
   marginLeft: size(1)
 }))('span', {removeProps: ['active']})
-

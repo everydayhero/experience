@@ -2,16 +2,11 @@ import {comp} from '@edh/stranger'
 
 const ContentWrapper = comp(({
   traits: {
-    font,
-    media
+    measure
   }
 }) => ({
-  margin: '0 auto',
-  flexWrap: 'wrap',
-  [media.tablet]: {
-    display: 'flex',
-    flexDirection: 'row-reverse'
-  }
+  flex: 1,
+  maxWidth: measure.wide
 }))('div')
 
 export default ContentWrapper

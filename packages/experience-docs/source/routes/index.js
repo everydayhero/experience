@@ -2,10 +2,10 @@ import React from 'react'
 import {Route, IndexRoute} from 'react-router'
 
 import PageWrapper from '../components/PageWrapper'
-import ContentWrapper from '../components/ContentWrapper'
 import Header from '../components/Header'
 import Navigation from '../components/Navigation'
-import StyledContent from '../components/StyledContent'
+import Content from '../components/Content'
+import ContentWrapper from '../components/ContentWrapper'
 import FeedbackLink from '../components/FeedbackLink'
 
 import Home from '../content/home.md'
@@ -28,15 +28,12 @@ const App = ({
   location
 }) => (
   <PageWrapper>
-    <Header />
     <ContentWrapper>
-      <StyledContent>
-        {children}
-
-        <FeedbackLink />
-      </StyledContent>
-      <Navigation activeRoute={location.pathname} />
+      <Header />
+      <Content>{children}</Content>
+      <FeedbackLink />
     </ContentWrapper>
+    <Navigation activeRoute={location.pathname} />
   </PageWrapper>
 )
 
