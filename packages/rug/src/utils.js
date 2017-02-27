@@ -1,4 +1,3 @@
-import Color from 'color'
 import curry from 'lodash/fp/curry'
 
 import { base } from './constants.js'
@@ -29,12 +28,8 @@ export const calcModularScale = curry((scale, exponent) =>
 
 export const addUnit = curry((unit, value) => `${value}${unit}`)
 
-/**
- * Color Utilities
- */
+export const opacify = (o, rgb) => rgb.replace('b(', 'ba(').replace(')', `,${o})`)
 
-export const opacify = curry((decimal, colorStr) => Color(colorStr).clearer(1 - decimal).rgbString())
-export const tint = curry((decimal, colorStr) => Color(colorStr).mix(Color('white'), 1 - decimal).rgbString())
-export const shade = curry((decimal, colorStr) => Color(colorStr).mix(Color('black'), 1 - decimal).rgbString())
-export const lighten = curry((decimal, colorStr) => Color(colorStr).lighten(decimal).rgbString())
-export const darken = curry((decimal, colorStr) => Color(colorStr).darken(decimal).rgbString())
+export const getContrastColor = ({dark, light}) => ([r, g, b]) => (
+  (((r*299)+(g*587)+(b*114))/1000) <= 128 ? light : dark
+)

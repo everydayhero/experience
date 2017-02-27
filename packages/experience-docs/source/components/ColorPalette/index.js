@@ -50,7 +50,7 @@ const Swatch = comp(({
   }
 }) => ({
   margin: `0 auto ${size(3)}`,
-  border: `2px solid ${color.border.medium}`,
+  border: `${size(1)} solid ${color.border.medium}`,
   borderRadius: '50%',
   width: size(6),
   height: size(6),

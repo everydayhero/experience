@@ -22,12 +22,14 @@ const Status = ({
   </Wrapper>
 )
 
-const Wrapper = comp({
+const Wrapper = comp(({
+  traits: {size}
+}) => ({
   float: 'right',
-  marginTop: '10px',
+  marginTop: size(4),
   display: 'flex',
   alignItems: 'center'
-})('div')
+}))('div')
 
 const Text = comp(({
   traits: {

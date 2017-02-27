@@ -2,15 +2,12 @@ import React from 'react'
 import {comp} from '@edh/stranger'
 
 import Logo from '../Logo'
-import Navigation from '../Navigation'
 
 const Header = ({
   activeRoute
 }) => (
   <StyledHeader>
     <HeaderLogo type='standard' />
-
-    <Navigation activeRoute={activeRoute} />
   </StyledHeader>
 )
 
@@ -21,8 +18,7 @@ const StyledHeader = comp(({
     size
   }
 }) => ({
-  padding: `${size(5)}`,
-  flex: '0 0 14rem'
+  padding: `${size(4)} 0 ${size(5)}`
 }))('header')
 
 const HeaderLogo = comp(({
@@ -31,5 +27,5 @@ const HeaderLogo = comp(({
   }
 }) => ({
   display: 'block',
-  marginBottom: size(5)
+  maxWidth: '12rem'
 }))(Logo, {cancelPassStyles: true})

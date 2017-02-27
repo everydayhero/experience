@@ -24,10 +24,10 @@ const Wrapper = comp(({
   margin: `${size(4)} 0 ${size(5)}`
 }))('div')
 
-const redLine = (color, deg) => ({
+const redLine = (color, deg, thickness) => ({
   content: '""',
   display: 'block',
-  height: '2px',
+  height: thickness,
   width: '100%',
   backgroundColor: color,
   position: 'absolute',
@@ -50,7 +50,7 @@ const Swatch = comp(({
 }) => ({
   position: 'relative',
   margin: `0 auto ${size(3)}`,
-  border: `2px solid ${color.border.medium}`,
+  border: `${size(1)} solid ${color.border.medium}`,
   borderRadius: size(5),
   width: size(7),
   height: size(6),
@@ -60,6 +60,6 @@ const Swatch = comp(({
   fontWeight: font.weight.bold,
   fontSize: font.scale(0),
   backgroundColor: color[backgroundColor],
-  ':before': !bad ? {} : redLine(color.red, 30),
-  ':after': !bad ? {} : redLine(color.red, -30)
+  ':before': !bad ? {} : redLine(color.red, 30, size(1)),
+  ':after': !bad ? {} : redLine(color.red, -30, size(1))
 }))('div', {removeProps: ['bad', 'backgroundColor', 'textColor']})

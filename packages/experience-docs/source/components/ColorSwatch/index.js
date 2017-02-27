@@ -64,7 +64,7 @@ const Swatch = comp(({
   props: {colorName},
   traits: {color, size}
 }) => ({
-  border: `2px solid ${color.border.medium}`,
+  border: `${size(1)} solid ${color.border.medium}`,
   borderRadius: '50%',
   width: size(7),
   height: size(7),

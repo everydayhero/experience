@@ -24,10 +24,10 @@ const StyledContent = comp(({
     measure
   }
 }) => ({
-  padding: size(5),
   color: color.text.darker,
   maxWidth: measure.wide,
-  margin: '0 auto',
+  minWidth: measure.minimum,
+  margin: `0 auto ${size(5)}`,
   ' pre': {
     display: 'none'
   },
