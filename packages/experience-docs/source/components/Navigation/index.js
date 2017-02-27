@@ -48,6 +48,7 @@ const Navigation = ({
           <Navigation
             routes={navItem.routes}
             id={navItem.title.toLowerCase().replace(' ', '')}
+            activeRoute={activeRoute}
           />
         </div>
       }
