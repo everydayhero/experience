@@ -6,3 +6,7 @@ imports:
 <Status status='red' />
 ```
 # Layout
+
+Sizing
+
+Grid Systems

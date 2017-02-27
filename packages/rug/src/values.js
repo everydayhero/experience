@@ -245,7 +245,7 @@ export const tracking = {
  */
 
 export const measure = {
-  minimum: '16em',
+  minimum: '15em',
   narrow: '20em',
   normal: '30em',
   wide: '40em'
