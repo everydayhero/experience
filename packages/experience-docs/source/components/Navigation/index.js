@@ -4,57 +4,39 @@ import {Link} from 'react-router'
 import Helmet from 'react-helmet'
 import {comp} from '@edh/stranger'
 
-const NAVIGATION_CONTENT = [
-  {route: '/', title: 'Home'},
-  {route: '/principles', title: 'Principles'},
-  {route: '/logo', title: 'Logo'},
-  {route: '/colors', title: 'Colors'},
-  {route: '/typography', title: 'Typography'},
-  {route: '/icons', title: 'Icons'},
-  {route: '/illustration', title: 'Illustration'},
-  {route: '/photography', title: 'Photography'},
-  {route: '/motion', title: 'Motion'},
-  {route: '/voice', title: 'Voice & Tone'},
-  {route: '/layout', title: 'Layout'},
-  {route: '/shape', title: 'Shape'},
-  {
-    route: '/components',
-    title: 'Components',
-    routes: [
-     {route: '/components/input', title: 'Input'}
-    ]
-  }
-]
+import content from '../../content'
 
 const Navigation = ({
-  routes = NAVIGATION_CONTENT,
+  routes = content,
   id = 'primary',
-  activeRoute
+  activeRoute,
+  child
 }) => (
   <StyledNavigation id={`navigation-${id}`}>
     {routes.map((navItem, index) => {
-      const active = activeRoute && navItem.route === resolve(activeRoute)
+      const active = activeRoute && navItem.path === resolve(activeRoute)
       const link = (
         <NavigationLink
           key={`${id}-${index}`}
-          to={navItem.route}
+          to={navItem.path}
           active={active}
+          child={child}
         >
           {active && <Helmet
             title={navItem.title}
             titleTemplate='%s - Everydayhero Experience System'
-          />}
+                     />}
           {navItem.title}
         </NavigationLink>
       )
-      if (navItem.routes) {
+      if (navItem.children) {
         return <div key={`${id}-${index}`}>
           {link}
-
           <Navigation
-            routes={navItem.routes}
+            routes={navItem.children}
             id={navItem.title.toLowerCase().replace(' ', '')}
             activeRoute={activeRoute}
+            child
           />
         </div>
       }
@@ -76,10 +58,11 @@ const StyledNavigation = comp(({
 const NavigationLink = ({
   to,
   active,
-  children
+  children,
+  child
 }) => (
   <ActiveUnderline active={active}>
-    <StyledNavigationLink to={to} active={active}>
+    <StyledNavigationLink to={to} active={active} child={child}>
       {children}
     </StyledNavigationLink>
   </ActiveUnderline>
@@ -87,7 +70,8 @@ const NavigationLink = ({
 
 const StyledNavigationLink = comp(({
   props: {
-    active
+    active,
+    child
   },
   traits: {
     size,
@@ -98,13 +82,15 @@ const StyledNavigationLink = comp(({
   }
 }) => ({
   display: 'inline-block',
-  margin: `${size(2)} 0`,
+  marginTop: size(2),
+  marginBottom: size(2),
+  marginLeft: child && size(4),
   fontSize: font.scale(0),
   lineHeight: leading.ui,
   color: active ? color.text.darker : color.text.dark,
   fontWeight: active && font.weight.bold,
   borderBottom: `${size(1)} solid ${active ? color.accent.light : 'transparent'}`
-}))(Link, {removeProps: ['active'], cancelPassStyles: true})
+}))(Link, {removeProps: ['active', 'child'], cancelPassStyles: true})
 
 const ActiveUnderline = comp(({
   props: {
