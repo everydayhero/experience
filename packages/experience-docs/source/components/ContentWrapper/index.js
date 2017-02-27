@@ -2,13 +2,14 @@ import {comp} from '@edh/stranger'
 
 const ContentWrapper = comp(({
   traits: {
-    font
+    font,
+    media
   }
 }) => ({
   margin: '0 auto',
   flexWrap: 'wrap',
   fontFamily: `"proxima-nova", ${font.family.ui}`,
-  '@media screen and (min-width: 26em)': {
+  [media.tablet]: {
     display: 'flex',
     flexDirection: 'row-reverse'
   }

@@ -258,3 +258,9 @@ export const measure = {
 export const border = {
   width: size(1)
 }
+
+export const media = {
+  tablet: '@media screen and (min-width: 36em)',
+  laptop: '@media screen and (min-width: 50em)',
+  desktop: '@media screen and (min-width: 64em)'
+}

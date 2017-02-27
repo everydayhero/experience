@@ -21,30 +21,52 @@ const StyledContent = comp(({
     color,
     font,
     leading,
-    measure
+    measure,
+    media
   }
 }) => ({
   color: color.text.darker,
   maxWidth: measure.wide,
   minWidth: measure.minimum,
-  margin: `0 auto ${size(5)}`,
+  marginBottom: size(5),
   ' pre': {
     display: 'none'
   },
   ' h1': {
+    lineHeight: leading.display,
     marginBottom: size(4),
-    fontSize: font.scale(4),
-    fontWeight: font.weight.bold
+    fontSize: font.scale(3),
+    fontWeight: font.weight.bold,
+    [media.tablet]: {
+      fontSize: font.scale(4)
+    }
   },
   ' h2': {
+    lineHeight: leading.display,
     margin: `${size(4)} 0 ${size(3)} 0`,
     fontSize: font.scale(2),
-    fontWeight: font.weight.bold
+    fontWeight: font.weight.bold,
+    [media.tablet]: {
+      fontSize: font.scale(2)
+    }
   },
   ' h3': {
+    lineHeight: leading.display,
     margin: `${size(4)} 0 ${size(3)} 0`,
     fontSize: font.scale(1),
-    fontWeight: font.weight.bold
+    fontWeight: font.weight.bold,
+    [media.tablet]: {
+      fontSize: font.scale(1)
+    }
+  },
+  ' h4': {
+    lineHeight: leading.display,
+    margin: `${size(3)} 0 ${size(2)} 0`,
+    fontSize: font.scale(0),
+    fontWeight: font.weight.bold,
+    [media.tablet]: {
+      fontSize: font.scale(0)
+    }
   },
   ' p': {
     lineHeight: leading.prose,
@@ -53,17 +75,40 @@ const StyledContent = comp(({
   ' li': {
     lineHeight: leading.prose
   },
+  ' ul': {
+    paddingLeft: size(4),
+    [media.tablet]: {
+      paddingLeft: 0
+    }
+  },
+  ' ul ul': {
+    paddingLeft: size(3),
+    [media.tablet]: {
+      paddingLeft: size(4)
+    }
+  },
   ' ul li': {
     listStyle: 'disc'
   },
-  ' ul ul': {
-    paddingLeft: size(4)
+  ' ol': {
+    paddingLeft: size(4),
+    [media.tablet]: {
+      paddingLeft: 0
+    }
+  },
+  ' ol ol': {
+    paddingLeft: size(3),
+    [media.tablet]: {
+      paddingLeft: size(4)
+    }
   },
   ' ol li': {
     listStyle: 'decimal'
   },
-  ' ol ol': {
-    paddingLeft: size(4)
+  ' a': {
+    fontWeight: font.weight.bold,
+    textDecoration: 'underline',
+    color: color.action.medium
   }
 }))('div')
 
