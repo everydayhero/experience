@@ -5,10 +5,12 @@ const PageWrapper = comp(({
     font
   }
 }) => ({
+  display: 'flex',
+  margin: '0 auto',
+  maxWidth: '50em',
+  flexWrap: 'wrap',
   fontFamily: `"proxima-nova", ${font.family.ui}`,
   '@media screen and (min-width: 36em)': {
-    display: 'flex',
-    margin: '0 auto',
     flexDirection: 'row-reverse'
   }
 }))('div')
