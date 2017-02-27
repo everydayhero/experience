@@ -105,6 +105,9 @@ const StyledContent = comp(({
   ' ol li': {
     listStyle: 'decimal'
   },
+  ' strong': {
+    fontWeight: font.weight.bold
+  },
   ' a': {
     fontWeight: font.weight.bold,
     textDecoration: 'underline',
