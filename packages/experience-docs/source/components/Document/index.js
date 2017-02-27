@@ -1,5 +1,5 @@
 import React from 'react'
-import stranger from '@edh/stranger'
+import { comp, ReactStyles } from '@edh/stranger'
 
 const renderStyles = (styles) => (
   styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)
@@ -9,6 +9,16 @@ const renderScripts = (scripts) => (
   scripts.map((script, index) => <script key={index} src={script} />)
 )
 
+const Root = comp(({
+  traits: {
+    color,
+    font
+  }
+}) => ({
+  color: color.text.darker,
+  fontFamily: `"proxima-nova", ${font.family.ui}`
+}))('html')
+
 export default ({
   head,
   content,
@@ -16,7 +26,7 @@ export default ({
   styles = ['/main.css'],
   scripts = ['/main.js']
 }) => (
-  <html>
+  <Root>
     <head>
       <title>Everydayhero Experience System</title>
       <meta charSet='utf-8' />
@@ -24,10 +34,7 @@ export default ({
       {head.title.toComponent()}
       {head.meta.toComponent()}
       {renderStyles(styles)}
-      <style dangerouslySetInnerHTML={{
-        __html: stranger.renderCssToString()
-      }} />
-
+      <ReactStyles />
       <script dangerouslySetInnerHTML={{
         __html: `
           (function(d) {
@@ -58,9 +65,8 @@ export default ({
       />
 
       {renderScripts(scripts)}
-
       <noscript><iframe src='https://www.googletagmanager.com/ns.html?id=GTM-PN6K34'
         height='0' width='0' style={{display: 'none', visibility: 'hidden'}} /></noscript>
     </body>
-  </html>
+  </Root>
 )

@@ -9,23 +9,17 @@ const FeedbackLink = ({
   const subject = `Feedback for the Experience System`
   const body = `I have some feedback for ${global.location}`
   return (
-    <FeedbackWrapper>
-      <FeedbackAnchor
-        href={`mailto:${FEEDBACK_ADDRESS}?subject=${subject}&body=${body}`}
-      >
-        {'Feedback?'}
-      </FeedbackAnchor>
+    <FeedbackAnchor
+      href={`mailto:${FEEDBACK_ADDRESS}?subject=${subject}&body=${body}`}
+    >
+      <FeedbackText>Feedback?</FeedbackText>
       <MailEmoji>{'💌'}</MailEmoji>
-    </FeedbackWrapper>
+    </FeedbackAnchor>
   )
 }
 
 export default FeedbackLink
 
-// Styled component
-const FeedbackWrapper = comp({
-  textAlign: 'center'
-})('div')
 const FeedbackAnchor = comp(({
   traits: {
     size,
@@ -33,20 +27,22 @@ const FeedbackAnchor = comp(({
     leading
   }
 }) => ({
-  display: 'inline-block',
-  marginTop: size(4),
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
   lineHeight: leading.ui,
-  textDecoration: 'underline',
+  textDecoration: 'none',
   color: color.cta.medium
 }))('a')
 
+const FeedbackText = comp({
+  textDecoration: 'underline'
+})('span')
+
 const MailEmoji = comp(({
   traits: {
-    size,
-    leading
+    size
   }
 }) => ({
-  marginLeft: size(2),
-  lineHeight: leading.ui,
-  verticalAlign: 'super'
+  marginLeft: size(2)
 }))('span')
