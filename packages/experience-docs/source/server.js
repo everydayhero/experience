@@ -1,6 +1,7 @@
 import { createServer } from 'boiler-room-runner'
 import routes from './routes'
 import renderDocument from './lib/renderDocument/'
+import { flatContent } from './content'
 
 const basepath = process.env.BASE_PATH
 
@@ -12,22 +13,7 @@ export default ({ assets }) => {
     assets
   })
 
-  app.staticRoutes = [
-    '/',
-    '/principles',
-    '/logo',
-    '/colors',
-    '/typography',
-    '/icons',
-    '/illustration',
-    '/photography',
-    '/motion',
-    '/voice',
-    '/layout',
-    '/shape',
-    '/components',
-    '/components/input'
-  ]
+  app.staticRoutes = flatContent.map((route) => route.path)
 
   return app
 }
