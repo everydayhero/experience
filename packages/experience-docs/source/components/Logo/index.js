@@ -12,7 +12,7 @@ const LOGOS = {
   'powered-by-inverted-padded-background': require('./images/powered-by-inverted-padded-background.svg')
 }
 
-const Logo = ({type = 'standard', ...props}) => (
+const Logo = ({type = 'standard', styles, ...props}) => (
   <img {...props} src={LOGOS[type]} />
 )
 

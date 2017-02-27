@@ -1,6 +1,6 @@
 ---
 imports:
-  Logo: '../components/Logo/index.js'
+  LogoExample: '../components/LogoExample/index.js'
   Status: '../components/Status/index.js'
 ---
 ```render html
@@ -17,15 +17,15 @@ Our logo mark is comprised of two important elements: hearts and connection. Eve
 The primary logo consists of the heart logomark, and the Everydayhero name, in lowercase. Wherever possible, this is the preferred logo for use.
 
 ```render html
-<Logo type='standard-padded' />
+<LogoExample type='standard-padded' />
 ```
 
 ### Heart Logomark
 
-The Everydayhero heart logomark acts as a short-form signature, and is only used in specific contexts.
+The Everydayhero heart logomark acts as a short-form signature, and is only used in specific contexts, defined in the usage guidelines below.
 
 ```render html
-<Logo type='mark-standard-padded' />
+<LogoExample type='mark-standard-padded' />
 ```
 
 ### “Powered by” Logo
@@ -33,7 +33,7 @@ The Everydayhero heart logomark acts as a short-form signature, and is only used
 When Everydayhero’s brand is diminished, such as for campaign pages, bespoke sites for charities and events, and white-label products, the “powered by everydayhero” logo should be displayed centred towards the bottom of the primary content. 
 
 ```render html
-<Logo type='powered-by-padded' />
+<LogoExample type='powered-by-padded' />
 ```
 
 ### Reversed logos
@@ -41,15 +41,7 @@ When Everydayhero’s brand is diminished, such as for campaign pages, bespoke s
 The preferred logo application is full colour on a white background. In any context where a white background is not possible, the reversed logo or logomark should be used.
 
 ```render html
-<Logo type='inverted-padded-background' />
-```
-
-```render html
-<Logo type='mark-inverted-padded-background' />
-```
-
-```render html
-<Logo type='powered-by-inverted-padded-background' />
+<LogoExample type='inverted-padded-background' />
 ```
 
 ### Everydayhero in writing
@@ -72,6 +64,10 @@ Everydayhero is always one word, and is capitalized when written out in text. Al
 - Never display at a size that would render the ‘everydayhero’ name smaller than 12pt (print) or 16px (web) in font-size
 - Never let any page or frame edge, or any element of any kind, encroach within the safe zone (defined as the height of the letter ‘v’ in ‘everydayhero’) surrounding the logo
 
+```render html
+<LogoExample type='standard-padded-markup' />
+```
+
 ### Heart Logomark
 
 In addition to all the usage guidelines that apply to the primary logo, the heart logomark should also only ever be used in the following circumstances: 
@@ -86,7 +82,11 @@ In all other circumstances, the primary logo must be used.
 
 - Never use as bullet points, borders, patterns, or design embellishment: only ever as a brand identifier
 - Never display smaller than 1cm (print) or 50px (web) in width
-- Never let any page or frame edge, or any element of any kind, encroach within the safe zone surrounding the logo (shown below)
+- Never let any page or frame edge, or any element of any kind, encroach within the safe zone surrounding the logo
+
+```render html
+<LogoExample type='mark-standard-padded-markup' />
+```
 
 ### "Powered by" Logo
 

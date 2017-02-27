@@ -1,6 +1,7 @@
 import {resolve} from 'path'
 import React from 'react'
 import {Link} from 'react-router'
+import Helmet from 'react-helmet'
 import {comp} from '@edh/stranger'
 
 const NAVIGATION_CONTENT = [
@@ -32,12 +33,17 @@ const Navigation = ({
 }) => (
   <StyledNavigation id={`navigation-${id}`}>
     {routes.map((navItem, index) => {
+      const active = activeRoute && navItem.route === resolve(activeRoute)
       const link = (
         <NavigationLink
           key={`${id}-${index}`}
           to={navItem.route}
-          active={activeRoute && navItem.route === resolve(activeRoute)}
+          active={active}
         >
+          {active && <Helmet
+            title={navItem.title}
+            titleTemplate='%s - Everydayhero Experience System'
+          />}
           {navItem.title}
         </NavigationLink>
       )
@@ -63,7 +69,7 @@ const StyledNavigation = comp(({
     size
   }
 }) => ({
-  margin: `0 ${size(5)} ${size(3)} 0`
+  margin: `0 ${size(6)} ${size(3)} 0`
 }))('nav')
 
 const NavigationLink = ({

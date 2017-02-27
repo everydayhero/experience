@@ -62,16 +62,20 @@ const SwatchDetails = comp(({
 
 const Swatch = comp(({
   props: {colorName},
-  traits: {color, size}
+  traits: {
+    color,
+    size,
+    media
+  }
 }) => ({
   border: `${size(1)} solid ${color.border.medium}`,
   borderRadius: '50%',
-  width: size(7),
-  height: size(7),
+  width: size(6),
+  height: size(6),
   backgroundColor: color[colorName],
-  '@media (max-width: 25em)': {
-    width: size(6),
-    height: size(6)
+  [media.tablet]: {
+    width: size(7),
+    height: size(7)
   }
 }))('div', {removeProps: ['colorName']})
 
