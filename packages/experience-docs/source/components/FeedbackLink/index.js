@@ -7,7 +7,7 @@ const FeedbackLink = ({
   title
 }) => {
   const subject = `Feedback for the Experience System`
-  const body = `I have some feedback for ${window.location}`
+  const body = `I have some feedback for ${global.location}`
   return (
     <FeedbackWrapper>
       <FeedbackAnchor
