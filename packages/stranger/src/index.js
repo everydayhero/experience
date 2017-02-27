@@ -2,6 +2,7 @@ export {
   default,
   addRule,
   renderCssToString,
+  ReactStyles,
   resetCache
 } from './cxsync'
 
