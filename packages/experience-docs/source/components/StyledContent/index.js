@@ -25,7 +25,6 @@ const StyledContent = comp(({
     media
   }
 }) => ({
-  color: color.text.darker,
   maxWidth: measure.wide,
   minWidth: measure.minimum,
   marginBottom: size(5),
@@ -114,4 +113,3 @@ const StyledContent = comp(({
     color: color.action.medium
   }
 }))('div')
-

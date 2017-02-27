@@ -8,7 +8,6 @@ const ContentWrapper = comp(({
 }) => ({
   margin: '0 auto',
   flexWrap: 'wrap',
-  fontFamily: `"proxima-nova", ${font.family.ui}`,
   [media.tablet]: {
     display: 'flex',
     flexDirection: 'row-reverse'
