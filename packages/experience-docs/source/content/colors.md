@@ -4,6 +4,8 @@ imports:
   ColorSwatch: '../components/ColorSwatch/index.js'
   ColorPalette: '../components/ColorPalette/index.js'
   ColorContrast: '../components/ColorContrast/index.js'
+  Image: '../components/Image/index.js'
+  colorRelationshipSvg: './images/colours.svg'
 ---
 ```render html
 <Status status='amber' />
@@ -52,6 +54,14 @@ These colors are used sparingly, to provide context for critical information whe
 ## Usage Guidelines
 
 In general, primary, secondary, and tertiary colors should not be used in proportions greater than they appear in the illustration below. This means that white should always have the greatest representation, followed by charcoal, light blue, grey, blue, light green, and so on. These proportions apply to a complete design when taken as a whole, and not to individual elements, such as icons, inputs, footers, etc.  
+
+## Relationship
+
+Here is a visual guide on how to prioritise color use.
+
+```render html
+<Image src={colorRelationshipSvg} width='normal' />
+```
 
 ### Calls to action
 ```render html
