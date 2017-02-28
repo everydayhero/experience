@@ -8,7 +8,7 @@ const PageWrapper = comp(({
   }
 }) => ({
   margin: '0 auto',
-  padding: `0 ${size(4)}`,
+  padding: size(4),
   [media.tablet]: {
     display: 'flex',
     justifyContent: 'center',
