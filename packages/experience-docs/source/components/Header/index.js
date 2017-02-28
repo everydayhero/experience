@@ -19,7 +19,7 @@ const StyledHeader = comp(({
   }
 }) => ({
   flex: 1,
-  padding: `${size(4)} 0 ${size(5)}`
+  marginBottom: size(5)
 }))('header')
 
 const HeaderLogo = comp(({

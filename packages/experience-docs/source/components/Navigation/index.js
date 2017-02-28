@@ -10,9 +10,10 @@ const Navigation = ({
   routes = content,
   id = 'primary',
   activeRoute,
-  child
+  child,
+  hide
 }) => (
-  <StyledNavigation id={`navigation-${id}`}>
+  <StyledNavigation id={`navigation-${id}`} child={child} hide={hide}>
     {routes.map((navItem, index) => {
       const active = activeRoute && navItem.path === resolve(activeRoute)
       const link = (
@@ -36,6 +37,7 @@ const Navigation = ({
             routes={navItem.children}
             id={navItem.title.toLowerCase().replace(' ', '')}
             activeRoute={activeRoute}
+            hide={!activeRoute.includes(navItem.path)}
             child
           />
         </div>
@@ -48,12 +50,18 @@ const Navigation = ({
 export default Navigation
 
 const StyledNavigation = comp(({
+  props: {
+    child,
+    hide
+  },
   traits: {
     size
   }
 }) => ({
-  margin: `${size(4)} ${size(6)} ${size(3)} 0`
-}))('nav')
+  marginRight: size(6),
+  marginBottom: !child && size(5),
+  display: hide && 'none'
+}))('nav', { removeProps: ['child', 'hide'] })
 
 const NavigationLink = ({
   to,

@@ -2,11 +2,13 @@ import {comp} from '@edh/stranger'
 
 const ContentWrapper = comp(({
   traits: {
-    measure
+    measure,
+    size
   }
 }) => ({
   flex: 1,
-  maxWidth: measure.wide
+  maxWidth: measure.wide,
+  marginBottom: size(5)
 }))('div')
 
 export default ContentWrapper
