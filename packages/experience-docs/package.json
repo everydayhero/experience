@@ -10,6 +10,7 @@
     "lint": "standard",
     "prepublish": "npm run build"
   },
+  "private": true,
   "author": "everydayhero",
   "dependencies": {
     "@edh/brand-assets": "1.0.0-1",
