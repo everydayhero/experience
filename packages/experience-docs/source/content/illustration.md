@@ -26,13 +26,12 @@ Illustration is a decorative element, but it should also serve a purpose within 
 
 **For example:** using the ‘clap hands’ emoji in our receipt emails is both decorative (it’s a large visual element) and functional (it expresses our gratitude to the donor).
 
-Do:  
+### Do
 - Build your illustrative designs around a single strong illustration.
 
-Do not:  
+### Do not
 - Use illustration to represent our customers (photography is best here)
 - Overuse illustrative elements
-- Use our illustrated emojis as inline text icons.
 
 ## How to choose an illustration
 
@@ -59,18 +58,18 @@ You may add and modify elements as suits your design, but including some of the 
 <Image src={rocket} width='normal' align='center' />
 ```
 
-Our illustrations are:  
+### Our illustrations are
 - Friendly 
 - Bright and energetic 
 - Colourful
 - Hand drawn
 - Attractive
 
-Our illustrations should have:  
+### Our illustrations should have
 - Fluid clean lines
 - Harmonious colours (think of a well used Instagram filter)
 
-Our illustrations are never:  
+### Our illustrations are never
 - Childlike
 - Busy or garish
 - Rainbow
