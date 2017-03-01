@@ -18,7 +18,7 @@ const Image = comp(({
   maxWidth: width && measure[width]
 }), { removeProps: ['width', 'align'] })('img')
 
-Image.propType = {
+Image.propTypes = {
   width: PropTypes.oneOf(['narrow', 'normal', 'wide']),
   align: PropTypes.oneOf(['left', 'center', 'right'])
 }
