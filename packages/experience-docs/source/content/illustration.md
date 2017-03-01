@@ -5,6 +5,7 @@ imports:
   Image: '../components/Image/index.js'
   rocket: './images/rocket.svg'
   invasion: './images/invasion.svg'
+  illustrationlanguage: './images/illustrationlanguage.svg'
 ---
 
 ```render html
@@ -49,8 +50,9 @@ Choose an emoji that expresses the content of your design: for example, the ‘c
 
 To achieve consistency with our illustration styles, you should base your illustration on the predefined set of shapes and strokes extracted from the Everydayhero heart logo.
 
-![Illustration design elements](https://d2mxuefqeaa7sj.cloudfront.net/s_E0DE0F30AB8A99D43B28C6194C5701E90F6CFAD78C01A058AB00A8BE5B654AC4_1484701950940_Screen+Shot+2017-01-18+at+11.12.18+AM.png
-)
+```render html
+<Image src={illustrationlanguage} />
+```
 
 You may add and modify elements as suits your design, but including some of the foundation strokes ensures your illustration’s shape will blend well with our friendly, asymmetric aesthetic.
 
