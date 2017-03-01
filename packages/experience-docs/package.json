@@ -4,7 +4,7 @@
   "description": "The Everydayhero Experience system documentation site",
   "main": "source/client.js",
   "scripts": {
-    "start": "brb serve --config='./webpack.shared.config'",
+    "start": "npm run build && brb serve --config='./webpack.shared.config'",
     "build": "brb build --config='./webpack.shared.config'",
     "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do",
     "lint": "standard",
@@ -28,6 +28,7 @@
     "react-markdown-loader": "^1.1.10"
   },
   "devDependencies": {
+    "copy-webpack-plugin": "^4.0.1",
     "enzyme": "^2.4.1",
     "power-assert": "^1.4.2",
     "sinon": "^1.15.4",
