@@ -8,7 +8,6 @@ const renderStyles = (styles) => (
 const renderScripts = (scripts) => (
   scripts.map((script, index) => <script key={index} src={script} />)
 )
-
 const Root = comp(({
   traits: {
     color,
@@ -19,7 +18,7 @@ const Root = comp(({
   fontFamily: `"proxima-nova", ${font.family.ui}`
 }))('html')
 
-export default ({
+const Document = ({
   head,
   content,
   state = {},
@@ -70,3 +69,5 @@ export default ({
     </body>
   </Root>
 )
+
+export default Document

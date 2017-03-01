@@ -4,7 +4,7 @@ import rug from '@edh/rug'
 
 const {keys} = Object
 
-export default ({
+const ColorPalette = ({
   palette
 }) => (
   <Wrapper>
@@ -16,6 +16,8 @@ export default ({
     ))}
   </Wrapper>
 )
+
+export default ColorPalette
 
 const Wrapper = comp(({
   traits: {size}

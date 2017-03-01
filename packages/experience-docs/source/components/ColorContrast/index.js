@@ -1,7 +1,7 @@
 import React from 'react'
 import {comp} from '@edh/stranger'
 
-export default ({
+const ColorContrast = ({
   bad = true,
   textColors = [],
   backgroundColors = []
@@ -14,6 +14,8 @@ export default ({
     ))}
   </Wrapper>
 )
+
+export default ColorContrast
 
 const Wrapper = comp(({
   traits: {size}
