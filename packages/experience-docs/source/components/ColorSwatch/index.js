@@ -30,7 +30,7 @@ const Code = ({
   </tr>
 )
 
-export default ({
+const ColorSwatch = ({
   color
 }) => (
   <Wrapper>
@@ -45,6 +45,8 @@ export default ({
     </SwatchDetails>
   </Wrapper>
 )
+
+export default ColorSwatch
 
 const Wrapper = comp({
   display: 'flex',
