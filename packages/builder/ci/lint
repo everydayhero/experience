@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+set -eu pipefail
+
+npm install
+npm link
+npm run lint

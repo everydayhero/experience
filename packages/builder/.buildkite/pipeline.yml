@@ -1,0 +1,20 @@
+---
+steps:
+  - name: ":javascript: Lint It"
+    command: docker-compose run build ci/lint
+    agents:
+      queue: build
+
+  - name: ":nodejs: Test It"
+    command: docker-compose run build ci/test
+    agents:
+      queue: build
+
+  - type: waiter
+    branches: "master"
+
+  - name: ":package: Ship It"
+    command: "ci/only-for-version-releases docker-compose run build ci/publish"
+    branches: "master"
+    agents:
+      queue: build
