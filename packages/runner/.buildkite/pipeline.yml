@@ -1,0 +1,6 @@
+---
+steps:
+  - name: ":nodejs: Test It"
+    command: docker-compose run build bin/test
+    agents:
+      queue: build
