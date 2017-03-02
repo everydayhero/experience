@@ -1,5 +1,5 @@
 {
-  "name": "boiler-room-builder",
+  "name": "@edh/builder",
   "version": "2.0.0-5",
   "description": "",
   "main": "index.js",
