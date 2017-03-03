@@ -1,4 +1,5 @@
 import React from 'react'
+import InlineSVG from 'react-svg-inline'
 
 const LOGOS = {
   'standard': require('@edh/brand-assets/images/standard.svg'),
@@ -13,7 +14,7 @@ const LOGOS = {
 }
 
 const Logo = ({type = 'standard', styles, ...props}) => (
-  <img {...props} src={LOGOS[type]} />
+  <InlineSVG {...props} svg={LOGOS[type]} />
 )
 
 export default Logo

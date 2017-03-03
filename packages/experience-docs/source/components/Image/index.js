@@ -1,10 +1,28 @@
 import { comp } from '@edh/stranger'
-import { PropTypes } from 'react'
+import React, { PropTypes } from 'react'
+import InlineSVG from 'react-svg-inline'
+import includes from 'lodash/includes'
 
-const Image = comp(({
+const Image = ({
+  src,
+  ...props
+}) => (
+  includes(src, 'svg')
+    ? <Svg {...props} svg={src} />
+    : <Img {...props} src={src} />
+)
+
+Image.propTypes = {
+  width: PropTypes.oneOf(['narrow', 'normal', 'wide']),
+  align: PropTypes.oneOf(['left', 'center', 'right'])
+}
+
+export default Image
+
+const ImgBase = comp(({
   props: {
     width,
-    align
+    align = 'center'
   },
   traits: {
     size,
@@ -15,12 +33,18 @@ const Image = comp(({
   marginBottom: size(5),
   marginLeft: (align === 'center' || align === 'right') && 'auto',
   marginRight: align === 'center' && 'auto',
-  maxWidth: width && measure[width]
-}), { removeProps: ['width', 'align'] })('img')
+  maxWidth: width && measure[width],
+  borderRadius: size(3),
+  overflow: 'hidden'
+}), { removeProps: ['width', 'align'] })
 
-Image.propTypes = {
-  width: PropTypes.oneOf(['narrow', 'normal', 'wide']),
-  align: PropTypes.oneOf(['left', 'center', 'right'])
-}
+const Img = ImgBase('div')
 
-export default Image
+const Svg = comp({
+  width: '100%',
+  height: '100%',
+  ' svg': {
+    width: '100%',
+    height: '100%'
+  }
+})(ImgBase(InlineSVG))

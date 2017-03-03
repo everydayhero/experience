@@ -27,6 +27,10 @@ module.exports = {
           },
           'react-markdown-loader'
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: 'raw-loader'
       }
     ]
   }

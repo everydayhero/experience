@@ -1,7 +1,8 @@
 import React from 'react'
 import {comp} from '@edh/stranger'
+import InlineSVG from 'react-svg-inline'
 
-const ICONS = [
+export const ICONS = [
   {
     title: 'Camera',
     src: require('./images/camera.svg')
@@ -73,7 +74,7 @@ const IconList = () => (
     {ICONS.map(({title, src}, index) => (
       <IconWrapper key={index}>
         <Background>
-          <Icon src={src} title={title} alt={title} />
+          <Icon svg={src} title={title} alt={title} />
           <IconCaption>
             {title}
           </IconCaption>
@@ -99,14 +100,14 @@ const IconListContainer = comp(({
   marginRight: `-${size(3)}`
 }))('div')
 
-const Icon = comp(({
-  traits: {
-    size
-  }
-}) => ({
+const Icon = comp({
   display: 'block',
-  width: '20rem'
-}))('img')
+  width: '100%',
+  ' svg': {
+    width: '100%',
+    height: '100%'
+  }
+})(InlineSVG)
 
 const IconWrapper = comp(({
   traits: {
