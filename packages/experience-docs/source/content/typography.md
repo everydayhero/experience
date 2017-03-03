@@ -3,7 +3,7 @@ imports:
   Status: '../components/Status/index.js'
 ---
 ```render html
-<Status status='orange' />
+<Status status='amber' />
 ```
 # Typography
 
