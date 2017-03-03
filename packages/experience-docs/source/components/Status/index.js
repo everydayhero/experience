@@ -9,7 +9,7 @@ const statusColors = {
 
 const statusText = {
   green: 'Stable',
-  amber: 'In progress',
+  amber: 'In review',
   red: 'Incomplete'
 }
 
