@@ -33,7 +33,7 @@ const jsPrefix = (() => {
   return match ? VENDORS[match[0]] : ''
 })()
 
-const cssPrefix = `-${jsPrefix.toLowerCase()}-`
+export const cssPrefix = `-${jsPrefix.toLowerCase()}-`
 
 export const prefixProperty = memoize((property, prefix = jsPrefix) => {
   const prefixed = prefix + property.slice(0, 1).toUpperCase() + property.slice(1)

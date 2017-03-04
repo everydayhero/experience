@@ -5,8 +5,10 @@ import merge from 'lodash/merge'
 
 import {StyleSheet} from './sheet'
 import {unitlessProps, shorthands} from './props'
-import {kebab, isValue, isMediaQuery, isAnimation, isPseudoSelector, isArr} from './utils'
-import {prefixProperty, prefixValue} from './prefixer'
+import {kebab, isValue, isMediaQuery, isKeyframe, isPseudoSelector, isArr} from './utils'
+import {prefixProperty, prefixValue, cssPrefix} from './prefixer'
+
+const {keys} = Object
 
 const hash = (str, prefix = '_') => {
   let val = 5381
@@ -19,15 +21,17 @@ const hash = (str, prefix = '_') => {
   return prefix + (val >>> 0).toString(36)
 }
 
+export const keyframeSheet = new StyleSheet()
 export const sheet = new StyleSheet()
 export const mediaSheet = new StyleSheet()
 
+keyframeSheet.inject()
 sheet.inject()
 mediaSheet.inject()
 
 export const getCss = () => {
   let css = ''
-  const rules = [...sheet.rules(), ...mediaSheet.rules()]
+  const rules = [...keyframeSheet.rules(), ...sheet.rules(), ...mediaSheet.rules()]
   for (let i = 0; i < rules.length; i++) {
     css += rules[i].cssText
   }
@@ -46,6 +50,7 @@ export const setOptions = (opts) => {
 
 export const reset = () => {
   cxsync.cache = {}
+  keyframeSheet.flush()
   sheet.flush()
   mediaSheet.flush()
 }
@@ -73,7 +78,11 @@ const parse = memoize((obj, media, children = '') => {
       parse(value, media, children + key).forEach(appendClassName)
       continue
     }
-    if (isMediaQuery(key) || isAnimation(key)) {
+    if (isKeyframe(key)) {
+      createKeyframe(key, value)
+      continue
+    }
+    if (isMediaQuery(key)) {
       parse(value, key, children).forEach(appendClassName)
       continue
     }
@@ -83,6 +92,27 @@ const parse = memoize((obj, media, children = '') => {
 
   return classNames
 })
+
+const keyframeReducer = (acc, value, prop) => ([
+  ...acc,
+  `${kebab(prefixProperty(prop))}:${prefixValue(prop, addPx(prop, value))};`
+])
+
+const parseKeyframes = (value) => (
+  keys(value).map((frame) => (
+    `${frame} {${reduce(value[frame], keyframeReducer, []).join('')}}`
+  )).join(' ')
+)
+
+const createKeyframe = (key, value) => {
+  if (!cxsync.cache[key]) {
+    const name = key.replace('@keyframes ', '')
+    const frames = parseKeyframes(value)
+    keyframeSheet.insert(`@${cssPrefix}keyframes ${name} {${frames}}`)
+    keyframeSheet.insert(`@keyframes ${name} {${frames}}`)
+  }
+  cxsync.cache[key] = true
+}
 
 const createStyle = (key, value, media, children = '') => {
   const prefix = (media || '') + children

@@ -3,7 +3,7 @@ const { floor, random } = Math
 export const exists = (v) => (v !== null && typeof v !== 'undefined')
 export const isValue = (v) => typeof v === 'string' || typeof v === 'number'
 export const isNested = (key = '') => /\s|:|^@|^\d|^from$|^to$/.test(key)
-export const isAnimation = (key = '') => key[0] === '@' && key[1] === 'k'
+export const isKeyframe = (key = '') => key[0] === '@' && key[1] === 'k'
 export const isPseudoSelector = (key = '') => key[0] === ':'
 export const isMediaQuery = (key = '') => key[0] === '@' && key[1] === 'm'
 export const isNotSelector = (key = '') => /^([0-9]|from|to)/.test(key)

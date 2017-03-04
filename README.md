@@ -8,6 +8,7 @@ yarn add cxsync
 Improves on CXS in the following ways:
 - memoizes repetitive tasks because `rendering speed > memory concerns`
 - stores media queries in a separate sheet, so that they always take precedence
+- supports keyframes
 - accepts any number of style objects passed as args
 - always prefixes all styles (so it's useful in production)
 - correctly handles IE's `ms` vendor prefix

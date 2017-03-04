@@ -1,7 +1,7 @@
 import test from 'ava'
 import {StyleSheet} from '../src/sheet'
 import jsdom from 'jsdom-global'
-import cxsync, {sheet, mediaSheet, reset, getCss} from '../src/'
+import cxsync, {sheet, keyframeSheet, mediaSheet, reset, getCss} from '../src/'
 import {fluidType, colorGenerator} from '../src/trait-utils'
 
 jsdom('<html></html>')
@@ -64,6 +64,17 @@ test('creates @media rules', t => {
     }
   })
   t.regex(getCss(), /@media/)
+})
+
+test('creates @keyframe animations', t => {
+  cxsync({
+    color: 'yellow',
+    '@keyframes spin': {
+      from: {transform: 'rotate(0deg)'},
+      to: {transform: 'rotate(359deg)'}
+    }
+  })
+  t.is(keyframeSheet.rules()[1].cssText, '@keyframes spin {from {transform:rotate(0deg);} to {transform:rotate(359deg);}}')
 })
 
 test('keeps @media rules order', t => {
