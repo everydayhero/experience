@@ -1,6 +1,7 @@
 import reduce from 'lodash/reduce'
 import each from 'lodash/each'
 import find from 'lodash/find'
+import memoize from 'lodash/memoize'
 import startsWith from 'lodash/startsWith'
 import { isBrowser, isStyleProp, isObj } from './utils'
 import {
@@ -18,43 +19,43 @@ const VENDORS = {
   chrome: 'webkit',
   safari: 'Webkit',
   firefox: 'Moz',
+  fban: 'Webkit',
+  fbav: 'Webkit',
   msie: 'ms',
   node: ''
 }
 
 const jsPrefix = (() => {
   if (typeof navigator === 'undefined') return ''
-  const ua = navigator.userAgent.toLowerCase()
-  const match = /(opera|msie|firefox|chrome|safari|node)/.exec(ua)
+  const ua = navigator.userAgent || navigator.vendor || (isBrowser && window.opera)
+  const match = /(opera|msie|firefox|chrome|safari|fban|fbav|node)/.exec(ua.toLowerCase())
   if (!match) console.warn('CXSync: No vendor match found: This browser is not officially supported and vendor prefixes will be absent.')
   return match ? VENDORS[match[0]] : ''
 })()
 
 const cssPrefix = `-${jsPrefix.toLowerCase()}-`
 
-export const prefixProperty = (property, prefix = jsPrefix) => {
-  const cacheKey = property + prefix
-  if (cacheKey in cache) return cache[cacheKey]
+export const prefixProperty = memoize((property, prefix = jsPrefix) => {
   const prefixed = prefix + property.slice(0, 1).toUpperCase() + property.slice(1)
 
-  if (!prefix || property in supportedProperties) {
-    cache[cacheKey] = property
-  } else if (ALTERNATE_PROPS[property] in supportedProperties) {
-    cache[cacheKey] = ALTERNATE_PROPS[property]
-  } else if (find(PREFIXABLE_PROPS, (p) => startsWith(property, p)) && prefixed in supportedProperties) {
-    cache[cacheKey] = prefixed
-  } else {
-    cache[cacheKey] = property
+  if (property === 'justifyContent' && prefix === 'ms') {
+    property = 'msFlexPack'
   }
+  if (!prefix || property in supportedProperties) {
+    return property
+  } else if (ALTERNATE_PROPS[property] in supportedProperties) {
+    return ALTERNATE_PROPS[property]
+  } else if (find(PREFIXABLE_PROPS, (p) => startsWith(property, p)) && prefixed in supportedProperties) {
+    return prefixed
+  } else {
+    return property
+  }
+})
 
-  return cache[cacheKey]
-}
-
-export const prefixValue = (property, value) => {
+const valueCacheKey = (...args) => (JSON.stringify(args))
+export const prefixValue = memoize((property, value) => {
   if (typeof value !== 'string' || !isNaN(parseInt(value, 10))) return value
-  if (property === 'content' && value === '') value = '""'
-  const cacheKey = property + value
-  if (cacheKey in cache) return cache[cacheKey]
+  if (property === 'content' && !value.length) value = '""'
 
   const tryValue = (value) => {
     supportedProperties[property] = ''
@@ -72,17 +73,15 @@ export const prefixValue = (property, value) => {
   const alternate = find(ALTERNATE_VALUES[value], tryValue)
 
   if (tryValue(value)) {
-    cache[cacheKey] = value
+    return value
   } else if (find(PREFIXABLE_VALUES, (v) => startsWith(value, v)) && tryValue(prefixed)) {
-    cache[cacheKey] = prefixed
+    return prefixed
   } else if (alternate) {
-    cache[cacheKey] = alternate
+    return alternate
   } else {
-    cache[cacheKey] = value
+    return value
   }
-
-  return cache[cacheKey]
-}
+}, valueCacheKey)
 
 const prefixAllFlatReducer = (res, val, prop) => {
   if (isStyleProp(prop) && !isObj(val)) {

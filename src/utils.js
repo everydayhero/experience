@@ -1,5 +1,3 @@
-import addPx from 'add-px-to-style'
-
 const { floor, random } = Math
 
 export const exists = (v) => (v !== null && typeof v !== 'undefined')
@@ -13,7 +11,6 @@ export const isObj = (v) => typeof v === 'object'
 export const isArr = (v) => Array.isArray(v)
 export const isArrayOrNotObject = (v) => exists(v) && (isArr(v) || !isObj(v))
 export const isObjectAndNotArray = (v) => exists(v) && !isArr(v) && isObj(v)
-export const parseValue = (prop, val) => typeof val === 'number' ? addPx(prop, val) : val
 export const kebab = (key) => key.replace(/([A-Z]|^ms|^webkit)/g, g => '-' + g.toLowerCase())
 export const isStyleProp = (key) => !isNested(key)
 export const randomHex = () => floor(random() * 16777215).toString(16)

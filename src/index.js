@@ -1,8 +1,11 @@
 import reduce from 'lodash/reduce'
 import isFunction from 'lodash/isFunction'
+import memoize from 'lodash/memoize'
+import merge from 'lodash/merge'
+
 import {StyleSheet} from './sheet'
 import {unitlessProps, shorthands} from './props'
-import {isValue, isMediaQuery, isPseudoSelector, isArr} from './utils'
+import {kebab, isValue, isMediaQuery, isAnimation, isPseudoSelector, isArr} from './utils'
 import {prefixProperty, prefixValue} from './prefixer'
 
 const hash = (str, prefix = '_') => {
@@ -17,12 +20,14 @@ const hash = (str, prefix = '_') => {
 }
 
 export const sheet = new StyleSheet()
+export const mediaSheet = new StyleSheet()
 
 sheet.inject()
+mediaSheet.inject()
 
 export const getCss = () => {
   let css = ''
-  const rules = sheet.rules()
+  const rules = [...sheet.rules(), ...mediaSheet.rules()]
   for (let i = 0; i < rules.length; i++) {
     css += rules[i].cssText
   }
@@ -42,11 +47,12 @@ export const setOptions = (opts) => {
 export const reset = () => {
   cxsync.cache = {}
   sheet.flush()
+  mediaSheet.flush()
 }
 
-const cxsync = (style) => parse(style).join(' ')
+const cxsync = (...styles) => parse(merge({}, ...styles)).join(' ')
 
-const parse = (obj, media, children = '') => {
+const parse = memoize((obj, media, children = '') => {
   const classNames = []
   const appendStyle = (key, val) => classNames.push(createStyle(key, val, media, children))
   const appendClassName = (className) => classNames.push(className)
@@ -67,7 +73,7 @@ const parse = (obj, media, children = '') => {
       parse(value, media, children + key).forEach(appendClassName)
       continue
     }
-    if (isMediaQuery(key)) {
+    if (isMediaQuery(key) || isAnimation(key)) {
       parse(value, key, children).forEach(appendClassName)
       continue
     }
@@ -76,7 +82,7 @@ const parse = (obj, media, children = '') => {
   }
 
   return classNames
-}
+})
 
 const createStyle = (key, value, media, children = '') => {
   const prefix = (media || '') + children
@@ -85,14 +91,18 @@ const createStyle = (key, value, media, children = '') => {
 
   if (dupe) return dupe
 
-  const prop = prefixProperty(hyphenate(key))
+  const prop = kebab(prefixProperty(key))
   const val = prefixValue(key, addPx(key, value))
   const className = createClassName(prop, value, prefix)
   const selector = '.' + className + children
   const rule = `${selector}{${prop}:${val}}`
-  const css = media ? `${media}{${rule}}` : rule
 
-  sheet.insert(css)
+  if (media) {
+    mediaSheet.insert(`${media}{${rule}}`)
+  } else {
+    sheet.insert(rule)
+  }
+
   cxsync.cache[id] = className
 
   return className
@@ -125,21 +135,18 @@ const AT_REG = /@/g
 const DOT_REG = /\./g
 const EXCL_REG = /!/g
 
-export const clean = (str) => ('' + str)
+export const clean = memoize((str) => ('' + str)
   .replace(BLANK_REG, '')
   .replace(P_REG, 'P')
   .replace(SYMBOL_REG, '_')
   .replace(AT_REG, '_')
   .replace(DOT_REG, 'p')
   .replace(EXCL_REG, '_')
+)
 
 export const combine = (str = '') => (...args) => args
   .filter(a => a !== null)
   .join(str)
-
-export const hyphenate = (str) => ('' + str)
-  .replace(/[A-Z]|^ms/g, '-$&')
-  .toLowerCase()
 
 export const addPx = (prop, value) => {
   if (typeof value !== 'number') return value
