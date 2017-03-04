@@ -583,11 +583,9 @@ const isCustomAttribute = RegExp.prototype.test.bind(
   new RegExp(`^(data|aria)-[${ATTRIBUTE_NAME_CHAR}]*$`),
 )
 
-const hasOwnProperty = (name) => boolean = {}.hasOwnProperty
-
 export default (name) => (
-  hasOwnProperty.call(htmlProps, name) ||
-  hasOwnProperty.call(svgProps, name) ||
+  htmlProps.hasOwnProperty(name) ||
+  svgProps.hasOwnProperty(name) ||
   isCustomAttribute(name.toLowerCase()) ||
-  hasOwnProperty.call(reactProps, name)
+  reactProps.hasOwnProperty(name)
 )
