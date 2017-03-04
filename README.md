@@ -20,7 +20,7 @@ Improves on CXS in the following ways:
 ### "Styled" HoC for react components
 
 ```
-import styled from 'csync/styled'
+import styled from 'csync/dist/styled'
 ...
 const Button = styled(styles.button)('button')
 ```
@@ -28,7 +28,7 @@ const Button = styled(styles.button)('button')
 ### Utilities to assist in creating re-usable css traits
 
 ```
-import {colorGenerator, fluidType} from 'cxsync/trait-utils'
+import {colorGenerator, fluidType} from 'cxsync/dist/trait-utils'
 ```
 
 #### colorGenerator
