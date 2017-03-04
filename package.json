@@ -1,6 +1,6 @@
 {
   "name": "cxsync",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "A CSS-in-JS solution for CSS in functional UI components",
   "main": "dist/index.js",
   "scripts": {

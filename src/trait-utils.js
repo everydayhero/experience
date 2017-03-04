@@ -5,7 +5,7 @@ import xyz2rgb from 'pure-color/convert/xyz2rgb'
 import rgb2string from 'pure-color/convert/rgb2string'
 
 const lab2rgb = (lab) => xyz2rgb(lab2xyz(lab))
-const {pow, min} = Math
+const {pow} = Math
 
 // Colors, tints, and transparencies
 const defaultTints = {
@@ -47,30 +47,30 @@ export const colorGenerator = (colors, tints = defaultTints, opacities = default
 
 // Fluid typography
 const scaledType = (size, typeLevel, scale) => (
-  min(pow(scale, typeLevel), 1) * size
+  pow(scale, typeLevel) * size
 )
 const calc = (minSize, maxSize, minViewWidth, maxViewWidth, unit = 'px') => (
   `calc(${minSize}${unit} + (${maxSize - minSize}) * ((100vw - ${minViewWidth}${unit}) / (${maxViewWidth - minViewWidth})))`
 )
 export const fluidType = ({
-  minFontSize = 14,
-  maxFontSize = 20,
-  minLeading = 1.2,
+  minFontSize = 16,
+  maxFontSize = 22,
+  minLeading = 1.33,
   maxLeading = 1.62,
   minViewWidth = 320,
-  maxViewWidth = 1600,
-  minTypeScale = 1.1,
+  maxViewWidth = 1080,
+  minTypeScale = 1.15,
   maxTypeScale = 1.4,
   typeLevel = 0
 } = {}) => ({
-  fontSize: minFontSize,
+  fontSize: scaledType(minFontSize, typeLevel, minTypeScale),
   lineHeight: minLeading,
-  [`@media screen and (min-width: ${minViewWidth})`]: {
+  [`@media screen and (min-width: ${minViewWidth}px)`]: {
     fontSize: calc(scaledType(minFontSize, typeLevel, minTypeScale), scaledType(maxFontSize, typeLevel, maxTypeScale), minViewWidth, maxViewWidth),
-    lineHeight: calc(minLeading, maxLeading, minViewWidth, maxViewWidth, 'em')
+    lineHeight: calc(minLeading, maxLeading, minViewWidth / minFontSize, maxViewWidth / maxFontSize, 'em')
   },
-  [`@media screen and (min-width: ${maxViewWidth})`]: {
-    fontSize: maxFontSize,
+  [`@media screen and (min-width: ${maxViewWidth}px)`]: {
+    fontSize: scaledType(maxFontSize, typeLevel, maxTypeScale),
     lineHeight: maxLeading
   }
 })

@@ -207,17 +207,17 @@ test('className replaces !', t => {
 
 test('fluidType utility', t => {
   t.is(JSON.stringify(fluidType()), JSON.stringify({
-      fontSize: 14,
-      lineHeight: 1.2,
-      '@media screen and (min-width: 320)': {
-        fontSize: 'calc(14px + (6) * ((100vw - 320px) / (1280)))',
-        lineHeight: 'calc(1.2em + (0.42000000000000015) * ((100vw - 320em) / (1280)))'
-      },
-      '@media screen and (min-width: 1600)': {
-        fontSize: 20,
-        lineHeight: 1.62
-      }
-    }))
+    fontSize: 16,
+    lineHeight: 1.33,
+    '@media screen and (min-width: 320px)': {
+      fontSize: 'calc(16px + (6) * ((100vw - 320px) / (760)))',
+      lineHeight: 'calc(1.33em + (0.29000000000000004) * ((100vw - 20em) / (29.090909090909093)))'
+    },
+    '@media screen and (min-width: 1080px)': {
+      fontSize: 22,
+      lineHeight: 1.62
+    }
+  }))
 })
 
 test('colorGenerator utility', t => {
