@@ -36,7 +36,7 @@ const ColorSwatch = ({
   <Wrapper>
     <Swatch colorName={color} />
     <SwatchDetails>
-      <h3>{upperFirst(color)}</h3>
+      <h4>{upperFirst(color)}</h4>
       <Table>
         <tbody>
           {['hex', 'rgb', 'cmyk', 'rug'].map((code) => <Code key={code} label={code.toUpperCase()} code={methods[code](color)} />)}

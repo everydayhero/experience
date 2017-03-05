@@ -15,7 +15,9 @@ const Root = comp(({
   }
 }) => ({
   color: color.text.darker,
-  fontFamily: `"proxima-nova", ${font.family.ui}`
+  fontSize: 'calc(100% + 1.5 * (100vw - 600px) / 400)',
+  fontFamily: `"proxima-nova", ${font.family.ui}`,
+  fontWeight: font.weight.normal
 }))('html')
 
 const Document = ({
