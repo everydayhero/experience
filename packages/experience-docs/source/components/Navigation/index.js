@@ -1,113 +1,33 @@
-import {resolve} from 'path'
 import React from 'react'
-import {Link} from 'react-router'
-import Helmet from 'react-helmet'
 import {comp} from '@edh/stranger'
 
-import content from '../../content'
+import NavigationList from '../NavigationList'
+
+const StyledNavigation = comp(({
+  traits: {
+    color,
+    size,
+    font
+  }
+}) => ({
+  overflow: 'auto',
+  fontSize: font.scale(1),
+  minWidth: '14rem',
+  paddingTop: size(5),
+  paddingLeft: size(5),
+  paddingRight: size(5),
+  paddingBottom: size(5),
+  backgroundColor: color.bg.light,
+  WebKitOverflowScrolling: 'touch'
+}))('nav')
 
 const Navigation = ({
-  routes = content,
-  id = 'primary',
   activeRoute,
-  child,
-  hide
+  routes
 }) => (
-  <StyledNavigation id={`navigation-${id}`} child={child} hide={hide}>
-    {routes.map((navItem, index) => {
-      const active = activeRoute && navItem.path === resolve(activeRoute)
-      const link = (
-        <NavigationLink
-          key={`${id}-${index}`}
-          to={navItem.path}
-          active={active}
-          child={child}
-        >
-          {active && <Helmet
-            title={navItem.title}
-            titleTemplate='%s - Everydayhero Experience System'
-                     />}
-          {navItem.title}
-        </NavigationLink>
-      )
-      if (navItem.children) {
-        return <div key={`${id}-${index}`}>
-          {link}
-          <Navigation
-            routes={navItem.children}
-            id={navItem.title.toLowerCase().replace(' ', '')}
-            activeRoute={activeRoute}
-            hide={!activeRoute.includes(navItem.path)}
-            child
-          />
-        </div>
-      }
-      return link
-    })}
+  <StyledNavigation>
+    <NavigationList routes={routes} activeRoute={activeRoute} />
   </StyledNavigation>
 )
 
 export default Navigation
-
-const StyledNavigation = comp(({
-  props: {
-    child,
-    hide
-  },
-  traits: {
-    size
-  }
-}) => ({
-  marginRight: size(6),
-  marginBottom: !child && size(5),
-  display: hide && 'none'
-}))('nav', { removeProps: ['child', 'hide'] })
-
-const NavigationLink = ({
-  to,
-  active,
-  children,
-  child
-}) => (
-  <ActiveUnderline active={active}>
-    <StyledNavigationLink to={to} active={active} child={child}>
-      {children}
-    </StyledNavigationLink>
-  </ActiveUnderline>
-)
-
-const StyledNavigationLink = comp(({
-  props: {
-    active,
-    child
-  },
-  traits: {
-    size,
-    color,
-    font,
-    leading,
-    radius
-  }
-}) => ({
-  display: 'inline-block',
-  marginTop: size(2),
-  marginBottom: size(2),
-  marginLeft: child && size(4),
-  fontSize: font.scale(0),
-  lineHeight: leading.ui,
-  color: active ? color.text.darker : color.text.dark,
-  fontWeight: active && font.weight.bold,
-  borderBottom: `${size(1)} solid ${active ? color.accent.light : 'transparent'}`
-}))(Link, {removeProps: ['active', 'child'], cancelPassStyles: true})
-
-const ActiveUnderline = comp(({
-  props: {
-    active
-  },
-  traits: {
-    size
-  }
-}) => ({
-  display: 'block',
-  marginLeft: size(1)
-}))('span', {removeProps: ['active']})

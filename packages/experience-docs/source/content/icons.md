@@ -1,12 +1,10 @@
 ---
+title: Icons
+path: /icons
+status: red
 imports:
-  Status: '../components/Status/index.js'
   Icon: '../components/Icon/index.js'
 ---
-```render html
-<Status status='red' />
-```
-# Icons
 
 Icons guide and inform our users, clarifying meaning and establishing expectations. Icons are most effective when they are familiar, consistent, and recognizable. Good icons harmonize with typography and with the rest of the design language. They don’t mix metaphors, and they communicate only what’s needed, as speedily and simply as possible.
 

@@ -1,6 +1,12 @@
+import React from 'react'
 import {comp} from '@edh/stranger'
+import find from 'lodash/find'
+import trimEnd from 'lodash/trimEnd'
 
-const Content = comp(({
+import { flatContent } from '../../content'
+import Header from '../Header'
+
+const StyledContent = comp(({
   traits: {
     size,
     color,
@@ -18,9 +24,9 @@ const Content = comp(({
     display: 'none'
   },
   ' h1': {
-    lineHeight: leading.display,
     marginTop: size(7),
-    marginBottom: size(4),
+    marginBottom: size(6),
+    lineHeight: leading.display,
     fontSize: font.scale(5),
     fontWeight: font.weight.bold
   },
@@ -61,7 +67,7 @@ const Content = comp(({
   },
   ' ul ul': {
     paddingLeft: size(3),
-    [media.tablet]: {
+    [media.md]: {
       paddingLeft: size(4)
     }
   },
@@ -71,13 +77,13 @@ const Content = comp(({
   ' ol': {
     paddingLeft: size(4),
     marginBottom: '1.125em',
-    [media.tablet]: {
+    [media.md]: {
       paddingLeft: 0
     }
   },
   ' ol ol': {
     paddingLeft: size(3),
-    [media.tablet]: {
+    [media.md]: {
       paddingLeft: size(4)
     }
   },
@@ -103,5 +109,27 @@ const Content = comp(({
     color: color.silver
   }
 }))('div')
+
+const Content = ({
+  children,
+  activeRoute,
+  ...props
+}) => {
+  const currentPage = find(flatContent, (route) =>
+    route.attributes &&
+    trimEnd(route.attributes.path, '/') === trimEnd(activeRoute, '/'))
+  const status = currentPage && currentPage.attributes
+    ? currentPage.attributes.status
+    : 'red'
+  const title = currentPage && currentPage.attributes
+    ? currentPage.attributes.title : 'Missing Title'
+  return (
+    <StyledContent>
+      <Header status={status} />
+      <h1>{title}</h1>
+      {children}
+    </StyledContent>
+  )
+}
 
 export default Content

@@ -1,3 +1,5 @@
-# Input
-
-Test content
+---
+title: Input
+path: /components/input
+status: red
+---

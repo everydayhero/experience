@@ -1,9 +1,10 @@
 ---
+title: Experience System
+navTitle: Overview
+path: /
 imports:
   Lead: '../components/Lead/index.js'
 ---
-
-# Experience System
 
 
 ```render html

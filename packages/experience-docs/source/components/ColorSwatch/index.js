@@ -75,7 +75,7 @@ const Swatch = comp(({
   width: size(6),
   height: size(6),
   backgroundColor: color[colorName],
-  [media.tablet]: {
+  [media.md]: {
     width: size(7),
     height: size(7)
   }

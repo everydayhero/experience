@@ -1,8 +1,5 @@
 ---
-imports:
-  Status: '../../components/Status/index.js'
+title: Components
+path: /components
+status: red
 ---
-```render html
-<Status status='amber' />
-```
-# Components

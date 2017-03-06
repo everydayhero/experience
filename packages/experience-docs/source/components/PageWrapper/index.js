@@ -7,11 +7,15 @@ const PageWrapper = comp(({
     media
   }
 }) => ({
-  margin: '0 auto',
-  padding: size(4),
-  [media.tablet]: {
+  [media.md]: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+    overflow: 'hidden',
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     flexWrap: 'wrap',
     flexDirection: 'row-reverse'
   }

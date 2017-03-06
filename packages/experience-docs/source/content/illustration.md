@@ -1,18 +1,14 @@
 ---
+title: Illustration
+path: /illustration
+status: amber
 imports:
-  Status: '../components/Status/index.js'
   IconList: '../components/IconList/index.js'
   Image: '../components/Image/index.js'
   rocket: './images/rocket.svg'
   invasion: './images/invasion.svg'
   illustrationlanguage: './images/illustrationlanguage.svg'
 ---
-
-```render html
-<Status status='amber' />
-```
-
-# Illustration
 
 ```render html
 <Image src={invasion} width='narrow' align='center' />

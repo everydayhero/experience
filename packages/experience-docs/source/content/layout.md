@@ -1,11 +1,8 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Layout
+path: /layout
+status: red
 ---
-```render html
-<Status status='red' />
-```
-# Layout
 
 Sizing
 

@@ -7,8 +7,12 @@ const ContentWrapper = comp(({
   }
 }) => ({
   flex: 1,
-  maxWidth: measure.wide,
-  marginBottom: size(5)
+  overflow: 'auto',
+  WebKitOverflowScrolling: 'touch',
+  paddingTop: size(5),
+  paddingLeft: size(5),
+  paddingRight: size(5),
+  paddingBottom: size(5)
 }))('div')
 
 export default ContentWrapper

@@ -1,8 +1,5 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Motion
+path: /motion
+status: red
 ---
-```render html
-<Status status='red' />
-```
-# Motion

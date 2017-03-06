@@ -1,15 +1,12 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Typography
+path: /typography
+status: amber
 ---
-```render html
-<Status status='amber' />
-```
-# Typography
 
 ## Typeface
 
-Proxima Nova has a human, organic character that speaks to our principle of being familiar. The extra-bold weight that we use for emphasis has adds an empowering 
+Proxima Nova has a human, organic character that speaks to our principle of being familiar. The extra-bold weight that we use for emphasis has adds an empowering
 
 ### Benefits of a single typeface:
 
@@ -37,7 +34,7 @@ To stay consistent we use a 1.25 type scale, based on a 12pt/16px font size. Lim
 - scale(6) | 3.8125rem | 61px
 
 ### Weight
-We only use two weights, medium (500) and extra bold (800). Headings, buttons, links, active navigation, input labels, etc, should usually be bold. Prose and input text should always be medium. 
+We only use two weights, medium (500) and extra bold (800). Headings, buttons, links, active navigation, input labels, etc, should usually be bold. Prose and input text should always be medium.
 
 ### Leading
 We use three different, relative leading options.
@@ -53,7 +50,7 @@ Normal tracking should be used for the majority of type. But a tight option can 
 - Normal: 0
 
 ### Measure
-Line length should ideally be around 60 characters and should not exceed 80 characters. 
+Line length should ideally be around 60 characters and should not exceed 80 characters.
 
 ### Paragraph Spacing
-Split paragraphs with a relative bottom margin of `0.75` . e.g. `16px` has a bottom margin of `12px` . In code just use `.75em` 
+Split paragraphs with a relative bottom margin of `0.75` . e.g. `16px` has a bottom margin of `12px` . In code just use `.75em`

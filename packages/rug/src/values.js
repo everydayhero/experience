@@ -260,7 +260,8 @@ export const border = {
 }
 
 export const media = {
-  tablet: '@media screen and (min-width: 36em)',
-  laptop: '@media screen and (min-width: 50em)',
-  desktop: '@media screen and (min-width: 64em)'
+  sm: '@media screen and (max-width: 40em)',
+  md: '@media screen and (min-width: 40em)',
+  lg: '@media screen and (min-width: 55em)',
+  xl: '@media screen and (min-width: 64em)'
 }
