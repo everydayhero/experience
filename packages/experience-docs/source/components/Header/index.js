@@ -23,7 +23,11 @@ const StyledHeader = comp(({
   display: 'flex',
   flexShrink: '1',
   alignItems: 'center',
-  justifyContent: 'space-between'
+  justifyContent: 'space-between',
+  '> * + *': {
+    marginLeft: size(4),
+    transform: 'translateY(.15rem)'
+  }
 }))('header')
 
 const HeaderLogo = comp(({
@@ -33,6 +37,6 @@ const HeaderLogo = comp(({
 }) => ({
   display: 'block',
   width: '100%',
-  minWidth: '10rem',
+  minWidth: '9rem',
   maxWidth: '12rem'
 }))(Logo, {cancelPassStyles: true})

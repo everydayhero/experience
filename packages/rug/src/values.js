@@ -260,7 +260,7 @@ export const border = {
 }
 
 export const media = {
-  sm: '@media screen and (max-width: 40em)',
+  sm: '@media screen and (max-width: 39.9375em)',
   md: '@media screen and (min-width: 40em)',
   lg: '@media screen and (min-width: 55em)',
   xl: '@media screen and (min-width: 64em)'

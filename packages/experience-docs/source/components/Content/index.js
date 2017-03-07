@@ -24,11 +24,14 @@ const StyledContent = comp(({
     display: 'none'
   },
   ' h1': {
-    marginTop: size(7),
-    marginBottom: size(6),
+    marginTop: size(6),
+    marginBottom: size(5),
     lineHeight: leading.display,
     fontSize: font.scale(5),
-    fontWeight: font.weight.bold
+    fontWeight: font.weight.bold,
+    [media.md]: {
+      marginTop: size(7)
+    }
   },
   ' h2': {
     lineHeight: leading.display,

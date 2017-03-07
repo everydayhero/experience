@@ -7,18 +7,19 @@ const StyledNavigation = comp(({
   traits: {
     color,
     size,
-    font
+    font,
+    media
   }
 }) => ({
+  [media.sm]: {
+    fontSize: font.scale(1)
+  },
   overflow: 'auto',
-  fontSize: font.scale(1),
   minWidth: '14rem',
   paddingTop: size(5),
-  paddingLeft: size(5),
-  paddingRight: size(5),
   paddingBottom: size(5),
   backgroundColor: color.bg.light,
-  WebKitOverflowScrolling: 'touch'
+  WebkitOverflowScrolling: 'touch'
 }))('nav')
 
 const Navigation = ({

@@ -35,6 +35,9 @@ const Text = comp(({
     scale
   }
 }) => ({
+  flex: 1,
+  fontSize: scale(-1),
+  whiteSpace: 'nowrap',
   color: color.charcoal,
   fontWeight: font.weight.bold
 }))('div')
