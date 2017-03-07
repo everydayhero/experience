@@ -1,11 +1,13 @@
 exports[`comp should allow removing props from output components to avoid warnings 1`] = `
 <div
-  className="cxsync-1950064219" />
+  className="_1jzdmtb"
+  href="https://everydayhero.com" />
 `;
 
 exports[`comp should remove props even when they come from a native component 1`] = `
 Object {
-  "className": "cxsync-3634499107",
+  "black": "white",
+  "className": "_11go4zx",
   "styles": Object {
     "backgroundColor": "white",
   },
@@ -14,5 +16,5 @@ Object {
 
 exports[`comp should remove props even when they come from a native component 2`] = `
 <div
-  className="cxsync-146553031" />
+  className="_bm5k1h" />
 `;

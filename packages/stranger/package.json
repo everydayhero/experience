@@ -4,7 +4,7 @@
   "description": "A wrapper around existing CSS in JS solutions with as little complexity as possible",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel --out-dir dist --ignore src/__tests__ src",
+    "build": "babel --out-dir dist --ignore __tests__ src",
     "prebuild": "rimraf dist",
     "prepublish": "npm run build",
     "size": "npm run build && bundle-size ./",
