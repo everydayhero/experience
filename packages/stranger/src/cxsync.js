@@ -6,7 +6,7 @@ const stranger = cxsync
 export const addRule = stranger
 export const renderCssToString = () => cxsync.css
 export const ReactStyles = () => (
-  <style dangerouslySetInnerHTML={{__html: cxsync.css}} />
+  <style dangerouslySetInnerHTML={{ __html: renderCssToString() }} />
 )
 export const resetCache = () => cxsync.reset
 
