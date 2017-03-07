@@ -1,11 +1,8 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Principles
+path: /principles
+status: amber
 ---
-```render html
-<Status status='amber' />
-```
-# Principles
 
 ## Familiar
 

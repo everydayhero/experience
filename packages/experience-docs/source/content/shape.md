@@ -1,8 +1,5 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Shape
+path: /shape
+status: red
 ---
-```render html
-<Status status='red' />
-```
-# Shape

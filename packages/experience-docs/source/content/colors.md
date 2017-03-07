@@ -1,16 +1,14 @@
 ---
+title: Colors
+path: /colors
+status: amber
 imports:
-  Status: '../components/Status/index.js'
   ColorSwatch: '../components/ColorSwatch/index.js'
   ColorPalette: '../components/ColorPalette/index.js'
   ColorContrast: '../components/ColorContrast/index.js'
   Image: '../components/Image/index.js'
   colorRelationshipSvg: './images/colours.svg'
 ---
-```render html
-<Status status='amber' />
-```
-# Colors
 
 Everydayhero colors are categorised into Primary, Secondary, and Tertiary brand colors. These represent the only colors that should be used when developing applications, marketing, or communications for Everydayhero. These colors, especially green and light green, serve as core recall elements to help consistently reinforce our brand.
 
@@ -18,7 +16,7 @@ Everydayhero colors are categorised into Primary, Secondary, and Tertiary brand 
 
 ### Primary colors
 
-These colors should be the dominant colors when communicating the context of Everydayhero as a brand. Green is our core brand color, and should only be used to highlight the core message or intent, or draw attention to the impact people are making. 
+These colors should be the dominant colors when communicating the context of Everydayhero as a brand. Green is our core brand color, and should only be used to highlight the core message or intent, or draw attention to the impact people are making.
 
 ```render html
 <ColorSwatch color='green' />
@@ -29,7 +27,7 @@ These colors should be the dominant colors when communicating the context of Eve
 
 ### Secondary colors
 
-These colors should be used to support, emphasise, and frame design elements. They are most often used in UI and designs which support illustrations, and as accents to add life and depth. 
+These colors should be used to support, emphasise, and frame design elements. They are most often used in UI and designs which support illustrations, and as accents to add life and depth.
 
 ```render html
 <ColorSwatch color='lightgreen' />
@@ -40,7 +38,7 @@ These colors should be used to support, emphasise, and frame design elements. Th
 
 ### Tertiary colors
 
-These colors are used sparingly, to provide context for critical information where the cultural meaning of color is crucial, and in illustrations and iconography. 
+These colors are used sparingly, to provide context for critical information where the cultural meaning of color is crucial, and in illustrations and iconography.
 
 ```render html
 <ColorSwatch color='cyan' />
@@ -104,9 +102,9 @@ Here is a visual guide on how to prioritise color use.
 ```
 
 ### Accessibility
-Contrast is the primary concern when using the Everydayhero colors. Important information or elements must have sufficiently high contrast within their context, while non-critical framing or design motifs can show lower contrast. 
+Contrast is the primary concern when using the Everydayhero colors. Important information or elements must have sufficiently high contrast within their context, while non-critical framing or design motifs can show lower contrast.
 
-The colors have been selected to have sufficient contrast for differentiation with all forms of color-blindness, however text must always be highly legible on all displays. Text must always be either charcoal, grey, blue, light blue, or white, but the following rules apply when displayed on other colors: 
+The colors have been selected to have sufficient contrast for differentiation with all forms of color-blindness, however text must always be highly legible on all displays. Text must always be either charcoal, grey, blue, light blue, or white, but the following rules apply when displayed on other colors:
 
 
 ```render html

@@ -1,88 +1,74 @@
-import Home from './home.md'
-import Principles from './principles.md'
-import Logo from './logo.md'
-import Colors from './colors.md'
-import Typography from './typography.md'
-import Icons from './icons.md'
-import Illustration from './illustration.md'
-import Photography from './photography.md'
-import Motion from './motion.md'
-import Voice from './voice.md'
-import Layout from './layout.md'
-import Shape from './shape.md'
-import ComponentsSummary from './components/index.md'
-import Input from './components/input.md'
+import Home, { attributes as homeAttr } from './home.md'
+import Principles, { attributes as principlesAttr } from './principles.md'
+import Logo, { attributes as logoAttr } from './logo.md'
+import Colors, { attributes as colorsAttr } from './colors.md'
+import Typography, { attributes as typographyAttr } from './typography.md'
+import Icons, { attributes as iconsAttr } from './icons.md'
+import Illustration, { attributes as illustrationAttr } from './illustration.md'
+import Photography, { attributes as photographyAttr } from './photography.md'
+import Motion, { attributes as motionAttr } from './motion.md'
+import Voice, { attributes as voiceAttr } from './voice.md'
+import Layout, { attributes as layoutAttr } from './layout.md'
+import Shape, { attributes as shapeAttr } from './shape.md'
+import ComponentsSummary, { attributes as componentsSummaryAttr } from './components/index.md'
+import Input, { attributes as inputAttr } from './components/input.md'
 
 const content = [
   {
-    path: '/',
-    title: 'Overview',
-    component: Home
+    component: Home,
+    attributes: homeAttr
   },
   {
-    path: '/principles',
-    title: 'Principles',
-    component: Principles
+    component: Principles,
+    attributes: principlesAttr
   },
   {
-    path: '/logo',
-    title: 'Logo',
-    component: Logo
+    component: Logo,
+    attributes: logoAttr
   },
   {
-    path: '/colors',
-    title: 'Colors',
-    component: Colors
+    component: Colors,
+    attributes: colorsAttr
   },
   {
-    path: '/typography',
-    title: 'Typography',
-    component: Typography
+    component: Typography,
+    attributes: typographyAttr
   },
   {
-    path: '/illustration',
-    title: 'Illustration',
-    component: Illustration
+    component: Illustration,
+    attributes: iconsAttr
   },
   {
-    path: '/icons',
-    title: 'Icons',
-    component: Icons
+    component: Icons,
+    attributes: illustrationAttr
   },
   {
-    path: '/photography',
-    title: 'Photography',
-    component: Photography
+    component: Photography,
+    attributes: photographyAttr
   },
   {
-    path: '/motion',
-    title: 'Motion',
-    component: Motion
+    component: Motion,
+    attributes: motionAttr
   },
   {
-    path: '/voice',
-    title: 'Voice & Tone',
-    component: Voice
+    component: Voice,
+    attributes: voiceAttr
   },
   {
-    path: '/layout',
-    title: 'Layout',
-    component: Layout
+    component: Layout,
+    attributes: layoutAttr
   },
   {
-    path: '/shape',
-    title: 'Shape',
-    component: Shape
+    component: Shape,
+    attributes: shapeAttr
   },
   {
-    path: '/components',
-    title: 'Components',
     component: ComponentsSummary,
+    attributes: componentsSummaryAttr,
     children: [
       {
-        path: '/components/input',
-        title: 'Input',
-        component: Input
+        component: Input,
+        attributes: inputAttr
       }
     ]
   }

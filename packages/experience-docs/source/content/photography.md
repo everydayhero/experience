@@ -1,11 +1,8 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Photography
+path: /photography
+status: red
 ---
-```render html
-<Status status='red' />
-```
-# Photography
 
 No colours perceptually darker than our charcoal (use instagram-like filters to constrain the levels and brighten the shadows). 
 Consider: gradient mapping in monochromatic tones of a single brand/themed color (Luke’s Meetup example)

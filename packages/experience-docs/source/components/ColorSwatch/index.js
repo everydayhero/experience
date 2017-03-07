@@ -36,7 +36,7 @@ const ColorSwatch = ({
   <Wrapper>
     <Swatch colorName={color} />
     <SwatchDetails>
-      <h3>{upperFirst(color)}</h3>
+      <h4>{upperFirst(color)}</h4>
       <Table>
         <tbody>
           {['hex', 'rgb', 'cmyk', 'rug'].map((code) => <Code key={code} label={code.toUpperCase()} code={methods[code](color)} />)}
@@ -75,7 +75,7 @@ const Swatch = comp(({
   width: size(6),
   height: size(6),
   backgroundColor: color[colorName],
-  [media.tablet]: {
+  [media.md]: {
     width: size(7),
     height: size(7)
   }

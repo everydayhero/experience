@@ -1,11 +1,7 @@
 import React, {PropTypes} from 'react'
 import {comp} from '@edh/stranger'
 
-const statusColors = {
-  green: 'lightgreen',
-  amber: 'orange',
-  red: 'red'
-}
+import Dot from '../Dot'
 
 const statusText = {
   green: 'Stable',
@@ -18,17 +14,18 @@ const Status = ({
 }) => (
   <Wrapper>
     <Text>{statusText[status]}</Text>
-    <ColorPill status={status} />
+    <Dot status={status} />
   </Wrapper>
 )
 
 const Wrapper = comp(({
   traits: {size}
 }) => ({
-  float: 'right',
-  marginTop: size(4),
   display: 'flex',
-  alignItems: 'center'
+  alignItems: 'center',
+  '> * + *': {
+    marginLeft: size(3)
+  }
 }))('div')
 
 const Text = comp(({
@@ -38,25 +35,12 @@ const Text = comp(({
     scale
   }
 }) => ({
+  flex: 1,
+  fontSize: scale(-1),
+  whiteSpace: 'nowrap',
   color: color.charcoal,
-  fontWeight: font.weight.bold,
-  fontSize: scale(-1)
+  fontWeight: font.weight.bold
 }))('div')
-
-const ColorPill = comp(({
-  props: {status = 'red'},
-  traits: {
-    color,
-    size,
-    radius
-  }
-}) => ({
-  marginLeft: size(3),
-  backgroundColor: color[statusColors[status]],
-  width: size(5),
-  height: size(4),
-  borderRadius: radius(5)
-}))('div', {removeProps: ['status']})
 
 Status.propTypes = {
   status: PropTypes.oneOf(['green', 'amber', 'red'])

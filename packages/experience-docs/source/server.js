@@ -13,7 +13,7 @@ export default ({ assets }) => {
     assets
   })
 
-  app.staticRoutes = flatContent.map((route) => route.path)
+  app.staticRoutes = flatContent.map((route) => route.attributes.path)
 
   return app
 }

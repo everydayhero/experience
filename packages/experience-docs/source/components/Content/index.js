@@ -1,6 +1,12 @@
+import React from 'react'
 import {comp} from '@edh/stranger'
+import find from 'lodash/find'
+import trimEnd from 'lodash/trimEnd'
 
-const Content = comp(({
+import { flatContent } from '../../content'
+import Header from '../Header'
+
+const StyledContent = comp(({
   traits: {
     size,
     color,
@@ -14,61 +20,57 @@ const Content = comp(({
   maxWidth: measure.wide,
   minWidth: measure.minimum,
   marginBottom: size(5),
-  ' pre': {
+  ' .source': {
     display: 'none'
   },
   ' h1': {
+    marginTop: size(6),
+    marginBottom: size(5),
     lineHeight: leading.display,
-    marginBottom: size(4),
-    fontSize: font.scale(3),
+    fontSize: font.scale(5),
     fontWeight: font.weight.bold,
-    [media.tablet]: {
-      fontSize: font.scale(4)
+    [media.md]: {
+      marginTop: size(7)
     }
   },
   ' h2': {
     lineHeight: leading.display,
-    margin: `${size(4)} 0 ${size(3)} 0`,
-    fontSize: font.scale(2),
-    fontWeight: font.weight.bold,
-    [media.tablet]: {
-      fontSize: font.scale(2)
-    }
+    marginTop: size(6),
+    marginBottom: size(3),
+    fontSize: font.scale(4),
+    fontWeight: font.weight.bold
   },
   ' h3': {
     lineHeight: leading.display,
-    margin: `${size(4)} 0 ${size(3)} 0`,
-    fontSize: font.scale(1),
-    fontWeight: font.weight.bold,
-    [media.tablet]: {
-      fontSize: font.scale(1)
-    }
+    marginTop: size(5),
+    marginBottom: size(3),
+    fontSize: font.scale(2),
+    fontWeight: font.weight.bold
   },
   ' h4': {
     lineHeight: leading.display,
-    margin: `${size(3)} 0 ${size(2)} 0`,
-    fontSize: font.scale(0),
-    fontWeight: font.weight.bold,
-    [media.tablet]: {
-      fontSize: font.scale(0)
-    }
+    marginTop: size(4),
+    marginBottom: size(2),
+    fontSize: font.scale(1),
+    fontWeight: font.weight.bold
   },
   ' p': {
     lineHeight: leading.prose,
-    marginBottom: size(3)
+    marginBottom: '1.125em'
+  },
+  ' :last-child': {
+    marginBottom: 0
   },
   ' li': {
     lineHeight: leading.prose
   },
   ' ul': {
     paddingLeft: size(4),
-    [media.tablet]: {
-      paddingLeft: 0
-    }
+    marginBottom: '1.125em'
   },
   ' ul ul': {
     paddingLeft: size(3),
-    [media.tablet]: {
+    [media.md]: {
       paddingLeft: size(4)
     }
   },
@@ -77,13 +79,14 @@ const Content = comp(({
   },
   ' ol': {
     paddingLeft: size(4),
-    [media.tablet]: {
+    marginBottom: '1.125em',
+    [media.md]: {
       paddingLeft: 0
     }
   },
   ' ol ol': {
     paddingLeft: size(3),
-    [media.tablet]: {
+    [media.md]: {
       paddingLeft: size(4)
     }
   },
@@ -101,7 +104,35 @@ const Content = comp(({
   ' blockquote': {
     borderLeft: `${size(2)} solid ${color.border.light}`,
     paddingLeft: size(4)
+  },
+  ' hr': {
+    borderWidth: size(1),
+    marginBottom: size(6),
+    marginTop: size(6),
+    color: color.silver
   }
 }))('div')
+
+const Content = ({
+  children,
+  activeRoute,
+  ...props
+}) => {
+  const currentPage = find(flatContent, (route) =>
+    route.attributes &&
+    trimEnd(route.attributes.path, '/') === trimEnd(activeRoute, '/'))
+  const status = currentPage && currentPage.attributes
+    ? currentPage.attributes.status
+    : 'red'
+  const title = currentPage && currentPage.attributes
+    ? currentPage.attributes.title : 'Missing Title'
+  return (
+    <StyledContent>
+      <Header status={status} />
+      <h1>{title}</h1>
+      {children}
+    </StyledContent>
+  )
+}
 
 export default Content

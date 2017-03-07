@@ -1,11 +1,8 @@
 ---
-imports:
-  Status: '../components/Status/index.js'
+title: Voice & Tone
+path: /voice-tone
+status: red
 ---
-```render html
-<Status status='red' />
-```
-# Voice
 
 **Capture**: calls to action, input labels, and such should be written in first person, as though the user were speaking a command to a butler (or siri). Examples: “Give Claire $50”, “I will donate $50”, “My email address is:”, “Download my receipt”, “I want the charity to contact me to support my fundraising journey”, etc.
 
