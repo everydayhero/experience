@@ -58,9 +58,6 @@ const StyledContent = comp(({
     lineHeight: leading.prose,
     marginBottom: '1.125em'
   },
-  ' :last-child': {
-    marginBottom: 0
-  },
   ' li': {
     lineHeight: leading.prose
   },

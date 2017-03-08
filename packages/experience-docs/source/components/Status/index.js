@@ -23,7 +23,7 @@ const Wrapper = comp(({
 }) => ({
   display: 'flex',
   alignItems: 'center',
-  '> * + *': {
+  ' > *:last-child': {
     marginLeft: size(3)
   }
 }))('div')

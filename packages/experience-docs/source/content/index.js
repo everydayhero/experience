@@ -36,11 +36,11 @@ const content = [
   },
   {
     component: Illustration,
-    attributes: iconsAttr
+    attributes: illustrationAttr
   },
   {
     component: Icons,
-    attributes: illustrationAttr
+    attributes: iconsAttr
   },
   {
     component: Photography,

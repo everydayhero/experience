@@ -1,6 +1,7 @@
 ---
 title: Experience System
 navTitle: Overview
+pageTitle: Overview
 path: /
 imports:
   Lead: '../components/Lead/index.js'
