@@ -1,10 +1,5 @@
 import React from 'react'
 import {comp} from '@edh/stranger'
-import find from 'lodash/find'
-import trimEnd from 'lodash/trimEnd'
-
-import { flatContent } from '../../content'
-import Header from '../Header'
 
 const StyledContent = comp(({
   traits: {
@@ -112,20 +107,10 @@ const StyledContent = comp(({
 
 const Content = ({
   children,
-  activeRoute,
-  ...props
+  title
 }) => {
-  const currentPage = find(flatContent, (route) =>
-    route.attributes &&
-    trimEnd(route.attributes.path, '/') === trimEnd(activeRoute, '/'))
-  const status = currentPage && currentPage.attributes
-    ? currentPage.attributes.status
-    : 'red'
-  const title = currentPage && currentPage.attributes
-    ? currentPage.attributes.title : 'Missing Title'
   return (
     <StyledContent>
-      <Header status={status} />
       <h1>{title}</h1>
       {children}
     </StyledContent>

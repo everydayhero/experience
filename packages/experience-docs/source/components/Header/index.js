@@ -1,5 +1,6 @@
 import React from 'react'
 import {comp} from '@edh/stranger'
+import { Link } from 'react-router'
 
 import Logo from '../Logo'
 import Status from '../Status'
@@ -8,7 +9,7 @@ const Header = ({
   status
 }) => (
   <StyledHeader>
-    <HeaderLogo type='standard' />
+    <LogoLink to='/'><Logo type='standard' /></LogoLink>
     {status && <Status status={status} />}
   </StyledHeader>
 )
@@ -30,13 +31,9 @@ const StyledHeader = comp(({
   }
 }))('header')
 
-const HeaderLogo = comp(({
-  traits: {
-    size
-  }
-}) => ({
+const LogoLink = comp({
   display: 'block',
   width: '100%',
   minWidth: '9rem',
   maxWidth: '12rem'
-}))(Logo, {cancelPassStyles: true})
+})(Link)
