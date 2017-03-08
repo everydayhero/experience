@@ -4,7 +4,7 @@
   "description": "A wrapper around existing CSS in JS solutions with as little complexity as possible",
   "main": "dist/index.js",
   "scripts": {
-    "build": "babel --out-dir dist --ignore src/__tests__ src",
+    "build": "babel --out-dir dist --ignore __tests__ src",
     "prebuild": "rimraf dist",
     "prepublish": "npm run build",
     "size": "npm run build && bundle-size ./",
@@ -34,11 +34,10 @@
     "react": "^15.4.2"
   },
   "dependencies": {
-    "cxs": "3.0.0",
-    "cxsync": "^1.0.9",
+    "cxs": "^3.0.0",
+    "cxsync": "^2.2.0",
     "inline-style-prefixer": "^2.0.5",
     "lodash": "^4.17.4",
-    "recompose": "^0.21.2",
     "@edh/rug": "1.0.0-1"
   },
   "standard": {

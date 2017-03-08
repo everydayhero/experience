@@ -6,10 +6,10 @@ import comp from '../component.js'
 describe('comp', () => {
   it('should allow removing props from output components to avoid warnings', () => {
     const StyledComp = comp(({ props }) => ({
-      color: props.color || 'red'
-    }))('div', { removeProps: ['color'] })
+      color: props.makeit || 'red'
+    }))('div')
     const component = renderer.create(
-      <StyledComp color='green' />
+      <StyledComp makeit='green' href='https://everydayhero.com' />
     )
     const tree = component.toJSON()
     expect(tree).toMatchSnapshot()
@@ -17,12 +17,12 @@ describe('comp', () => {
 
   it('should remove props even when they come from a native component', () => {
     const StyledComp = comp(({ props }) => ({
-      color: props.color || 'red',
+      color: props.makeit || 'red',
       backgroundColor: 'blue'
     }))('div')
     const StyledCompInehrit = comp(({ props }) => ({
       backgroundColor: props.black || 'black'
-    }))(StyledComp, { removeProps: ['black'] })
+    }))(StyledComp)
     const componentObj = shallow(
       <StyledCompInehrit black='white' />
     )

@@ -1,13 +1,37 @@
-import React, { PropTypes } from 'react'
-import withContext from 'recompose/withContext'
+import { Component, PropTypes } from 'react'
+import merge from 'lodash/merge'
+import stranger from '../'
 
-const BaseProvider = ({ children }) => (
-  <div>{children}</div>
-)
+class TraitsProvider extends Component {
+  getChildContext () {
+    return {
+      traits: merge({}, stranger.defaultTraits, this.props.traits)
+    }
+  }
 
-const TraitsProvider = withContext(
-  { traits: PropTypes.object },
-  ({ traits }) => ({ traits })
-)(BaseProvider)
+  render () {
+    return this.props.children
+  }
+}
+
+TraitsProvider.propTypes = {
+  /**
+  * The children who will be provided these traits
+  */
+  children: PropTypes.any.isRequired,
+
+  /**
+  * The traits to be added - colors, fonts, treatments, radiuses, shadows etc.
+  */
+  traits: PropTypes.object
+}
+
+TraitsProvider.defaultProps = {
+  traits: {}
+}
+
+TraitsProvider.childContextTypes = {
+  traits: PropTypes.object
+}
 
 export default TraitsProvider
