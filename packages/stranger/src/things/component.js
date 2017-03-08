@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
 import pickBy from 'lodash/pickBy'
 import merge from 'lodash/merge'
-import rug from '@edh/rug'
-import { addRule } from '../'
+import stranger, { addRule } from '../'
 import validAttr from './reactValidHtmlAttr.js'
 
 const comp = (styles = {}) => (Component = 'div') => {
@@ -12,7 +11,7 @@ const comp = (styles = {}) => (Component = 'div') => {
       ...rest
     } = props
     const stylesObj = typeof styles === 'function'
-      ? styles({ props: rest, traits: traits || rug })
+      ? styles({ props: rest, traits: traits || stranger.defaultTraits })
       : styles
     const mergedStyles = existingStyles
       ? merge({}, stylesObj, existingStyles)

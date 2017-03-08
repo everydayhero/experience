@@ -1,5 +1,6 @@
 import cxsync from 'cxsync'
 import React from 'react'
+import rug from '@edh/rug'
 
 const stranger = cxsync
 
@@ -14,5 +15,6 @@ stranger.addRule = addRule
 stranger.renderCssToString = renderCssToString
 stranger.ReactStyles = ReactStyles
 stranger.resetCache = resetCache
+stranger.defaultTraits = rug
 
 export default stranger

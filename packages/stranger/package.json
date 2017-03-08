@@ -38,7 +38,6 @@
     "cxsync": "^1.0.9",
     "inline-style-prefixer": "^2.0.5",
     "lodash": "^4.17.4",
-    "recompose": "^0.21.2",
     "@edh/rug": "1.0.0-1"
   },
   "standard": {
