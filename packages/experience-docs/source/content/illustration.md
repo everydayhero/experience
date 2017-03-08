@@ -11,7 +11,7 @@ imports:
 ---
 
 ```render html
-<Image src={invasion} width='narrow' align='center' />
+<Image src={invasion} width='normal' align='left' />
 ```
 
 > Illustration is a communication tool with three super powers. It can add clarity to a complex idea. It can link concepts to the words we’ve assigned them within our respective products (aka on-boarding). And, it can capture the values and traits of a brand in a single voice, shift the tone depending on the situation, and speak directly to the user.  

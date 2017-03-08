@@ -9,11 +9,12 @@ const ContentWrapper = comp(({
 }) => ({
   flex: 1,
   overflow: 'auto',
-  WebkitOverflowScrolling: 'touch',
+  height: '100%',
   paddingTop: size(5),
   paddingLeft: size(5),
   paddingRight: size(5),
   paddingBottom: size(5),
+  WebkitOverflowScrolling: 'touch',
   [media.xl]: {
     paddingLeft: size(6),
     paddingRight: size(6)

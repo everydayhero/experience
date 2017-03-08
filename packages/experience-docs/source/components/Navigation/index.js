@@ -16,6 +16,7 @@ const StyledNavigation = comp(({
   },
   overflow: 'auto',
   minWidth: '14rem',
+  height: '100%',
   paddingTop: size(5),
   paddingBottom: size(5),
   backgroundColor: color.bg.light,

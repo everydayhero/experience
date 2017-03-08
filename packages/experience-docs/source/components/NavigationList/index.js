@@ -24,7 +24,7 @@ const NavigationList = ({
     {routes.map((navItem, index) => {
       const active = activeRoute && navItem.attributes.path === resolve(activeRoute)
       const title = navItem.attributes.navTitle || navItem.attributes.title
-      const pageTitle = navItem.attributes.pagetitle || navItem.attributes.title
+      const pageTitle = navItem.attributes.pageTitle || navItem.attributes.title
       const link = (
         <NavigationLink
           key={`${id}-${index}`}

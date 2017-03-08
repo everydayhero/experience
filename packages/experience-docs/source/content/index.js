@@ -1,4 +1,4 @@
-import Home, { attributes as homeAttr } from './home.md'
+import Overview, { attributes as overviewAttr } from './overview.md'
 import Principles, { attributes as principlesAttr } from './principles.md'
 import Logo, { attributes as logoAttr } from './logo.md'
 import Colors, { attributes as colorsAttr } from './colors.md'
@@ -15,8 +15,8 @@ import Input, { attributes as inputAttr } from './components/input.md'
 
 const content = [
   {
-    component: Home,
-    attributes: homeAttr
+    component: Overview,
+    attributes: overviewAttr
   },
   {
     component: Principles,
@@ -36,11 +36,11 @@ const content = [
   },
   {
     component: Illustration,
-    attributes: iconsAttr
+    attributes: illustrationAttr
   },
   {
     component: Icons,
-    attributes: illustrationAttr
+    attributes: iconsAttr
   },
   {
     component: Photography,
