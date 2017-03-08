@@ -1,0 +1,35 @@
+exports[`comp should make traits available to style objects 1`] = `
+Object {
+  "child": "_j3r32m",
+  "root": "_1jtudue",
+}
+`;
+
+exports[`comp should make traits available to style objects 2`] = `
+Object {
+  "child": Object {
+    "backgroundColor": "rgb(255,255,255)",
+  },
+  "root": Object {
+    "color": "rgb(27,171,107)",
+  },
+}
+`;
+
+exports[`comp should turn a style object into classes and passes down all styles 1`] = `
+Object {
+  "child": "_22ph69",
+  "root": "_1jzdmtb",
+}
+`;
+
+exports[`comp should turn a style object into classes and passes down all styles 2`] = `
+Object {
+  "child": Object {
+    "backgroundColor": "green",
+  },
+  "root": Object {
+    "color": "green",
+  },
+}
+`;
