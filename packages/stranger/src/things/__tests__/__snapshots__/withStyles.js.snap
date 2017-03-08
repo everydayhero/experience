@@ -1,7 +1,7 @@
 exports[`comp should make traits available to style objects 1`] = `
 Object {
-  "child": "_j3r32m",
-  "root": "_1jtudue",
+  "child": "bc-rgb255_255_255",
+  "root": "c-rgb27_171_107",
 }
 `;
 
@@ -18,8 +18,8 @@ Object {
 
 exports[`comp should turn a style object into classes and passes down all styles 1`] = `
 Object {
-  "child": "_22ph69",
-  "root": "_1jzdmtb",
+  "child": "bc-green",
+  "root": "c-green",
 }
 `;
 

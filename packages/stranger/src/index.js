@@ -4,7 +4,7 @@ export {
   renderCssToString,
   ReactStyles,
   resetCache
-} from './cxs'
+} from './cxsync'
 
 export { default as stylesToClasses } from './things/stylesToClasses'
 export { default as withStyles } from './things/withStyles'
