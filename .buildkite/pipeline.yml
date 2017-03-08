@@ -4,20 +4,15 @@ steps:
   - label: ":docker: build image"
     command: "bin/buildkite bin/ci build"
     agents:
-      queue: native
-      docker: builder
+      queue: build
 
   - wait
 
   - label: ":mocha: Unit Tests"
     command: "bin/buildkite bin/ci run bin/units"
-    agents:
-      queue: elastic
 
   - wait
 
   - label: ":shipit: Deploy experience docs"
     command: "bin/buildkite bin/ci run bin/deploy-experience-docs"
     branches: "master release/*"
-    agents:
-      queue: elastic
