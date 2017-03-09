@@ -4,7 +4,7 @@ import withStyles from '../withStyles.js'
 
 describe('comp', () => {
   it('should turn a style object into classes and passes down all styles', () => {
-    const styles = ({ makeit = 'red' }) => ({
+    const styles = ({ props: { makeit = 'red' } }) => ({
       root: {
         color: makeit
       },
@@ -29,7 +29,7 @@ describe('comp', () => {
   })
 
   it('should make traits available to style objects', () => {
-    const styles = (props, { color }) => ({
+    const styles = ({ traits: { color } }) => ({
       root: {
         color: color.green
       },
