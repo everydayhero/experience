@@ -1,5 +1,5 @@
 import React from 'react'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 
 const ColorContrast = ({
   bad = true,

@@ -1,4 +1,4 @@
-import { comp } from '@edh/stranger'
+import { comp } from '@everydayhero/stranger'
 import React, { PropTypes } from 'react'
 import InlineSVG from 'react-svg-inline'
 import includes from 'lodash/includes'

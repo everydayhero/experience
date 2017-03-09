@@ -3,7 +3,7 @@ import InlineSVG from 'react-svg-inline'
 import reduce from 'lodash/reduce'
 import find from 'lodash/find'
 import startCase from 'lodash/startCase'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 import {ICONS} from '../IconList'
 
 const SCALE_FACTOR = 1.25

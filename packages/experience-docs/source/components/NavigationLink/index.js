@@ -1,7 +1,7 @@
 import {Link} from 'react-router'
 import React from 'react'
-import {comp} from '@edh/stranger'
-import { utils } from '@edh/rug'
+import {comp} from '@everydayhero/stranger'
+import { utils } from '@everydayhero/rug'
 
 import Dot from '../Dot'
 

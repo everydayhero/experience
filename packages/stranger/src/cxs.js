@@ -2,7 +2,7 @@ import cxs from 'cxs/monolithic'
 import pipe from 'lodash/fp/pipe'
 import merge from 'lodash/merge'
 import React from 'react'
-import rug from '@edh/rug'
+import rug from '@everydayhero/rug'
 
 //  TODO: Add prefixer to only rule output not classes
 

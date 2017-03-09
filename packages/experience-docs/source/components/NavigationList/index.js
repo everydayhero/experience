@@ -1,7 +1,7 @@
 import {resolve} from 'path'
 import React from 'react'
 import Helmet from 'react-helmet'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 
 import NavigationLink from '../NavigationLink'
 

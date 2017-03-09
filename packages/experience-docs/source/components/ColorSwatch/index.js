@@ -1,10 +1,10 @@
 import React from 'react'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 import upperFirst from 'lodash/upperFirst'
 import parse from 'pure-color/parse/rgb'
 import rgb2hex from 'pure-color/convert/rgb2hex'
 import rgb2cmyk from 'pure-color/convert/rgb2cmyk'
-import rug from '@edh/rug'
+import rug from '@everydayhero/rug'
 
 const {round} = Math
 const prettifyCMYK = (cmyk) => cmyk.map((c) => round(c)).join(' ')
