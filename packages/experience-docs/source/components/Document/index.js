@@ -1,5 +1,5 @@
 import React from 'react'
-import { comp, ReactStyles } from '@edh/stranger'
+import { comp, ReactStyles } from '@everydayhero/stranger'
 
 const renderStyles = (styles) => (
   styles.map((style, index) => <link key={index} rel='stylesheet' href={style} />)

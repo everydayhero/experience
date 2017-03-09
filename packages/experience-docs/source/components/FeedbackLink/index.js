@@ -1,5 +1,5 @@
 import React from 'react'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 
 const FEEDBACK_ADDRESS = 'q0s6p1r6a1e6g8d0@everydayhero.slack.com'
 

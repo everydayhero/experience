@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 
 import Dot from '../Dot'
 

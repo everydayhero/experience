@@ -1,6 +1,6 @@
 import cxsync from 'cxsync'
 import React from 'react'
-import rug from '@edh/rug'
+import rug from '@everydayhero/rug'
 
 const stranger = cxsync
 

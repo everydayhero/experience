@@ -1,4 +1,4 @@
-import {comp} from '@edh/stranger'
+import {comp} from '@everydayhero/stranger'
 
 const ContentWrapper = comp(({
   traits: {

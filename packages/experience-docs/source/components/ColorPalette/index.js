@@ -1,6 +1,6 @@
 import React from 'react'
-import {comp} from '@edh/stranger'
-import rug from '@edh/rug'
+import {comp} from '@everydayhero/stranger'
+import rug from '@everydayhero/rug'
 
 const {keys} = Object
 

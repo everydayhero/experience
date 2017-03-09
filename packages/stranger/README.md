@@ -9,15 +9,15 @@ Also adds extra utility functions to help styling more composable components.
 ## Installation
 
 ```sh
-yarn add @edh/stranger
-npm i -S @edh/stranger
+yarn add @everydayhero/stranger
+npm i -S @everydayhero/stranger
 ```
 
 ## Basic Usage
 
 ```js
 import React from 'react'
-import { addRule } from '@edh/stranger'
+import { addRule } from '@everydayhero/stranger'
 
 const Box = (props) => {
   return (
@@ -73,7 +73,7 @@ To use Stranger in server environments, use the `getCss()` function to get the s
 
 ```js
 import React from 'react'
-import { ReactStyles, resetCache } from '@edh/stranger'
+import { ReactStyles, resetCache } from '@everydayhero/stranger'
 
 const Document = () => (
   <html>
@@ -99,7 +99,7 @@ resetCache()
 For an API closer to styled-components, use `comp`. It allows composing multiple levels of components and provides access to global traits.
 
 ```js
-import { comp } from '@edh/stranger'
+import { comp } from '@everydayhero/stranger'
 
 const Button = comp(({ props, traits }) => ({
   backgroundColor: traits.color.cta.lighter
@@ -127,7 +127,7 @@ const PrimaryButton = comp(({ traits }) => ({
 
 ```js
 import React from 'react'
-import { withStyles } from '@edh/stranger'
+import { withStyles } from '@everydayhero/stranger'
 
 const Button = withStyles(styles)({ classNames, ...props }) => (
   <button {...props} className={classNames.root} />
@@ -145,10 +145,10 @@ const styles = ({ props, traits }) => ({
 
 ### stranger.defaultTraits
 
-The default traits in Stranger come from `@edh/rug`. If you would like to change the defaults, you can.
+The default traits in Stranger come from `@everydayhero/rug`. If you would like to change the defaults, you can.
 
 ```
-import stranger from '@edh/stranger'
+import stranger from '@everydayhero/stranger'
 
 stranger.defaultTraits = {
   color: {
