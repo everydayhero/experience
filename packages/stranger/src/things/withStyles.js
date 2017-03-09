@@ -10,7 +10,7 @@ const withStyles = (styles = {}) => (Component = 'div') => {
     }
     const stylesIsFunction = typeof styles === 'function'
     const stylesObj = stylesIsFunction
-      ? styles(combinedProps, traits || stranger.defaultTraits)
+      ? styles({ props: combinedProps, traits: traits || stranger.defaultTraits })
       : styles
     return (
       <Component
