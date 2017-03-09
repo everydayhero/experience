@@ -3,6 +3,9 @@
   "version": "1.0.0-1",
   "description": "\"…really tied the room together, did it not?\"",
   "main": "dist/index.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "url": "https://github.com/everydayhero/rug",
     "type": "git"

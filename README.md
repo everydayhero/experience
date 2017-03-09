@@ -9,7 +9,7 @@ the packages in `./packages`.
 If you're working on a feature in this repo, you'll need to set it up on your machine with Lerna, the utility that manages our monorepo. At the moment we're using a beta version of Lerna 2, since Lerna 1 doesn't actually work. The easiest way to get started is to install Lerna globally:
 
 ```
-npm install -g lerna@2.0.0-beta.37
+npm install -g lerna@2.0.0-beta.38
 ```
 
 Once you have lerna installed, run:
