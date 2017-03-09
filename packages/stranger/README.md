@@ -36,7 +36,7 @@ export default Box
 ### Pseudoclasses
 
 ```js
-cxs({
+addRule({
   color: 'tomato',
   ':hover': {
     color: 'red'
@@ -47,7 +47,7 @@ cxs({
 ### Media Queries
 
 ```js
-cxs({
+addRule({
   color: 'tomato',
   '@media (min-width: 40em)': {
     color: 'red'
@@ -58,7 +58,7 @@ cxs({
 ### Nested Selectors
 
 ```js
-cxs({
+addRule({
   color: 'tomato',
   h1: {
     color: 'red'
