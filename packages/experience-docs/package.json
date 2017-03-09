@@ -1,8 +1,9 @@
 {
-  "name": "experience",
+  "name": "@edh/experience",
   "version": "1.0.0-1",
   "description": "The Everydayhero Experience system documentation site",
   "main": "source/client.js",
+  "private": true,
   "scripts": {
     "start": "npm run build && brb serve --config='./webpack.shared.config'",
     "build": "brb build --config='./webpack.shared.config'",

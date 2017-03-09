@@ -2,6 +2,7 @@
   "name": "@edh/brand-assets",
   "version": "1.0.0-1",
   "main": "dist/index.js",
+  "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "prepublish": "npm run build"
