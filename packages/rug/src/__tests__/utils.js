@@ -2,7 +2,7 @@ import {
   opacify,
   luminosify,
   getContrastColor,
-  gradient
+  createGradient
 } from '../utils'
 
 import {
@@ -52,14 +52,14 @@ describe('getContrastColor', () => {
 
 describe('gradient', () => {
   it('should return a curried function to generate gradients', () => {
-    const partial = gradient('test', '720deg')
+    const partial = createGradient('test', '720deg')
     const actual = partial(color.green)
     const expected = `test-gradient(720deg, rgb(0,157,95), rgb(27,171,107))`
     expect(actual).toEqual(expected)
   })
 
   it('should generate a lighter gradient when lighten = true', () => {
-    const partial = gradient('test', '720deg')
+    const partial = createGradient('test', '720deg')
     const actual = partial(color.green, true)
     const expected = `test-gradient(720deg, rgb(27,171,107), rgb(50,185,120))`
     expect(actual).toEqual(expected)
