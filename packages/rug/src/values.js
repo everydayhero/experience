@@ -185,10 +185,10 @@ const contrast = (colorName) => (
 )
 
 export const gradient = reduce({
-  up: '0deg',
-  right: '90deg',
-  down: '180deg',
-  left: '270deg'
+  up: '350deg',
+  right: '80deg',
+  down: '170deg',
+  left: '260deg'
 }, (acc, degrees, direction) => ({
   ...acc,
   [direction]: createGradient('linear', degrees)
