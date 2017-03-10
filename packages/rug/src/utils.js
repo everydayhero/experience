@@ -37,11 +37,11 @@ export const calcModularScale = curry((scale, exponent) =>
   Math.round(base * Math.pow(scale, Math.round(exponent))) / base
 )
 
+export const addUnit = curry((unit, value) => `${value}${unit}`)
+
 /**
  * Color Utilities
  */
-
-export const addUnit = curry((unit, value) => `${value}${unit}`)
 
 export const opacify = (rgb, o = 1) => rgb.replace('b(', 'ba(').replace(')', `,${o})`)
 
