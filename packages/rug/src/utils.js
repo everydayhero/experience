@@ -44,7 +44,7 @@ export const opacify = (rgb, o = 1) => rgb.replace('b(', 'ba(').replace(')', `,$
 
 export const getContrastColor = ({dark, light}) => (color) => {
   const [r, g, b] = typeof color === 'string' ? parse(color) : color
-  return (((r*299)+(g*587)+(b*114))/1000) <= 128 ? light : dark
+  return (((r * 299) + (g * 587) + (b * 114)) / 1000) <= 128 ? light : dark
 }
 
 const transformLab = (transform) => pipe(
@@ -55,7 +55,7 @@ const transformLab = (transform) => pipe(
   rgb2string
 )
 
-const modL = (amount) => ([L, a, b]) => ([L += amount, a, b])
+const modL = (amount) => ([L, a, b]) => ([L + amount, a, b])
 
 export const luminosify = (color, amount = 0) => transformLab(modL(amount))(color)
 
