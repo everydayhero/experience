@@ -31,7 +31,7 @@ const StyledNavigationLink = comp(({
   transition: 'all .2s ease-in-out',
   ':hover': {
     color: color.text.darker,
-    backgroundColor: utils.opacify(0.05, color.bg.darker),
+    backgroundColor: utils.opacify(color.bg.darker, 0.05),
     '> :last-child': {
       opacity: 1
     }
