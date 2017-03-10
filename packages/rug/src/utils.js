@@ -59,7 +59,7 @@ const modL = (amount) => ([L, a, b]) => ([L + amount, a, b])
 
 export const luminosify = (color, amount = 0) => transformLab(modL(amount))(color)
 
-export const gradient = curry((type, degrees, color, lighten = false) => (
+export const createGradient = curry((type, degrees, color, lighten = false) => (
   `${type}-gradient(${degrees}, ${lighten ? color : luminosify(color, -5)}, ${lighten ? luminosify(color, 5) : color})`
 ))
 

@@ -10,7 +10,7 @@ import {
   opacify,
   getContrastColor,
   shadow,
-  gradient as createGradient
+  createGradient,
 } from './utils.js'
 
 export { base } from './constants.js'
