@@ -8,7 +8,10 @@ import rgb2string from 'pure-color/convert/rgb2string'
 
 const lab2rgb = pipe(lab2xyz, xyz2rgb)
 
-import { base } from './constants.js'
+import {
+  base,
+  color
+} from './constants.js'
 
 /**
  * General Utilities
