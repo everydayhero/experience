@@ -7,17 +7,19 @@ import Navigation from '../Navigation'
 import Content from '../Content'
 import Header from '../Header'
 import ContentWrapper from '../ContentWrapper'
-import FeedbackLink from '../FeedbackLink'
+import Feedback from '../Feedback'
 
 import content, { flatContent } from '../../content'
 
 const App = ({
   children,
-  location
+  location: {
+    pathname = ''
+  }
 }) => {
   const currentPage = find(flatContent, (route) =>
     route.attributes &&
-    trimEnd(route.attributes.path, '/') === trimEnd(location.pathname, '/'))
+    trimEnd(route.attributes.path, '/') === trimEnd(pathname, '/'))
   const status = currentPage && currentPage.attributes
     ? currentPage.attributes.status
     : 'red'
@@ -30,9 +32,9 @@ const App = ({
         <Content title={title}>
           {children}
         </Content>
-        <FeedbackLink />
+        <Feedback />
       </ContentWrapper>
-      <Navigation routes={content} activeRoute={location.pathname} />
+      <Navigation routes={content} activeRoute={pathname} />
     </PageWrapper>
   )
 }
