@@ -25,6 +25,16 @@ export const isInRange = curry((min, max, num) =>
     : num
 )
 
+export const createShadow = (shadows = [], shadowColor = color.charcoal) => (
+  shadows.map((shadow) => (
+    shadow.map((val, i) => (
+      i === shadow.length - 1
+      ? opacify(shadowColor, val)
+      : val
+    )).join(' ')
+  )).join(',')
+)
+
 /**
  * Size Utilities
  */
@@ -65,7 +75,3 @@ export const luminosify = (color, amount = 0) => transformLab(modL(amount))(colo
 export const createGradient = curry((type, degrees, color, lighten = false) => (
   `${type}-gradient(${degrees}, ${lighten ? color : luminosify(color, -5)}, ${lighten ? luminosify(color, 5) : color})`
 ))
-
-export const shadow = (color) => (
-  `0 4px 6px ${opacify(color, 0.11)}, 0 1px 3px ${opacify(color, 0.08)}`
-)

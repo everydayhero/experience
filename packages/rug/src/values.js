@@ -7,8 +7,8 @@ import {
   calcModularScale,
   addUnit,
   getContrastColor,
-  shadow,
   createGradient,
+  createShadow
 } from './utils.js'
 
 import {
@@ -94,10 +94,33 @@ export const opacity = {
  * Shadows
  */
 
-export const shadows = [
+export const shadow = [
   'none',
-  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(color.border.dark, 0.2)}`,
-  shadow(color.bg.darker)
+  createShadow([
+    [0, 0, size(1, 'em'), 0.14],
+    [0, size(1, 'em'), size(2, 'em'), 0.1],
+    [0, size(2, 'em'), '0.0625em', `-${size(1, 'em')}`, 0.14]
+  ]),
+  createShadow([
+    [0, size(2, 'em'), size(2, 'em'), 0.1],
+    [0, size(2, 'em'), size(4, 'em'), 0.12],
+    [0, size(1, 'em'), size(2, 'em'), '-0.0625em', 0.2]
+  ]),
+  createShadow([
+    [0, size(3, 'em'), size(4, 'em'), '-0.0625em', 0.14],
+    [0, size(2, 'em'), size(4, 'em'), size(1, 'em'), 0.12],
+    [0, size(2, 'em'), size(2, 'em'), '-0.1875em', 0.2]
+  ]),
+  createShadow([
+    [0, size(4, 'em'), '1.5em', size(1, 'em'), 0.14],
+    [0, size(3, 'em'), size(5, 'em'), size(2, 'em'), 0.12],
+    [0, size(3, 'em'), '0.625em', '-0.3125em', 0.2]
+  ]),
+  createShadow([
+    [0, size(4, 'em'), size(5, 'em'), size(1, 'em'), 0.14],
+    [0, size(4, 'em'), '3em', size(3, 'em'), 0.12],
+    [0, size(4, 'em'), size(4, 'em'), `-${size(3, 'em')}`, 0.2]
+  ])
 ]
 
 /**
