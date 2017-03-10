@@ -9,7 +9,6 @@ import {
   addUnit,
   opacify,
   getContrastColor,
-  shadow,
   gradient as createGradient
 } from './utils.js'
 
@@ -185,10 +184,10 @@ const contrast = (colorName) => (
 )
 
 export const gradient = reduce({
-  up: '0deg',
-  right: '90deg',
-  down: '180deg',
-  left: '270deg'
+  up: '350deg',
+  right: '80deg',
+  down: '170deg',
+  left: '260deg'
 }, (acc, degrees, direction) => ({
   ...acc,
   [direction]: createGradient('linear', degrees)
@@ -208,6 +207,10 @@ export const opacity = {
 /**
  * Shadows
  */
+
+const shadow = (color) => (
+  `0 4px 6px ${opacify(color, 0.11)}, 0 1px 3px ${opacify(color, 0.08)}`
+)
 
 export const shadows = [
   'none',
