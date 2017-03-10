@@ -8,7 +8,9 @@ import {
   calcModularScale,
   addUnit,
   opacify,
-  getContrastColor
+  getContrastColor,
+  shadow,
+  gradient as createGradient
 } from './utils.js'
 
 export { base } from './constants.js'
@@ -182,6 +184,18 @@ const contrast = (colorName) => (
   getContrastColor({dark: color.charcoal, light: color.white})(brandColors[colorName])
 )
 
+export const gradient = reduce({
+  up: '0deg',
+  right: '90deg',
+  down: '180deg',
+  left: '270deg'
+}, (acc, degrees, direction) => ({
+  ...acc,
+  [direction]: createGradient('linear', degrees)
+}), {
+  radial: createGradient('radial', 'circle')
+})
+
 /**
  * Opacity
  */
@@ -197,7 +211,8 @@ export const opacity = {
 
 export const shadows = [
   'none',
-  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(0.2, color.grey)}`
+  `0 ${size(1)} ${size(2)} ${size(3)} ${opacify(color.border.dark, 0.2)}`,
+  shadow(color.bg.darker)
 ]
 
 /**
