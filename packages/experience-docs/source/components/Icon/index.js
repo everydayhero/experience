@@ -14,11 +14,14 @@ const getIcon = (icon) => find(ICONS, ({title}) => title === startCase(icon))
 const Icon = ({
   name,
   icon,
-  kind = 'flat'
+  kind = 'flat',
+  ...props
 }) => {
   const {src, title} = getIcon(icon)
-  return src && <SVGIcon kind={kind} svg={src} title={title} alt={title} />
+  return src && <SVGIcon {...props} kind={kind} svg={src} title={title} alt={title} />
 }
+
+Icon.isStrange = true
 
 Icon.propTypes = {
   name: PropTypes.string,
@@ -58,7 +61,6 @@ const SVGIcon = comp(({
   verticalAlign: 'middle',
   width: `${SCALE_FACTOR * 1}em`,
   height: `${SCALE_FACTOR * 1}em`,
-  margin: kind === 'flat' ? `${SCALE_FACTOR * 0.2}em` : `${SCALE_FACTOR * 0.3}em`,
   ' svg': {
     width: '100%',
     height: '100%'
