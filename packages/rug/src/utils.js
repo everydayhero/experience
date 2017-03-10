@@ -40,7 +40,7 @@ export const calcModularScale = curry((scale, exponent) =>
 
 export const addUnit = curry((unit, value) => `${value}${unit}`)
 
-export const opacify = (o, rgb) => rgb.replace('b(', 'ba(').replace(')', `,${o})`)
+export const opacify = (rgb, o = 1) => rgb.replace('b(', 'ba(').replace(')', `,${o})`)
 
 export const getContrastColor = ({dark, light}) => (color) => {
   const [r, g, b] = typeof color === 'string' ? parse(color) : color
@@ -57,4 +57,12 @@ const transformLab = (transform) => pipe(
 
 const modL = (amount) => ([L, a, b]) => ([L += amount, a, b])
 
-export const luminosify = (amount, color) => transformLab(modL(amount))(color)
+export const luminosify = (color, amount = 0) => transformLab(modL(amount))(color)
+
+export const gradient = curry((type, degrees, color, lighten = false) => (
+  `${type}-gradient(${degrees}, ${lighten ? color : luminosify(color, -5)}, ${lighten ? luminosify(color, 5) : color})`
+))
+
+export const shadow = (color) => (
+  `0 4px 6px ${opacify(color, 0.11)}, 0 1px 3px ${opacify(color, 0.08)}`
+)
