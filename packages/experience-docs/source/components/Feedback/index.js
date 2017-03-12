@@ -26,22 +26,20 @@ const FeedbackProse = comp(({
   }
 }))(Prose)
 
-const Feedback = ({ props }) => {
-  return (
-    <FeedbackContainer>
-      <FeedbackProse>
-        <hr />
-        <h2>We love feedback</h2>
-        <ul>
-          <li>Does the current content help you?</li>
-          <li>How could it better help you?</li>
-          <li>What are some challenges you regularly face, that you think the Experience System could help with?</li>
-          <li>Do you disagree with any of the current content? How do you think it could be improved?</li>
-        </ul>
-      </FeedbackProse>
-      <FeedbackButton />
-    </FeedbackContainer>
-  )
-}
+const Feedback = () => (
+  <FeedbackContainer>
+    <FeedbackProse>
+      <hr />
+      <h2>We love feedback</h2>
+      <ul>
+        <li>Does the current content help you?</li>
+        <li>How could it better help you?</li>
+        <li>What are some challenges you regularly face, that you think the Experience System could help with?</li>
+        <li>Do you disagree with any of the current content? How do you think it could be improved?</li>
+      </ul>
+    </FeedbackProse>
+    <FeedbackButton />
+  </FeedbackContainer>
+)
 
 export default Feedback
