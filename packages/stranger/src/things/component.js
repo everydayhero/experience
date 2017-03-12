@@ -17,10 +17,9 @@ const comp = (styles = {}) => (Component = 'div') => {
       ? merge({}, stylesObj, existingStyles)
       : stylesObj
     const className = addRule(mergedStyles)
-    const newProps = { ...rest, styles: mergedStyles }
     const propsToPass = Component.isStrange
-      ? newProps
-      : pickBy(newProps, validAttr(Component.propTypes))
+      ? { ...rest, styles: mergedStyles }
+      : pickBy(rest, validAttr(Component.propTypes))
     return (
       <Component
         {...propsToPass}
