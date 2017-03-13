@@ -13,7 +13,11 @@ export default ({ assets }) => {
     assets
   })
 
-  app.staticRoutes = flatContent.map((route) => route.attributes.path)
+  app.staticRoutes = flatContent.map((route) =>
+    route.attributes && route.attributes.path
+    ? route.attributes.path
+    : '/'
+  )
 
   return app
 }
