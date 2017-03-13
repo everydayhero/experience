@@ -11,7 +11,7 @@ const FeedbackButton = ({
   title
 }) => {
   const subject = `Feedback for the Experience System`
-  const body = `I have some feedback for ${global.location}`
+  const body = `I have some feedback for ${title}`
   return (
     <StyledButton
       href={`mailto:${FEEDBACK_ADDRESS}?subject=${subject}&body=${body}`}
