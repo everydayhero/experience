@@ -2,7 +2,13 @@
 title: Principles
 path: /principles
 status: amber
+imports:
+  Lead: '../components/Lead/index.js'
 ---
+
+```render html
+<Lead>Our principles form the foundation of all our other decisions. If there are no guidelines for something, Principles are what we fall back on to make decisions.</Lead>
+```
 
 ## Familiar
 
@@ -19,4 +25,3 @@ Technology amplifies our efforts. We raise people up, investing our time, expert
 ## Rewarding
 
 A sense of fulfilment keeps people going. We celebrate people’s efforts, encourage them through challenges, and shout their triumphs to the world.
-

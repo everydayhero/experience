@@ -2,17 +2,25 @@
 title: Voice & Tone
 path: /voice-tone
 status: red
+imports:
+  Lead: '../components/Lead/index.js'
 ---
 
-**Capture**: calls to action, input labels, and such should be written in first person, as though the user were speaking a command to a butler (or siri). Examples: “Give Claire $50”, “I will donate $50”, “My email address is:”, “Download my receipt”, “I want the charity to contact me to support my fundraising journey”, etc.
+```render html
+<Lead>Content to come.</Lead>
+```
 
-## EVERYTHING BELOW IS OLD: Taken from the github wiki
+## Notes/Thoughts
+
+Calls to action, input labels, and such should be written in first person, as though the user were speaking a command to a butler (or siri). Examples: “Give Claire $50”, “I will donate $50”, “My email address is:”, “Download my receipt”, “I want the charity to contact me to support my fundraising journey”, etc.
+
+## Below is taken from the github wiki
 
 Use this section as a guide any time you are writing for everydayhero, whether it is on the company blog, the Wonderwall, social media or any other platform.
 
 For most questions, refer to the AP Stylebook. It is the standard style and usage guide in the news industry and provides guidelines on everything from comma usage to state and country abbreviations. The online version can be found here: https://www.apstylebook.com/.
 
-## Grammar, Punctuation and Capitalization
+### Grammar, Punctuation and Capitalization
 
 When you post on the blog or social media, you’re representing everydayhero. We strive to be a trusted company that people look up to. One way to accomplish this is by always presenting a professional face to the world through polished content. The guidelines here will help keep everything clear and consistent across all of our platforms, no matter who is writing.
 

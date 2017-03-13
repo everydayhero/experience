@@ -3,6 +3,7 @@ title: Colors
 path: /colors
 status: amber
 imports:
+  Lead: '../components/Lead/index.js'
   ColorSwatch: '../components/ColorSwatch/index.js'
   ColorPalette: '../components/ColorPalette/index.js'
   ColorContrast: '../components/ColorContrast/index.js'
@@ -10,7 +11,9 @@ imports:
   colorRelationshipSvg: './images/colours.svg'
 ---
 
-Everydayhero colors are categorised into Primary, Secondary, and Tertiary brand colors. These represent the only colors that should be used when developing applications, marketing, or communications for Everydayhero. These colors, especially green and light green, serve as core recall elements to help consistently reinforce our brand.
+```render html
+<Lead>Everydayhero colors are categorised into Primary, Secondary, and Tertiary brand colors. These represent the only colors that should be used when developing applications, marketing, or communications for Everydayhero. These colors, especially green and light green, serve as core recall elements to help consistently reinforce our brand.</Lead>
+```
 
 ## Everydayhero brand palette
 
