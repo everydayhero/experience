@@ -14,16 +14,18 @@ const getIcon = (icon) => find(ICONS, ({title}) => title === startCase(icon))
 const Icon = ({
   name,
   icon,
-  kind = 'flat'
+  kind = 'flat',
+  styles
 }) => {
   const {src, title} = getIcon(icon)
-  return src && <SVGIcon kind={kind} svg={src} title={title} alt={title} />
+  return src && <SVGIcon styles={styles} kind={kind} svg={src} title={title} alt={title} />
 }
 
 Icon.propTypes = {
   name: PropTypes.string,
   icon: PropTypes.string.isRequired,
-  kind: PropTypes.oneOf(kinds)
+  kind: PropTypes.oneOf(kinds),
+  styles: PropTypes.object
 }
 
 export default Icon
@@ -48,7 +50,9 @@ const kindsReducer = (kinds, currentKind, scaleFn) => reduce(kinds, (acc, kind) 
 })
 
 const SVGIcon = comp(({
-  props: {kind},
+  props: {
+    kind
+  },
   traits: {scale}
 }) => ({
   ...kindsReducer(kinds, kind, scale),
@@ -58,9 +62,8 @@ const SVGIcon = comp(({
   verticalAlign: 'middle',
   width: `${SCALE_FACTOR * 1}em`,
   height: `${SCALE_FACTOR * 1}em`,
-  margin: kind === 'flat' ? `${SCALE_FACTOR * 0.2}em` : `${SCALE_FACTOR * 0.3}em`,
   ' svg': {
     width: '100%',
     height: '100%'
   }
-}))(InlineSVG, {removeProps: ['kind'], cancelPassStyles: true})
+}))(InlineSVG)
