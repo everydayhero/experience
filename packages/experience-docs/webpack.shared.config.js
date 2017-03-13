@@ -8,7 +8,7 @@ module.exports = {
       'process.env.BASE_PATH': `'${process.env.BASE_PATH || ''}'`
     }),
     new DotenvPlugin({
-      path: `./${process.env.ENV_FILE || '.env.default'}`,
+      path: `./${process.env.ENV_FILE || '.env.default'}`
     }),
     new CopyWebpackPlugin([
       {from: 'static'}
