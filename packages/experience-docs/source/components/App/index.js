@@ -32,7 +32,7 @@ const App = ({
         <Content title={title}>
           {children}
         </Content>
-        <Feedback />
+        <Feedback title={title} />
       </ContentWrapper>
       <Navigation routes={content} activeRoute={pathname} />
     </PageWrapper>

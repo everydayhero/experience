@@ -26,7 +26,7 @@ const FeedbackProse = comp(({
   }
 }))(Prose)
 
-const Feedback = () => (
+const Feedback = ({ title }) => (
   <FeedbackContainer>
     <FeedbackProse>
       <hr />
@@ -38,7 +38,7 @@ const Feedback = () => (
         <li>Do you disagree with any of the current content? How do you think it could be improved?</li>
       </ul>
     </FeedbackProse>
-    <FeedbackButton />
+    <FeedbackButton title={title} />
   </FeedbackContainer>
 )
 
