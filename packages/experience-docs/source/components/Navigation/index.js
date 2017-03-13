@@ -11,16 +11,22 @@ const StyledNavigation = comp(({
     media
   }
 }) => ({
-  [media.sm]: {
-    fontSize: font.scale(1)
-  },
-  overflow: 'auto',
-  minWidth: '14rem',
-  height: '100%',
   paddingTop: size(5),
   paddingBottom: size(5),
   backgroundColor: color.bg.light,
-  WebkitOverflowScrolling: 'touch'
+  [media.sm]: {
+    fontSize: font.scale(1)
+  },
+  [media.md]: {
+    position: 'fixed',
+    left: 0,
+    top: 0,
+    bottom: 0,
+    width: '14rem',
+    overflow: 'auto',
+    height: '100%',
+    WebkitOverflowScrolling: 'touch'
+  }
 }))('nav')
 
 const Navigation = ({
