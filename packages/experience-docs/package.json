@@ -5,7 +5,8 @@
   "main": "source/client.js",
   "private": true,
   "scripts": {
-    "start": "npm run build && brb serve --config='./webpack.shared.config'",
+    "start": "npm run build && npm run serve",
+    "serve": "brb serve --config='./webpack.shared.config'",
     "build": "NODE_ENV=production brb build --config='./webpack.shared.config'",
     "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do",
     "lint": "standard",
