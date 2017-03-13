@@ -4,9 +4,12 @@ path: /logo
 status: amber
 imports:
   LogoExample: '../components/LogoExample/index.js'
+  Lead: '../components/Lead/index.js'
 ---
 
-Our logo mark is comprised of two important elements: hearts and connection. Everyday heroes are passionate about the causes they support and enjoy connecting with a community of like minded people.
+```render html
+<Lead>Our logo mark is comprised of two important elements: hearts and connection. Everyday heroes are passionate about the causes they support and enjoy connecting with a community of like minded people.</Lead>
+```
 
 ## Resources
 
@@ -28,7 +31,7 @@ The Everydayhero heart logomark acts as a short-form signature, and is only used
 
 ### “Powered by” Logo
 
-When Everydayhero’s brand is diminished, such as for campaign pages, bespoke sites for charities and events, and white-label products, the “powered by everydayhero” logo should be displayed centred towards the bottom of the primary content. 
+When Everydayhero’s brand is diminished, such as for campaign pages, bespoke sites for charities and events, and white-label products, the “powered by everydayhero” logo should be displayed centred towards the bottom of the primary content.
 
 ```render html
 <LogoExample type='powered-by-padded' />
@@ -47,7 +50,7 @@ The preferred logo application is full colour on a white background. In any cont
 Everydayhero is always one word, and is capitalized when written out in text. Always use the same typeface you are using for the rest of the text. Always spell out Everydayhero in English–never translated into another language.
 
 ## Usage Guidelines
- 
+
 ### Primary Logo
 
 - Never modify the logo colours, proportions, or opacity of either the heart logomark or ‘everydayhero’ name
@@ -68,10 +71,10 @@ Everydayhero is always one word, and is capitalized when written out in text. Al
 
 ### Heart Logomark
 
-In addition to all the usage guidelines that apply to the primary logo, the heart logomark should also only ever be used in the following circumstances: 
+In addition to all the usage guidelines that apply to the primary logo, the heart logomark should also only ever be used in the following circumstances:
 
 - The logo must appear inside a square
-- There is sufficient brand context for viewers to identify it as Everydayhero’s logomark, examples include: 
+- There is sufficient brand context for viewers to identify it as Everydayhero’s logomark, examples include:
   - Social media profiles
   - Emails sent in response to a user action within our ecosystem
   - Internal office signage
@@ -88,7 +91,7 @@ In all other circumstances, the primary logo must be used.
 
 ### "Powered by" Logo
 
-In addition to all the usage guidelines that apply to the primary logo, the “powered by” logo should: 
+In addition to all the usage guidelines that apply to the primary logo, the “powered by” logo should:
 
 - Always be centred
 - Never be displayed smaller than 2.5cm (print) or 150px (web)
