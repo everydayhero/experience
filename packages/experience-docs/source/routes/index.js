@@ -12,7 +12,7 @@ export default (
         : '/'
       return (path === '/')
       ? (<IndexRoute component={route.component} key={i} />)
-      : (<Route path={route.attributes.path} component={route.component} key={i} />)
+      : (<Route path={path} component={route.component} key={i} />)
     })}
   </Route>
 )
