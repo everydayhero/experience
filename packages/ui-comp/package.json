@@ -1,0 +1,19 @@
+{
+  "name": "@everydayhero/ui-comp",
+  "version": "1.0.0",
+  "description": "The core ui component",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Luke Brooker <mail@lukebrooker.com> (https://lukebrooker.com)",
+  "license": "MIT",
+  "dependencies": {
+    "minimal.css": "^1.0.1",
+    "@everydayhero/stranger": "^2.0.0"
+  },
+  "peerDependencies": {
+    "react": "^15.4.2"
+  }
+}
