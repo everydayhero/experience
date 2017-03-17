@@ -59,6 +59,6 @@ As we grow and the demands of our platform increase, taking the time to make dec
 
 This is still early stages of the Experience System, so what we need most is feedback. To be effective, we need input from every team at Everydayhero.
 
-Wether it’s about a single icon or an entire section you think is missing, we want to hear from you.
+Whether it’s about a single icon or an entire section you think is missing, we want to hear from you.
 
 To help, every page has a feedback button at the bottom. Just like the one below.
