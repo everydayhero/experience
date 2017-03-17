@@ -8,7 +8,7 @@
     "start": "npm run build && npm run serve",
     "serve": "brb serve --config='./webpack.shared.config'",
     "build": "NODE_ENV=production brb build --config='./webpack.shared.config'",
-    "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do",
+    "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do && brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.com",
     "lint": "standard",
     "prepublish": "npm run build"
   },
