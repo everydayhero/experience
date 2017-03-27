@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/ui-logo",
   "description": "Logo component for doing Everydayhero branding in React apps",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
@@ -9,7 +9,7 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
-    "@everydayhero/brand-assets": "2.0.0",
+    "@everydayhero/brand-assets": "^2.1.0",
     "@everydayhero/stranger": "2.0.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^6.4.1",
