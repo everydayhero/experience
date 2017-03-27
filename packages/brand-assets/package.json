@@ -1,14 +1,14 @@
 {
   "name": "@everydayhero/brand-assets",
-  "version": "1.0.0-1",
+  "version": "2.0.0",
   "main": "dist/index.js",
-  "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "raw-loader": "^0.5.1"
   },
   "devDependencies": {
     "babel-core": "^6.23.1",
