@@ -100,6 +100,7 @@ const Prose = comp(({
   ' code': {
     display: 'block',
     background: color.bg.light,
+    marginTop: size(4),
     padding: size(3),
     borderRadius: radius(3),
     [media.md]: {

@@ -6,6 +6,7 @@ status: orange
 imports:
   Lead: '../../components/Lead'
   Logo: '@everydayhero/ui-logo'
+  InvertedBackground: '../../components/InvertedBackground'
 ---
 
 The logo component is a simple display component for applying our branding in
@@ -32,19 +33,41 @@ params will give you our standard logo, with our default padding.
 <Logo />
 ```
 
+**Note:** the logo components renders as an inline SVG, and will expand to fill
+its container element while maintaining its aspect ratio. To size them
+predictably, wrap it in an element with a constrained width or height.
+
 ### Inverted
 
 A pure white inverted logo, useful for rendering on dark backgrounds
 
-```render source html
+```render html
+<InvertedBackground>
+  <Logo inverted />
+</InvertedBackground>
+```
+
+```js
 <Logo inverted />
 ```
+
+**Note:** inverted logos are white logos with a transparent background. Make
+sure they're over a dark background or they won't look good.
 
 ### Mark
 
 Our logomark, which is the Everydayhero heart alone.
 
-```render source html
+```render html
+<div style={{
+  maxWidth: '12rem',
+  margin: '0 auto'
+}}>
+  <Logo type='mark' />
+</div>
+```
+
+```js
 <Logo type='mark' />
 ```
 
@@ -52,16 +75,39 @@ Our logomark, which is the Everydayhero heart alone.
 
 Similarly, our logo mark can also be inverted
 
-```render source html
+```render html
+<div style={{
+  maxWidth: '12rem',
+  margin: '0 auto'
+}}>
+  <InvertedBackground>
+    <Logo type='mark' inverted />
+  </InvertedBackground>
+</div>
+```
+
+```js
 <Logo type='mark' inverted />
 ```
+
+**Note:** inverted logos are white logos with a transparent background. Make
+sure they're over a dark background or they won't look good.
 
 ### Powered By Logo
 
 The Powered By Logo is useful for branding white-labelled forms, where we want
 to also include our own branding (usually at the bottom).
 
-```render source html
+```render html
+<div style={{
+  maxWidth: '16rem',
+  margin: '0 auto'
+}}>
+  <Logo type='powered-by' />
+</div>
+```
+
+```js
 <Logo type='powered-by' />
 ```
 
@@ -69,17 +115,32 @@ to also include our own branding (usually at the bottom).
 
 It also comes in an inverted version.
 
-```render source html
+```render html
+<div style={{
+  maxWidth: '16rem',
+  margin: '0 auto'
+}}>
+  <InvertedBackground>
+    <Logo type='powered-by' inverted />
+  </InvertedBackground>
+</div>
+```
+
+```js
 <Logo type='powered-by' inverted />
 ```
 
+**Note:** inverted logos are white logos with a transparent background. Make
+sure they're over a dark background or they won't look good.
+
 ### Unpadded
 
-Any logo can be optionally rendered without the default padding by setting
-`padded={false}`. We recommend you avoid removing default padding unless your
-use case demands it (for example where the container already pads the element).
+Any logo can be optionally rendered without the default padding by setting the
+padded prop to false. We recommend you avoid removing default padding unless
+your use case demands it (for example, where the container already pads the
+element).
 
 
 ```render source html
-<Logo type='mark' padded={false} />
+<Logo type='logo' padded={false} />
 ```
