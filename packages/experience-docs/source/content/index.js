@@ -12,6 +12,7 @@ import Layout, { attributes as layoutAttr } from './layout.md'
 import Shape, { attributes as shapeAttr } from './shape.md'
 import ComponentsSummary, { attributes as componentsSummaryAttr } from './components/index.md'
 import Input, { attributes as inputAttr } from './components/input.md'
+import LogoComponent, {attributes as logoComponentAttr} from './components/logo.md'
 
 const content = [
   {
@@ -69,6 +70,10 @@ const content = [
       {
         component: Input,
         attributes: inputAttr
+      },
+      {
+        component: LogoComponent,
+        attributes: logoComponentAttr
       }
     ]
   }
