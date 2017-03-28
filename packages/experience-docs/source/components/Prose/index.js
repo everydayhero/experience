@@ -8,7 +8,8 @@ const Prose = comp(({
     font,
     leading,
     measure,
-    media
+    media,
+    radius
   }
 }) => ({
   ' h1': {
@@ -100,6 +101,7 @@ const Prose = comp(({
     display: 'block',
     background: color.bg.light,
     padding: size(3),
+    borderRadius: radius(3),
     [media.md]: {
       padding: size(4)
     }

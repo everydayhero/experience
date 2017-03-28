@@ -1,5 +1,6 @@
 ---
 title: Logo Component
+navTitle: Logo
 path: /components/logo
 status: orange
 imports:
