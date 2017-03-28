@@ -12,8 +12,16 @@
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
-    "boiler-room-builder": "next",
     "@everydayhero/brand-assets": "^2.1.1",
-    "@everydayhero/stranger": "2.0.0"
+    "@everydayhero/stranger": "2.0.0",
+    "boiler-room-builder": "next",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-svg-inline": "^1.2.0"
+  },
+  "devDependencies": {
+    "enzyme": "^2.8.0",
+    "power-assert": "^1.4.2",
+    "sinon": "^2.1.0"
   }
 }

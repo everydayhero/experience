@@ -12,6 +12,7 @@ const Logo = ({
   const logoName = camelCase(type) + (inverted ? 'Inverted' : '')
   const svg = logos[logoName]
   return (
+    svg !== undefined &&
     <LogoWrapper>
       <SVGInline svg={svg} />
     </LogoWrapper>
