@@ -1,11 +1,11 @@
-'use strict';
+'use strict'
 
 const
   frontMatter = require('front-matter'),
   Prism = require('node-prismjs'),
   Remarkable = require('remarkable'),
   escapeHtml = require('remarkable/lib/common/utils').escapeHtml,
-  md = new Remarkable();
+  md = new Remarkable()
 
 /**
  * Wraps the code and jsx in an html component
@@ -13,18 +13,25 @@ const
  * @param   {string} exampleRun Code to be run in the styleguide
  * @param   {string} exampleSrc Source that will be shown as example
  * @param   {string} langClass  CSS class for the code block
+ * @param   {Boolean}  renderDemo - Whether to render the JSX as a visual demo
+ * @param   {Boolean}  renderSource - Whether to render the fenced source in a <code> block
  * @returns {string}            Code block with souce and run code
  */
-function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
+function codeBlockTemplate (exampleRun, exampleSrc, langClass, renderDemo, renderSource) {
   return `
 <div class="example">
-  <div class="run">${exampleRun}</div>
-  <div class="source">
+  ${renderDemo ? `<div class="run">${exampleRun}</div>` : ''}
+  ${(!renderDemo || renderSource)
+    ? `
+    <div class="source">
     <pre><code${!langClass ? '' : ` class="${langClass}"`}>
       ${exampleSrc}
     </code></pre>
-  </div>
-</div>`;
+    </div>
+    `
+    : ''
+  }
+</div>`
 }
 
 /**
@@ -33,27 +40,28 @@ function codeBlockTemplate(exampleRun, exampleSrc, langClass) {
  * @param   {String}   lang       - Language indicated in the code block
  * @param   {String}   langPrefix - Language prefix
  * @param   {Function} highlight  - Code highlight function
+ * @param   {Boolean}  renderDemo - Whether to render the JSX as a visual demo
+ * @param   {Boolean}  renderSource - Whether to render the fenced source in a <code> block
  * @returns {String}                Code block with souce and run code
  */
-function parseCodeBlock(code, lang, langPrefix, highlight) {
-  let codeBlock = escapeHtml(code);
+function parseCodeBlock (code, lang, langPrefix, highlight, renderDemo, renderSource) {
+  let codeBlock = escapeHtml(code)
 
   if (highlight) {
-    codeBlock = highlight(code, lang);
+    codeBlock = highlight(code, lang)
   }
 
-  const
-    langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`,
-    jsx = code;
+  const langClass = !lang ? '' : `${langPrefix}${escape(lang, true)}`
+  const jsx = code
 
   codeBlock = codeBlock
     .replace(/{/g, '{"{"{')
     .replace(/}/g, '{"}"}')
     .replace(/{"{"{/g, '{"{"}')
     .replace(/(\n)/g, '{"\\n"}')
-    .replace(/class=/g, 'className=');
+    .replace(/class=/g, 'className=')
 
-  return codeBlockTemplate(jsx, codeBlock, langClass);
+  return codeBlockTemplate(jsx, codeBlock, langClass, renderDemo, renderSource)
 }
 
 /**
@@ -75,39 +83,42 @@ function parseCodeBlock(code, lang, langPrefix, highlight) {
  * @param   {MarkdownObject} markdown - Markdown attributes and body
  * @returns {HTMLObject}                HTML and imports
  */
-function parseMarkdown(markdown) {
+function parseMarkdown (markdown) {
   return new Promise((resolve, reject) => {
-    let html;
+    let html
 
     const options = {
-      highlight(code, lang) {
-        const language = Prism.languages[lang] || Prism.languages.autoit;
-        return Prism.highlight(code, language);
+      highlight (code, lang) {
+        const language = Prism.languages[lang] || Prism.languages.autoit
+        return Prism.highlight(code, language)
       },
       xhtmlOut: true
-    };
+    }
 
-    md.set(options);
+    md.set(options)
 
-    md.renderer.rules.fence_custom.render = (tokens, idx, options) => {
+    md.renderer.rules.fence = (tokens, idx, options) => {
       // gets tags applied to fence blocks ```react html
-      const codeTags = tokens[idx].params.split(/\s+/g);
+      const codeTags = tokens[idx].params.split(/\s+/g)
+      const renderDemo = codeTags[0] === 'render'
+      const renderSource = codeTags.length >= 2 && codeTags[1] === 'source'
       return parseCodeBlock(
         tokens[idx].content,
         codeTags[codeTags.length - 1],
         options.langPrefix,
-        options.highlight
-      );
-    };
-
-    try {
-      html = md.render(markdown.body);
-      resolve({ html, attributes: markdown.attributes });
-    } catch (err) {
-      return reject(err);
+        options.highlight,
+        renderDemo,
+        renderSource
+      )
     }
 
-  });
+    try {
+      html = md.render(markdown.body)
+      resolve({ html, attributes: markdown.attributes })
+    } catch (err) {
+      return reject(err)
+    }
+  })
 }
 
 /**
@@ -117,8 +128,8 @@ function parseMarkdown(markdown) {
  * @param   {String} markdown - Markdown string to be parsed
  * @returns {MarkdownObject}    Markdown attributes and body
  */
-function parseFrontMatter(markdown) {
-  return frontMatter(markdown);
+function parseFrontMatter (markdown) {
+  return frontMatter(markdown)
 }
 
 /**
@@ -127,8 +138,8 @@ function parseFrontMatter(markdown) {
  * @param  {String} markdown - Markdown string to be parsed
  * @returns {HTMLObject}       HTML and imports
  */
-function parse(markdown) {
-  return parseMarkdown(parseFrontMatter(markdown));
+function parse (markdown) {
+  return parseMarkdown(parseFrontMatter(markdown))
 }
 
 module.exports = {
@@ -137,4 +148,4 @@ module.exports = {
   parseCodeBlock,
   parseFrontMatter,
   parseMarkdown
-};
+}
