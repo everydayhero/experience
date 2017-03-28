@@ -20,6 +20,9 @@
     "type": "git",
     "url": "https://github.com/javiercf/react-markdown-loader.git"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "src/index.js",
   "scripts": {
     "build": "npm run -s lint && npm test",
