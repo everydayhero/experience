@@ -1,3 +1,4 @@
+import '@everydayhero/react-markdown-loader/node_modules/prismjs/themes/prism.css'
 import {comp} from '@everydayhero/stranger'
 
 const Prose = comp(({
@@ -94,6 +95,14 @@ const Prose = comp(({
     marginBottom: size(6),
     marginTop: size(6),
     color: color.silver
+  },
+  ' code': {
+    display: 'block',
+    background: color.bg.light,
+    padding: size(3),
+    [media.md]: {
+      padding: size(4)
+    }
   }
 }))('div')
 

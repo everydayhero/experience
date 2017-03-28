@@ -12,17 +12,20 @@ your React application.
 
 ## Install
 
-```
+```shell
 npm install @everydayhero/ui-logo --save
 ```
 
 ## Usage
 
-It's a standard React component, so render it in your JSX. The default
-params will give you our standard logo, with our default padding.
-
+```js
+import Logo from '@everydayhero/ui-logo'
+```
 
 ### Standard
+
+It's a standard React component, so render it in your JSX. The default
+params will give you our standard logo, with our default padding.
 
 ```render source html
 <Logo />
