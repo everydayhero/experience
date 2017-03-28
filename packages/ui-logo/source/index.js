@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react'
-import {camelCase} from 'lodash'
+import camelCase from 'lodash/camelCase'
 import SVGInline from 'react-svg-inline'
 import {comp} from '@everydayhero/stranger'
 import * as logos from '@everydayhero/brand-assets'

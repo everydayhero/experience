@@ -15,10 +15,10 @@
   "author": "everydayhero",
   "dependencies": {
     "@everydayhero/brand-assets": "^2.1.1",
+    "@everydayhero/ui-logo": "^2.1.1",
     "@everydayhero/react-markdown-loader": "^2.1.1",
     "@everydayhero/rug": "^2.0.0",
     "@everydayhero/stranger": "^2.0.0",
-    "@everydayhero/ui-logo": "^2.1.1",
     "boiler-room-builder": "next",
     "boiler-room-runner": "next",
     "dotenv-webpack": "^1.3.1",

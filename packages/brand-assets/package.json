@@ -11,14 +11,11 @@
   },
   "dependencies": {
     "lodash": "^4.17.4",
-    "raw-loader": "^0.5.1"
-  },
-  "devDependencies": {
+    "raw-loader": "^0.5.1",
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "babel-preset-latest": "^6.22.0",
     "babel-preset-stage-0": "^6.22.0",
-    "file-loader": "^0.10.0",
     "webpack": "^2.2.1"
   }
 }

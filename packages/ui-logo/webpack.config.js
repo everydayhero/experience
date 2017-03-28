@@ -2,11 +2,11 @@ const path = require('path')
 
 const config = {
   entry: {
-    'index': './index.js'
+    'index': './source/index.js'
   },
   output: {
     filename: '[name].js',
-    libraryTarget: 'umd',
+    libraryTarget: 'commonjs-module',
     path: path.resolve(__dirname, 'dist')
   },
   module: {
@@ -17,7 +17,15 @@ const config = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ['latest', 'stage-0']
+              presets: [
+                ['latest', {
+                  "es2015": {
+                    "modules": false
+                  }
+                }],
+                'stage-0',
+                'react'
+              ]
             }
           }
         ]
