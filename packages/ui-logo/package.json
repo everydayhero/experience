@@ -7,22 +7,13 @@
   },
   "main": "dist/index.js",
   "scripts": {
-    "build": "webpack --config webpack.config.js",
-    "lint": "standard index.js",
+    "build": "brb build --config webpack.config.js",
+    "lint": "brb lint",
     "prepublish": "npm run lint && npm run build"
   },
   "dependencies": {
+    "boiler-room-builder": "next",
     "@everydayhero/brand-assets": "^2.1.1",
-    "@everydayhero/stranger": "2.0.0",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-latest": "^6.24.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-0": "^6.22.0",
-    "react-svg-inline": "^1.2.0",
-    "webpack": "^2.2.1"
-  },
-  "devDependencies": {
-    "standard": "^9.0.2"
+    "@everydayhero/stranger": "2.0.0"
   }
 }
