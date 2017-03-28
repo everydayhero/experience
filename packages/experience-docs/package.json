@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/experience",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "The Everydayhero Experience system documentation site",
   "main": "source/client.js",
   "private": true,
@@ -14,9 +14,9 @@
   },
   "author": "everydayhero",
   "dependencies": {
-    "@everydayhero/brand-assets": "^2.1.1",
-    "@everydayhero/ui-logo": "^2.1.1",
-    "@everydayhero/react-markdown-loader": "^2.1.1",
+    "@everydayhero/brand-assets": "^2.1.2",
+    "@everydayhero/ui-logo": "^2.1.2",
+    "@everydayhero/react-markdown-loader": "^2.1.2",
     "@everydayhero/rug": "^2.0.0",
     "@everydayhero/stranger": "^2.0.0",
     "boiler-room-builder": "next",

@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/react-markdown-loader",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "Webpack loader to render React Components from markdown. Fork of `react-markdown-loader` for Everydayhero's general use case",
   "keywords": [
     "react",

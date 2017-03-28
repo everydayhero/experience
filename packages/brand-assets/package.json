@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/brand-assets",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
