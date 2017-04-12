@@ -38,6 +38,10 @@ Flat icons are the preferred usage in most situations. They appear as a single s
 <Icon icon='cross' kind='flat' />
 <Icon icon='plus' kind='flat' />
 <Icon icon='minus' kind='flat' />
+<Icon icon='left' kind='flat' />
+<Icon icon='right' kind='flat' />
+<Icon icon='facebook' kind='flat' />
+<Icon icon='twitter' kind='flat' />
 ```
 
 ### Mono
@@ -61,6 +65,10 @@ Mono icons can be used for themed or whitelabel applications. They appear as a c
 <Icon icon='cross' kind='mono' />
 <Icon icon='plus' kind='mono' />
 <Icon icon='minus' kind='mono' />
+<Icon icon='left' kind='mono' />
+<Icon icon='right' kind='mono' />
+<Icon icon='facebook' kind='mono' />
+<Icon icon='twitter' kind='mono' />
 ```
 
 ### Emoji
@@ -84,6 +92,10 @@ Emoji icons can be used to add color and context to a view, but should be used s
 <Icon icon='cross' kind='emoji' />
 <Icon icon='plus' kind='emoji' />
 <Icon icon='minus' kind='emoji' />
+<Icon icon='left' kind='emoji' />
+<Icon icon='right' kind='emoji' />
+<Icon icon='facebook' kind='emoji' />
+<Icon icon='twitter' kind='emoji' />
 ```
 
 ### Sticker
@@ -107,6 +119,10 @@ Sticker icons can be used when it's necessary to display a colorful icon on a co
 <Icon icon='cross' kind='sticker' />
 <Icon icon='plus' kind='sticker' />
 <Icon icon='minus' kind='sticker' />
+<Icon icon='left' kind='sticker' />
+<Icon icon='right' kind='sticker' />
+<Icon icon='facebook' kind='sticker' />
+<Icon icon='twitter' kind='sticker' />
 ```
 
 ## Usage Guidelines
