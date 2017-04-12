@@ -39,9 +39,9 @@ const sizes = {
 
 const kindsReducer = (kinds, currentKind, scaleFn) => reduce(kinds, (acc, kind) => ({
   ...acc,
-  [` path.visible-when-${kind}`]: {opacity: currentKind === kind ? 1 : 0},
-  [` path.hidden-when-${kind}`]: {opacity: currentKind === kind ? 0 : 1},
-  [` path.currentColor-when-${kind}`]: {fill: currentKind === kind ? 'currentColor !important' : 'initial'}
+  [` .visible-when-${kind}`]: {opacity: currentKind === kind ? '' : 0},
+  [` .hidden-when-${kind}`]: {opacity: currentKind === kind ? 0 : ''},
+  [` .currentColor-when-${kind}`]: {fill: currentKind === kind ? 'currentColor' : ''}
 }), {
   minWidth: scaleFn(sizes[currentKind].min),
   minHeight: scaleFn(sizes[currentKind].min),
@@ -53,15 +53,17 @@ const SVGIcon = comp(({
   props: {
     kind
   },
-  traits: {scale}
+  traits: {
+    scale
+  }
 }) => ({
   ...kindsReducer(kinds, kind, scale),
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
   verticalAlign: 'middle',
-  width: `${SCALE_FACTOR * 1}em`,
-  height: `${SCALE_FACTOR * 1}em`,
+  width: `${SCALE_FACTOR}em`,
+  height: `${SCALE_FACTOR}em`,
   ' svg': {
     width: '100%',
     height: '100%'

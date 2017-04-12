@@ -66,6 +66,22 @@ export const ICONS = [
   {
     title: 'Minus',
     src: require('./images/minus.svg')
+  },
+  {
+    title: 'Left',
+    src: require('./images/left-chevron.svg')
+  },
+  {
+    title: 'Right',
+    src: require('./images/right-chevron.svg')
+  },
+  {
+    title: 'Facebook',
+    src: require('./images/facebook.svg')
+  },
+  {
+    title: 'Twitter',
+    src: require('./images/twitter.svg')
   }
 ]
 
