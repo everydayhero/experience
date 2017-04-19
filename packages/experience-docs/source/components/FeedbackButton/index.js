@@ -16,7 +16,7 @@ const FeedbackButton = ({
     <StyledButton
       href={`mailto:${FEEDBACK_ADDRESS}?subject=${subject}&body=${body}`}
     >
-      <FeedbackIcon icon='heart' kind='emoji' /> I have feedback
+      <FeedbackIcon name='heart' kind='emoji' /> I have feedback
     </StyledButton>
   )
 }

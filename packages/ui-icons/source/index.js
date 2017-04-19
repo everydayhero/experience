@@ -2,22 +2,31 @@ import React, {PropTypes} from 'react'
 import InlineSVG from 'react-svg-inline'
 import reduce from 'lodash/reduce'
 import find from 'lodash/find'
-import startCase from 'lodash/startCase'
+import snakeCase from 'lodash/snakeCase'
 import {comp} from '@everydayhero/stranger'
 import ICONS from './icons'
 
 const SCALE_FACTOR = 1.25
 const kinds = ['flat', 'mono', 'emoji']
 
-const getIcon = (name) => find(ICONS, ({title}) => title === startCase(name))
+const getIcon = (name) => find(ICONS, ({title}) => snakeCase(title) === snakeCase(name))
 
 const Icon = ({
   name,
   kind = 'flat',
-  styles
+  fade,
+  styles,
+  ...props
 }) => {
   const {src, title} = getIcon(name)
-  return src && <SVGIcon styles={styles} kind={kind} svg={src} title={title} alt={title} />
+  return src && <SVGIcon {...props}
+    styles={styles}
+    kind={kind}
+    svg={src}
+    fade={fade}
+    title={title}
+    alt={title}
+  />
 }
 
 Icon.propTypes = {
@@ -48,13 +57,15 @@ const kindsReducer = (kinds, currentKind, scaleFn) => reduce(kinds, (acc, kind) 
 
 const SVGIcon = comp(({
   props: {
-    kind
+    kind,
+    fade
   },
   traits: {
     scale
   }
 }) => ({
   ...kindsReducer(kinds, kind, scale),
+  opacity: fade ? 0.6 : 1,
   display: 'inline-flex',
   alignItems: 'center',
   justifyContent: 'center',
