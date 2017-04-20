@@ -31,18 +31,20 @@ const translated = ({
   format = {}
 }) => {
   const warmTranslations = preHeat(translations, format)
-  const TranslatedComponent = (Component) => (props) => (
-    <Subscriber channel={CHANNEL}>
-      {(language) => <Component {...props}
-        {...mapTranslationsToProps(translateWithDefaults({
-          translations: warmTranslations,
-          language: language || customDefaultLanguage,
-          reducer: templateReducer(templateParamValues(props, params))
-        }), props)}
-      />}
-    </Subscriber>
-  )
-  return TranslatedComponent
+  return (Component) => {
+    const TranslatedComponent = (props) => (
+      <Subscriber channel={CHANNEL}>
+        {(language) => <Component {...props}
+          {...mapTranslationsToProps(translateWithDefaults({
+            translations: warmTranslations,
+            language: language || customDefaultLanguage,
+            reducer: templateReducer(templateParamValues(props, params))
+          }), props)}
+        />}
+      </Subscriber>
+    )
+    return TranslatedComponent
+  }
 }
 
 export default translated
