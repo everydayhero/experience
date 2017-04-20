@@ -31,7 +31,7 @@ const translated = ({
   format = {}
 }) => {
   const warmTranslations = preHeat(translations, format)
-  return (Component) => (props) => (
+  const TranslatedComponent = (Component) => (props) => (
     <Subscriber channel={CHANNEL}>
       {(language) => <Component {...props}
         {...mapTranslationsToProps(translateWithDefaults({
@@ -42,6 +42,7 @@ const translated = ({
       />}
     </Subscriber>
   )
+  return TranslatedComponent
 }
 
 export default translated
