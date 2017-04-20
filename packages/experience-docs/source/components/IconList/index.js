@@ -20,14 +20,6 @@ export const ICONS = [
     src: require('./images/earth.svg')
   },
   {
-    title: 'Duck',
-    src: require('./images/duck.svg')
-  },
-  {
-    title: 'Penguin',
-    src: require('./images/penguin.svg')
-  },
-  {
     title: 'Open Book',
     src: require('./images/openbook.svg')
   },
@@ -76,12 +68,56 @@ export const ICONS = [
     src: require('./images/right-chevron.svg')
   },
   {
+    title: 'Ellipses',
+    src: require('./images/ellipses.svg')
+  },
+  {
+    title: 'Ellipses Partial',
+    src: require('./images/ellipses-partial.svg')
+  },
+  {
     title: 'Facebook',
     src: require('./images/facebook.svg')
   },
   {
     title: 'Twitter',
     src: require('./images/twitter.svg')
+  },
+  {
+    title: 'Lock',
+    src: require('./images/lock.svg')
+  },
+  {
+    title: 'Mastercard',
+    src: require('./images/mastercard.svg')
+  },
+  {
+    title: 'American Express',
+    src: require('./images/american-express.svg')
+  },
+  {
+    title: 'Visa',
+    src: require('./images/visa.svg')
+  },
+  {
+    title: 'Credit Card',
+    src: require('./images/credit-card.svg')
+  },
+  {
+    title: 'Credit Card Number',
+    src: require('./images/credit-card-number.svg')
+  },
+  {
+    title: 'Credit Card Expiry',
+    src: require('./images/credit-card-expiry.svg')
+  },
+  {
+    title: 'Credit Card CVV3',
+    src: require('./images/credit-card-cvv3.svg')
+  },
+  {
+    title: 'Credit Card CVV4',
+    src: require('./images/credit-card-cvv4.svg')
   }
 ]
 
