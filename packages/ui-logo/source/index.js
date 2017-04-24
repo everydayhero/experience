@@ -37,5 +37,9 @@ const LogoWrapper = comp(({
     size
   }
 }) => ({
-  padding: size(4)
+  padding: size(4),
+  // Required kludge forcing inline SVGs to display properly in Safari/iOS
+  ' svg': {
+    width: '100%'
+  }
 }))('div')
