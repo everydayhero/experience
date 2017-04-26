@@ -1,6 +1,6 @@
 # ϟ cxsync
 
-````
+```
 npm i -S cxsync
 yarn add cxsync
 ```
