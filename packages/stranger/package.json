@@ -20,16 +20,10 @@
   "author": "Luke Brooker",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.16.0",
-    "babel-preset-latest": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
     "bundle-size": "^1.1.5",
     "enzyme": "^2.7.0",
     "jest-cli": "^16.0.1",
-    "react": "^15.4.2",
     "react-addons-test-utils": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-test-renderer": "^15.4.2",
     "rimraf": "^2.5.4"
   },
@@ -40,7 +34,6 @@
     "cxs": "^3.0.0",
     "cxsync": "^2.2.0",
     "inline-style-prefixer": "^2.0.5",
-    "lodash": "^4.17.4",
     "@everydayhero/rug": "^2.1.0"
   },
   "standard": {

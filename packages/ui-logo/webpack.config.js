@@ -19,8 +19,8 @@ const config = {
             options: {
               presets: [
                 ['latest', {
-                  "es2015": {
-                    "modules": false
+                  'es2015': {
+                    'modules': false
                   }
                 }],
                 'stage-0',

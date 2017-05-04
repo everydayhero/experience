@@ -1,5 +1,22 @@
 {
   "devDependencies": {
-    "lerna": "2.0.0-beta.38"
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.4.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "file-loader": "^0.11.1",
+    "lerna": "^2.0.0-rc.4",
+    "raw-loader": "^0.5.1",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "standard": "^10.0.2",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "lodash": "^4.17.4",
+    "react-svg-inline": "^2.0.0"
   }
 }

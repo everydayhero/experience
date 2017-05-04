@@ -12,17 +12,8 @@
   },
   "dependencies": {
     "@everydayhero/stranger": "2.0.0",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-latest": "^6.24.0",
-    "babel-preset-react": "^6.23.0",
-    "babel-preset-stage-0": "^6.22.0",
     "lodash": "^4.17.4",
-    "raw-loader": "^0.5.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-svg-inline": "^1.2.0",
-    "webpack": "^2.3.2"
+    "react-svg-inline": "^1.2.0"
   },
   "devDependencies": {
     "enzyme": "^2.8.0",
