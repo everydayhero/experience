@@ -1,7 +1,7 @@
 ---
 title: Icons
 path: /icons
-status: red
+status: amber
 imports:
   Icon: '../components/Icon/index.js'
   Lead: '../components/Lead/index.js'
@@ -15,29 +15,44 @@ imports:
 
 Everydayhero icons are an extension of our brand's emoji illustrations, primarily used in interactive UI applications. For sales, marketing, and presentation collateral, prefer to use the emoji.  
 
-All icons are implemented as three levels of detail. These levels are toggled as flat | mono | emoji | sticker, and each level has its own usage guidelines.
+All icons are implemented as three levels of detail. These levels are toggled as flat | mono | emoji, and each level has its own usage guidelines.
 
 ### Flat
 
 Flat icons are the preferred usage in most situations. They appear as a single solid currentColor silhouette.
 
 ```render html
-<Icon icon='camera' kind='flat' />
-<Icon icon='clap_hands' kind='flat' />
-<Icon icon='donation' kind='flat' />
-<Icon icon='earth' kind='flat' />
-<Icon icon='duck' kind='flat' />
-<Icon icon='penguin' kind='flat' />
-<Icon icon='open_book' kind='flat' />
-<Icon icon='question' kind='flat' />
-<Icon icon='search' kind='flat' />
-<Icon icon='star' kind='flat' />
-<Icon icon='heart' kind='flat' />
-<Icon icon='share' kind='flat' />
-<Icon icon='check' kind='flat' />
-<Icon icon='cross' kind='flat' />
-<Icon icon='plus' kind='flat' />
-<Icon icon='minus' kind='flat' />
+<div style={{color: '#2491BB'}}>
+  <Icon name='camera' kind='flat' />
+  <Icon name='clap_hands' kind='flat' />
+  <Icon name='donation' kind='flat' />
+  <Icon name='earth' kind='flat' />
+  <Icon name='open_book' kind='flat' />
+  <Icon name='question' kind='flat' />
+  <Icon name='search' kind='flat' />
+  <Icon name='star' kind='flat' />
+  <Icon name='heart' kind='flat' />
+  <Icon name='share' kind='flat' />
+  <Icon name='check' kind='flat' />
+  <Icon name='cross' kind='flat' />
+  <Icon name='plus' kind='flat' />
+  <Icon name='minus' kind='flat' />
+  <Icon name='left' kind='flat' />
+  <Icon name='right' kind='flat' />
+  <Icon name='ellipses' kind='flat' />
+  <Icon name='ellipses_partial' kind='flat' />
+  <Icon name='facebook' kind='flat' />
+  <Icon name='twitter' kind='flat' />
+  <Icon name='lock' kind='flat' />
+  <Icon name='visa' kind='flat' />
+  <Icon name='mastercard' kind='flat' />
+  <Icon name='american_express' kind='flat' />
+  <Icon name='credit_card' kind='flat' />
+  <Icon name='credit_card_number' kind='flat' />
+  <Icon name='credit_card_expiry' kind='flat' />
+  <Icon name='credit_card_cvv3' kind='flat' />
+  <Icon name='credit_card_cvv4' kind='flat' />
+</div>
 ```
 
 ### Mono
@@ -45,22 +60,37 @@ Flat icons are the preferred usage in most situations. They appear as a single s
 Mono icons can be used for themed or whitelabel applications. They appear as a currentColor icon with interior details such as highlights, shadows, and outlines.
 
 ```render html
-<Icon icon='camera' kind='mono' />
-<Icon icon='clap_hands' kind='mono' />
-<Icon icon='donation' kind='mono' />
-<Icon icon='earth' kind='mono' />
-<Icon icon='duck' kind='mono' />
-<Icon icon='penguin' kind='mono' />
-<Icon icon='open_book' kind='mono' />
-<Icon icon='question' kind='mono' />
-<Icon icon='search' kind='mono' />
-<Icon icon='star' kind='mono' />
-<Icon icon='heart' kind='mono' />
-<Icon icon='share' kind='mono' />
-<Icon icon='check' kind='mono' />
-<Icon icon='cross' kind='mono' />
-<Icon icon='plus' kind='mono' />
-<Icon icon='minus' kind='mono' />
+<div style={{color: '#2491BB'}}>
+  <Icon name='camera' kind='mono' />
+  <Icon name='clap_hands' kind='mono' />
+  <Icon name='donation' kind='mono' />
+  <Icon name='earth' kind='mono' />
+  <Icon name='open_book' kind='mono' />
+  <Icon name='question' kind='mono' />
+  <Icon name='search' kind='mono' />
+  <Icon name='star' kind='mono' />
+  <Icon name='heart' kind='mono' />
+  <Icon name='share' kind='mono' />
+  <Icon name='check' kind='mono' />
+  <Icon name='cross' kind='mono' />
+  <Icon name='plus' kind='mono' />
+  <Icon name='minus' kind='mono' />
+  <Icon name='left' kind='mono' />
+  <Icon name='right' kind='mono' />
+  <Icon name='ellipses' kind='mono' />
+  <Icon name='ellipses_partial' kind='mono' />
+  <Icon name='facebook' kind='mono' />
+  <Icon name='twitter' kind='mono' />
+  <Icon name='lock' kind='mono' />
+  <Icon name='visa' kind='mono' />
+  <Icon name='mastercard' kind='mono' />
+  <Icon name='american_express' kind='mono' />
+  <Icon name='credit_card' kind='mono' />
+  <Icon name='credit_card_number' kind='mono' />
+  <Icon name='credit_card_expiry' kind='mono' />
+  <Icon name='credit_card_cvv3' kind='mono' />
+  <Icon name='credit_card_cvv4' kind='mono' />
+</div>
 ```
 
 ### Emoji
@@ -68,45 +98,37 @@ Mono icons can be used for themed or whitelabel applications. They appear as a c
 Emoji icons can be used to add color and context to a view, but should be used sparingly.
 
 ```render html
-<Icon icon='camera' kind='emoji' />
-<Icon icon='clap_hands' kind='emoji' />
-<Icon icon='donation' kind='emoji' />
-<Icon icon='earth' kind='emoji' />
-<Icon icon='duck' kind='emoji' />
-<Icon icon='penguin' kind='emoji' />
-<Icon icon='open_book' kind='emoji' />
-<Icon icon='question' kind='emoji' />
-<Icon icon='search' kind='emoji' />
-<Icon icon='star' kind='emoji' />
-<Icon icon='heart' kind='emoji' />
-<Icon icon='share' kind='emoji' />
-<Icon icon='check' kind='emoji' />
-<Icon icon='cross' kind='emoji' />
-<Icon icon='plus' kind='emoji' />
-<Icon icon='minus' kind='emoji' />
-```
-
-### Sticker
-
-Sticker icons can be used when it's necessary to display a colorful icon on a colored or image background. They should be used sparingly, preferrably limited to one per view.
-
-```render html
-<Icon icon='camera' kind='sticker' />
-<Icon icon='clap_hands' kind='sticker' />
-<Icon icon='donation' kind='sticker' />
-<Icon icon='earth' kind='sticker' />
-<Icon icon='duck' kind='sticker' />
-<Icon icon='penguin' kind='sticker' />
-<Icon icon='open_book' kind='sticker' />
-<Icon icon='question' kind='sticker' />
-<Icon icon='search' kind='sticker' />
-<Icon icon='star' kind='sticker' />
-<Icon icon='heart' kind='sticker' />
-<Icon icon='share' kind='sticker' />
-<Icon icon='check' kind='sticker' />
-<Icon icon='cross' kind='sticker' />
-<Icon icon='plus' kind='sticker' />
-<Icon icon='minus' kind='sticker' />
+<div style={{color: '#2491BB'}}>
+  <Icon name='camera' kind='emoji' />
+  <Icon name='clap_hands' kind='emoji' />
+  <Icon name='donation' kind='emoji' />
+  <Icon name='earth' kind='emoji' />
+  <Icon name='open_book' kind='emoji' />
+  <Icon name='question' kind='emoji' />
+  <Icon name='search' kind='emoji' />
+  <Icon name='star' kind='emoji' />
+  <Icon name='heart' kind='emoji' />
+  <Icon name='share' kind='emoji' />
+  <Icon name='check' kind='emoji' />
+  <Icon name='cross' kind='emoji' />
+  <Icon name='plus' kind='emoji' />
+  <Icon name='minus' kind='emoji' />
+  <Icon name='left' kind='emoji' />
+  <Icon name='right' kind='emoji' />
+  <Icon name='ellipses' kind='emoji' />
+  <Icon name='ellipses_partial' kind='emoji' />
+  <Icon name='facebook' kind='emoji' />
+  <Icon name='twitter' kind='emoji' />
+  <Icon name='lock' kind='emoji' />
+  <Icon name='visa' kind='emoji' />
+  <Icon name='mastercard' kind='emoji' />
+  <Icon name='american_express' kind='emoji' />
+  <Icon name='credit_card' kind='emoji' />
+  <Icon name='credit_card_number' kind='emoji' />
+  <Icon name='credit_card_expiry' kind='emoji' />
+  <Icon name='credit_card_cvv3' kind='emoji' />
+  <Icon name='credit_card_cvv4' kind='emoji' />
+</div>
 ```
 
 ## Usage Guidelines
@@ -141,15 +163,9 @@ For all icons, the following rules apply:
 - Never display emoji icons on tertiary background colors or images
 - Always ensure plenty of spacing surrounding emoji icons, proportional to roughly one-third their width
 
-### Sticker
-
-- Never display sticker icons smaller than 2.5em
-- Never display sticker icons inline with text
-- Always ensure plenty of spacing surrounding emoji icons, proportional to roughly one-third their width
-
 ## Creation Guidelines
 
-All icons are created inline with the guidelines for illustration. They are constructred from a predefined set of lines and shapes, and built on a 32px square artboard. No portion of the icon should appear semi-transparent when set against a background (with the sole exception of the drop shadow on sticker icons).
+All icons are created inline with the guidelines for illustration. They are constructred from a predefined set of lines and shapes, and built on a 32px square artboard. No portion of the icon should appear semi-transparent when set against a background.
 
 - **Base shapes** must be solid color elements at 100% opacity. Tonal contrast is the primary factor contributing to legibility at UI sizes, and so must be a strong consideration in the palette chosen.
 - **Outlines** must be charcoal, set to 40% opacity, 2px thick, overlayed on a base shape.
@@ -169,7 +185,3 @@ Mono versions of icons are defined by setting all base shapes to use currentColo
 ### Emoji
 
 Emoji versions of icons must only use colors from our brand palette, and should be restricted to as few as possible, and no more than 3 colors.
-
-### Sticker
-
-Sticker versions of icons are made by applying a white stroke the width of the outlines around an emoji, and a vector drop shadow set at 40% opacity and projected 45 degrees south east, extending the width of the emoji outlines.

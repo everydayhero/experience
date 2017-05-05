@@ -5,7 +5,7 @@ import {
 } from '@everydayhero/rug/dist/utils'
 import Icon from '../Icon'
 
-const FEEDBACK_ADDRESS = 'q0s6p1r6a1e6g8d0@everydayhero.slack.com'
+const FEEDBACK_ADDRESS = 'x8w2j6j9d8g8f5z1@blackbaud.slack.com'
 
 const FeedbackButton = ({
   title
@@ -16,7 +16,7 @@ const FeedbackButton = ({
     <StyledButton
       href={`mailto:${FEEDBACK_ADDRESS}?subject=${subject}&body=${body}`}
     >
-      <FeedbackIcon icon='heart' /> I have feedback
+      <FeedbackIcon name='heart' kind='emoji' /> I have feedback
     </StyledButton>
   )
 }

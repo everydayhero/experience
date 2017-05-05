@@ -13,7 +13,7 @@ const Logo = ({
   const svg = logos[logoName]
   return (
     svg !== undefined &&
-    <LogoWrapper>
+    <LogoWrapper padded={padded}>
       <SVGInline svg={svg} />
     </LogoWrapper>
   )
@@ -33,9 +33,16 @@ export default Logo
 
 // Styled components
 const LogoWrapper = comp(({
+  props: {
+    padded
+  },
   traits: {
     size
   }
 }) => ({
-  padding: size(4)
+  padding: padded && size(4),
+  // Required kludge forcing inline SVGs to display properly in Safari/iOS
+  ' svg': {
+    width: '100%'
+  }
 }))('div')
