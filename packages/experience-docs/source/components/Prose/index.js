@@ -1,4 +1,4 @@
-import '@everydayhero/react-markdown-loader/node_modules/prismjs/themes/prism.css'
+import './prism.css'
 import {comp} from '@everydayhero/stranger'
 
 const Prose = comp(({
