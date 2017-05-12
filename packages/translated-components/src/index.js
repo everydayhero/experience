@@ -1,6 +1,7 @@
 import React from 'react'
 import {Broadcast, Subscriber} from 'react-broadcast'
 import reduce from 'lodash/reduce'
+import transform from 'lodash/transform'
 import kebabCase from 'lodash/kebabCase'
 import isString from 'lodash/isString'
 import isNumber from 'lodash/isNumber'
@@ -48,6 +49,24 @@ const translated = ({
 }
 
 export default translated
+
+export const translateProps = ({
+  translations,
+  language = 'en_AU',
+  params = {},
+  mapTranslationsToProps = (o) => o,
+  format = {}
+}, props) => {
+  const warmTranslations = preHeat(translations, format)
+  return {
+    ...props,
+    ...mapTranslationsToProps(translateWithDefaults({
+      translations: warmTranslations,
+      language,
+      reducer: templateReducer(templateParamValues(props, params))
+    }), props)
+  }
+}
 
 const moneyFormat = (language) => ({
   number: {
