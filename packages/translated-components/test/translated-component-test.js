@@ -80,4 +80,65 @@ describe('Translate', () => {
     const text = subject({language: 'en_CA', word: 'bigly'}).text()
     assert(includes(text, 'Look at me, I HAVE THE BEST WORDS, like: bigly'))
   })
+
+  it('formats subobjects below the language key', () => {
+    const translations = {
+      en_AU: {
+        subObject: {
+          first: 'This is first',
+          second: 'This is second'
+        },
+        otherKey: 'This is a normal key'
+      }
+    }
+    const DummyWrapper = ({
+      subObject: {
+        first,
+        second
+      },
+      otherKey
+    }) => (
+      <div>
+        <h1>{first}</h1>
+        <p>{second}</p>
+        <h1>{otherKey}</h1>
+      </div>
+    )
+    const DummyWrapperTranslated = translated({translations})(DummyWrapper)
+
+    const wrapper = mount(
+      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
+        <DummyWrapperTranslated />
+      </TranslationProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].subObject.first))
+    assert(wrapper.text().includes(translations['en_AU'].subObject.second))
+    assert(wrapper.text().includes(translations['en_AU'].otherKey))
+  })
+
+  it('does not break if `format` is a key on a subobject', () => {
+    const translations = {
+      en_AU: {
+        subObject: {
+          format: 'This is my format'
+        }
+      }
+    }
+    const DummyWrapper = ({
+      subObject: {
+        format
+      }
+    }) => (
+      <div>{format}</div>
+    )
+    const DummyTranslated = translated({translations})(DummyWrapper)
+    const wrapper = mount(
+      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
+        <DummyTranslated />
+      </TranslationProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].subObject.format))
+  })
 })
