@@ -80,12 +80,15 @@ const preheatValues = (obj, format, language) => {
 
 const templateReducer = (values) => partial(templateIteratee, values)
 const templateIteratee = (values, acc, v, k) => {
-  if (typeof v === 'object' && !v.format) {
-    acc[k] = reduce(v, partial(templateIteratee, values), {})
-  } else {
+  if (v instanceof IntlFormat) {
     acc[k] = v.format(values)
+    return acc
   }
-  return acc
+  if (typeof v === 'object') {
+    acc[k] = reduce(v, partial(templateIteratee, values), {})
+    return acc
+  }
+  throw new Error('Template reducer expects IntlFormat instances as values')
 }
 
 const paramClone = (o) => reduce(o, (acc, v, k) => {
