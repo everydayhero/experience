@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/translated-components",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "Pass i18n translated strings as props to components",
   "main": "dist/index.js",
   "publishConfig": {
