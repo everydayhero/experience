@@ -4,6 +4,7 @@ import reduce from 'lodash/reduce'
 import kebabCase from 'lodash/kebabCase'
 import isString from 'lodash/isString'
 import isNumber from 'lodash/isNumber'
+import partial from 'lodash/partial'
 import IntlFormat from 'intl-messageformat'
 import {countries, currencies} from 'country-data'
 
@@ -61,17 +62,33 @@ const moneyFormat = (language) => ({
 
 const preHeat = (translations, format) => (
   reduce(translations, (acc, o, language) => {
-    acc[language] = reduce(o, (acc, v, k) => {
-      acc[k] = new IntlFormat(v, kebabCase(language), {...moneyFormat(language), ...format})
-      return acc
-    }, {})
+    acc[language] = preheatValues(o, format, language)
     return acc
   }, {})
 )
 
-const templateReducer = (values) => (acc, v, k) => {
-  acc[k] = v.format(values)
-  return acc
+const preheatValues = (obj, format, language) => {
+  return reduce(obj, (acc, value, key) => {
+    if (typeof value === 'object') {
+      acc[key] = preheatValues(value, format, language)
+    } else {
+      acc[key] = new IntlFormat(value, kebabCase(language), {...moneyFormat(language), ...format})
+    }
+    return acc
+  }, {})
+}
+
+const templateReducer = (values) => partial(templateIteratee, values)
+const templateIteratee = (values, acc, v, k) => {
+  if (v instanceof IntlFormat) {
+    acc[k] = v.format(values)
+    return acc
+  }
+  if (typeof v === 'object') {
+    acc[k] = reduce(v, partial(templateIteratee, values), {})
+    return acc
+  }
+  throw new Error('Template reducer expects IntlFormat instances as values')
 }
 
 const paramClone = (o) => reduce(o, (acc, v, k) => {
