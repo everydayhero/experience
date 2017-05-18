@@ -141,4 +141,30 @@ describe('Translate', () => {
 
     assert(wrapper.text().includes(translations['en_AU'].subObject.format))
   })
+
+  it('uses a locally set language prop over the provider language, if set', () => {
+    const translations = {
+      en_AU: {
+        one: 'AUOne',
+        two: 'AUTwo'
+      },
+      en_NZ: {
+        one: 'NZOne',
+        two: 'NZTwo'
+      }
+    }
+    const Dummy = (props) => (<div>{props.one}{props.two}</div>)
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
+        <DummyTranslated language='en_NZ' />
+      </TranslationProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_NZ'].one))
+    assert(wrapper.text().includes(translations['en_NZ'].two))
+
+    assert(!wrapper.text().includes(translations['en_AU'].one))
+    assert(!wrapper.text().includes(translations['en_AU'].two))
+  })
 })

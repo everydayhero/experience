@@ -135,6 +135,42 @@ export const translated({translations, mapTranslationsToProps})(Plan)
 */
 ```
 
+#### Overriding the language set by the Provider
+
+In rare cases, you may want to render a specific component with a different set of translations to
+the rest of your application. For example, you may want to change the localised labels of an Address
+fieldset when you change the selected country for that address.
+
+The `translated` HOC will use a locally set `language` prop in preference to the one set by your
+`TranslationProvider`.
+
+For example:
+
+```js
+const translations = {
+  en_US: {
+    fieldOne: 'One',
+    fieldTwo: 'Two'
+  },
+  en_NZ: {
+    fieldOne: 'NZOne',
+    fieldTwo: 'NZTwo'
+  }
+}
+
+const MyWidget = (props) => (
+  <div>
+    {fieldOne}
+    {fieldTwo}
+  </div>
+)
+const TranslatedWidget = translated({translations})(MyWidget)
+
+<TranslatedWidget /> // <div>OneTwo</div>
+<TranslatedWidget language='en_NZ' /> // <div>NZOneNZTwo</div>
+
+```
+
 #### Displaying money
 
 This lib comes with a built-in `money` number format, which you can use to display currency correctly for the language provided: 

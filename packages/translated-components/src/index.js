@@ -37,7 +37,7 @@ const translated = ({
         {(language) => <Component {...props}
           {...mapTranslationsToProps(translateWithDefaults({
             translations: warmTranslations,
-            language: language || customDefaultLanguage,
+            language: props.language || language || customDefaultLanguage,
             reducer: templateReducer(templateParamValues(props, params))
           }), props)}
         />}
