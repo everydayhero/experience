@@ -15,6 +15,7 @@ const sheetForTag = (tag) => {
 
 const isDev = (x => (x === 'development') || !x)(process.env.NODE_ENV)
 const isTest = process.env.NODE_ENV === 'test'
+const toggleSpeedy = process.env.NODE_ENV === 'production' || !isBrowser
 
 const oldIE = (() => {
   if (isBrowser) {
@@ -33,7 +34,7 @@ const makeStyleTag = () => {
 }
 
 export function StyleSheet ({
-    speedy = !isDev && !isTest,
+    speedy = toggleSpeedy,
     maxLength = (isBrowser && oldIE) ? 4000 : 65000
   } = {}) {
   this.isSpeedy = speedy
