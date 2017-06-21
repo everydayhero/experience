@@ -19,16 +19,14 @@ const
  */
 function codeBlockTemplate (exampleRun, exampleSrc, langClass, renderDemo, renderSource) {
   return `
-<div class="example">
-  ${renderDemo ? `<div class="run">${exampleRun}</div>` : ''}
+<div class="example">` +
+  `${renderDemo ? `<div class="run">${exampleRun}</div>` : ''}
   ${(!renderDemo || renderSource)
-    ? `
-    <div class="source">
+    ? `<div class="source">
     <pre><code${!langClass ? '' : ` class="${langClass}"`}>
       ${exampleSrc}
     </code></pre>
-    </div>
-    `
+  </div>`
     : ''
   }
 </div>`

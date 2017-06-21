@@ -42,7 +42,6 @@ describe('Parse Markdown', () => {
 
     result.should.equal(`
 <div class="example">
-  <div class="run">example</div>
   <div class="source">
     <pre><code>
       example
