@@ -28,11 +28,14 @@ export {
  * Size
  */
 
-export const size = (exponent = 4, unit = 'rem') => pipe(
+const inRangeExponent = pipe(
   isInRange(0, 10),
-  calcExponent(2),
-  addUnit(unit)
-)(exponent, unit)
+  calcExponent(2)
+)
+
+export const size = (exponent = 4, unit = 'rem') => (
+  addUnit(unit, inRangeExponent(exponent))
+)
 
 /**
  * Type Scale
