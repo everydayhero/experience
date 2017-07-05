@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/stranger",
-  "version": "2.5.1",
+  "version": "4.1.0",
   "description": "A wrapper around existing CSS in JS solutions with as little complexity as possible",
   "main": "dist/index.js",
   "publishConfig": {
