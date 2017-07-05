@@ -167,4 +167,47 @@ describe('Translate', () => {
     assert(!wrapper.text().includes(translations['en_AU'].one))
     assert(!wrapper.text().includes(translations['en_AU'].two))
   })
+
+  it('translates values using the defaultLocale if they are not available on the locale\'s translation map', () => {
+    const translations = {
+      en_IE: {
+        one: 'Hello hello!',
+        two: 'Hi hi!'
+      },
+      en_GB: {
+        one: 'Oy mate, pull yer \'ed in!'
+      }
+    }
+    const Dummy = (props) => <div>{props.one}{props.two}</div>
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_GB' defaultLocale='en_IE'>
+        <DummyTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_GB'].one))
+    assert(wrapper.text().includes(translations['en_IE'].two))
+  })
+
+  it('uses "en_AU" as the default locale if no default locale is set', () => {
+    const translations = {
+      en_AU: {
+        one: 'AUOne',
+        two: 'AUTwo'
+      },
+      en_NZ: {
+        one: 'NZOne'
+      }
+    }
+    const Dummy = (props) => <div>{props.one}{props.two}</div>
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_NZ'>
+        <DummyTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].two))
+  })
 })
