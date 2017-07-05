@@ -3,7 +3,7 @@ import {describe, it} from 'mocha'
 import assert from 'assert'
 import {mount} from 'enzyme'
 import includes from 'lodash/includes'
-import translated, {TranslationProvider} from '../src'
+import translated, {LocaleProvider} from '../src'
 
 const Dummy = ({
   title = 'title that should not be seen',
@@ -42,9 +42,9 @@ describe('Translate', () => {
   const DummyTranslated = translated({translations, params})(Dummy)
   const subject = ({language, ...rest}) => (
     mount(
-      <TranslationProvider language={language} defaultLanguage='en_AU'>
+      <LocaleProvider locale={language} defaultLocale='en_AU'>
         <DummyTranslated {...rest} />
-      </TranslationProvider>
+      </LocaleProvider>
     )
   )
 
@@ -107,9 +107,9 @@ describe('Translate', () => {
     const DummyWrapperTranslated = translated({translations})(DummyWrapper)
 
     const wrapper = mount(
-      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
         <DummyWrapperTranslated />
-      </TranslationProvider>
+      </LocaleProvider>
     )
 
     assert(wrapper.text().includes(translations['en_AU'].subObject.first))
@@ -134,9 +134,9 @@ describe('Translate', () => {
     )
     const DummyTranslated = translated({translations})(DummyWrapper)
     const wrapper = mount(
-      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
         <DummyTranslated />
-      </TranslationProvider>
+      </LocaleProvider>
     )
 
     assert(wrapper.text().includes(translations['en_AU'].subObject.format))
@@ -156,9 +156,9 @@ describe('Translate', () => {
     const Dummy = (props) => (<div>{props.one}{props.two}</div>)
     const DummyTranslated = translated({translations})(Dummy)
     const wrapper = mount(
-      <TranslationProvider language='en_AU' defaultLanguage='en_AU'>
-        <DummyTranslated language='en_NZ' />
-      </TranslationProvider>
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
+        <DummyTranslated locale='en_NZ' />
+      </LocaleProvider>
     )
 
     assert(wrapper.text().includes(translations['en_NZ'].one))
