@@ -1,4 +1,5 @@
-import React, {PropTypes} from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import camelCase from 'lodash/camelCase'
 import SVGInline from 'react-svg-inline'
 import {comp} from '@everydayhero/stranger'

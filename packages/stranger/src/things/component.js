@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import pickBy from 'lodash/pickBy'
 import merge from 'lodash/merge'
 import stranger, { addRule } from '../'
