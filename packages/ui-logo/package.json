@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/ui-logo",
-  "description": "Logo component for doing Everydayhero branding in React apps",
+  "description": "Everydayhero logo component for doing branding in React apps",
   "version": "4.2.0",
   "publishConfig": {
     "access": "public"
