@@ -11,8 +11,8 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@everydayhero/brand-assets": "^2.1.2",
-    "@everydayhero/stranger": "2.0.0",
+    "@everydayhero/brand-assets": "^3.0.0",
+    "@everydayhero/stranger": "^4.1.0",
     "babel-core": "^6.24.0",
     "babel-loader": "^7.1.1",
     "babel-preset-latest": "^6.24.0",
