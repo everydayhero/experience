@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/experience",
-  "version": "4.2.3",
+  "version": "4.2.4",
   "description": "The Everydayhero Experience system documentation site",
   "main": "source/client.js",
   "private": true,
@@ -14,7 +14,7 @@
   },
   "author": "everydayhero",
   "dependencies": {
-    "@everydayhero/brand-assets": "^4.2.3",
+    "@everydayhero/brand-assets": "^4.2.4",
     "@everydayhero/rug": "^2.5.1",
     "@everydayhero/stranger": "^4.1.0",
     "boiler-room-builder": "next",
