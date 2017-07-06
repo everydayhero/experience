@@ -3,7 +3,6 @@
   "description": "Logos and the like for everydayhero sites",
   "version": "4.2.3",
   "main": "dist/index.js",
-  "private": true,
   "scripts": {
     "build": "webpack --config webpack.config.js",
     "prepublish": "npm run build"
