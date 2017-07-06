@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/brand-assets",
   "description": "Logos and the like for everydayhero sites",
-  "version": "3.0.0",
+  "version": "4.2.3",
   "main": "dist/index.js",
   "private": true,
   "scripts": {
