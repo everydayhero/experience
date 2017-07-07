@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/rug",
-  "version": "2.5.1",
+  "version": "6.0.2",
   "description": "\"…really tied the room together, did it not?\"",
   "main": "dist/index.js",
   "publishConfig": {
