@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/ui-icons",
   "description": "Everydayhero icon component for React apps",
-  "version": "4.2.2",
+  "version": "5.0.0",
   "publishConfig": {
     "access": "public"
   },
@@ -11,7 +11,7 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@everydayhero/stranger": "^4.1.0",
+    "@everydayhero/stranger": "^5.0.0",
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-latest": "^6.24.0",
@@ -24,8 +24,8 @@
     "webpack": "^2.3.2"
   },
   "peerDependencies": {
-    "react-dom": ">= 15.6.1 < 17",
-    "react": ">= 15.6.1 < 17"
+    "react": ">= 15.6.1 < 17",
+    "react-dom": ">= 15.6.1 < 17"
   },
   "devDependencies": {
     "enzyme": "^2.8.0",
