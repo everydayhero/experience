@@ -1,5 +1,5 @@
 {
-  "name": "cxsync",
+  "name": "@everydayhero/cxsync",
   "version": "2.2.2",
   "description": "A CSS-in-JS solution for CSS in functional UI components",
   "main": "dist/index.js",
@@ -41,14 +41,16 @@
     "markdown-loader": "^0.1.7",
     "mocha": "^2.5.3",
     "standard": "^7.1.2",
-    "webpack": "^1.13.1",
+    "webpack": "^2.1.0",
     "webpack-dev-server": "^1.14.1",
     "yo-yo": "^1.2.1"
   },
   "dependencies": {
     "lodash": "^4.16.4",
-    "pure-color": "^1.2.0",
-    "react": "^15.4.2"
+    "pure-color": "^1.2.0"
+  },
+  "peerDependencies": {
+    "react": ">= 15.6.1 < 17"
   },
   "ava": {
     "require": [

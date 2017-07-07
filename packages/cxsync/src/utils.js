@@ -1,6 +1,5 @@
 const { floor, random } = Math
 
-const isNode = typeof module !== 'undefined' && (!this || this.module !== module)
 export const exists = (v) => (v !== null && typeof v !== 'undefined')
 export const isValue = (v) => typeof v === 'string' || typeof v === 'number'
 export const isNested = (key = '') => /\s|:|^@|^\d|^from$|^to$/.test(key)
@@ -19,4 +18,4 @@ export const styleReducer = (a, b) => (a.indexOf(b) > -1) ? a : [ ...a, b ]
 export const propertyFilter = ({ selector }) => !(/:/.test(selector)) && !(/\s/.test(selector))
 export const hasWindow = () => typeof window !== 'undefined'
 export const hasDocument = () => typeof document !== 'undefined'
-export const isBrowser = (() => !isNode && hasWindow() && hasDocument() && document.nodeType === 9)()
+export const isBrowser = (() => hasWindow() && hasDocument() && document.nodeType === 9)()
