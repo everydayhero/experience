@@ -20,10 +20,12 @@
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10",
     "raw-loader": "^0.5.1",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
     "react-svg-inline": "^2.0.0",
     "webpack": "^2.3.2"
+  },
+  "peerDependencies": {
+    "react-dom": ">= 15.6.1 < 17",
+    "react": ">= 15.6.1 < 17"
   },
   "devDependencies": {
     "enzyme": "^2.8.0",
