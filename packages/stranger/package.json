@@ -38,7 +38,7 @@
   "dependencies": {
     "@everydayhero/rug": "^2.5.1",
     "cxs": "^3.0.0",
-    "cxsync": "^2.2.0",
+    "@everydayhero/cxsync": "^2.2.0",
     "inline-style-prefixer": "^2.0.5",
     "lodash": "^4.17.4",
     "prop-types": "^15.5.10"
