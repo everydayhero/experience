@@ -3,7 +3,7 @@ import {describe, it} from 'mocha'
 import assert from 'assert'
 import {mount} from 'enzyme'
 import includes from 'lodash/includes'
-import translated, {TranslationProvider} from '../src'
+import translated, {LocaleProvider} from '../src'
 
 const Dummy = ({
   title = 'title that should not be seen',
@@ -42,9 +42,9 @@ describe('Translate', () => {
   const DummyTranslated = translated({translations, params})(Dummy)
   const subject = ({language, ...rest}) => (
     mount(
-      <TranslationProvider language={language} defaultLanguage='en_AU'>
+      <LocaleProvider locale={language} defaultLocale='en_AU'>
         <DummyTranslated {...rest} />
-      </TranslationProvider>
+      </LocaleProvider>
     )
   )
 
@@ -79,5 +79,135 @@ describe('Translate', () => {
   it('transforms template params with supplied functions', () => {
     const text = subject({language: 'en_CA', word: 'bigly'}).text()
     assert(includes(text, 'Look at me, I HAVE THE BEST WORDS, like: bigly'))
+  })
+
+  it('formats subobjects below the language key', () => {
+    const translations = {
+      en_AU: {
+        subObject: {
+          first: 'This is first',
+          second: 'This is second'
+        },
+        otherKey: 'This is a normal key'
+      }
+    }
+    const DummyWrapper = ({
+      subObject: {
+        first,
+        second
+      },
+      otherKey
+    }) => (
+      <div>
+        <h1>{first}</h1>
+        <p>{second}</p>
+        <h1>{otherKey}</h1>
+      </div>
+    )
+    const DummyWrapperTranslated = translated({translations})(DummyWrapper)
+
+    const wrapper = mount(
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
+        <DummyWrapperTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].subObject.first))
+    assert(wrapper.text().includes(translations['en_AU'].subObject.second))
+    assert(wrapper.text().includes(translations['en_AU'].otherKey))
+  })
+
+  it('does not break if `format` is a key on a subobject', () => {
+    const translations = {
+      en_AU: {
+        subObject: {
+          format: 'This is my format'
+        }
+      }
+    }
+    const DummyWrapper = ({
+      subObject: {
+        format
+      }
+    }) => (
+      <div>{format}</div>
+    )
+    const DummyTranslated = translated({translations})(DummyWrapper)
+    const wrapper = mount(
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
+        <DummyTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].subObject.format))
+  })
+
+  it('uses a locally set language prop over the provider language, if set', () => {
+    const translations = {
+      en_AU: {
+        one: 'AUOne',
+        two: 'AUTwo'
+      },
+      en_NZ: {
+        one: 'NZOne',
+        two: 'NZTwo'
+      }
+    }
+    const Dummy = (props) => (<div>{props.one}{props.two}</div>)
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_AU' defaultLanguage='en_AU'>
+        <DummyTranslated locale='en_NZ' />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_NZ'].one))
+    assert(wrapper.text().includes(translations['en_NZ'].two))
+
+    assert(!wrapper.text().includes(translations['en_AU'].one))
+    assert(!wrapper.text().includes(translations['en_AU'].two))
+  })
+
+  it('translates values using the defaultLocale if they are not available on the locale\'s translation map', () => {
+    const translations = {
+      en_IE: {
+        one: 'Hello hello!',
+        two: 'Hi hi!'
+      },
+      en_GB: {
+        one: 'Oy mate, pull yer \'ed in!'
+      }
+    }
+    const Dummy = (props) => <div>{props.one}{props.two}</div>
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_GB' defaultLocale='en_IE'>
+        <DummyTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_GB'].one))
+    assert(wrapper.text().includes(translations['en_IE'].two))
+  })
+
+  it('uses "en_AU" as the default locale if no default locale is set', () => {
+    const translations = {
+      en_AU: {
+        one: 'AUOne',
+        two: 'AUTwo'
+      },
+      en_NZ: {
+        one: 'NZOne'
+      }
+    }
+    const Dummy = (props) => <div>{props.one}{props.two}</div>
+    const DummyTranslated = translated({translations})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_NZ'>
+        <DummyTranslated />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes(translations['en_AU'].two))
   })
 })

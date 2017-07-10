@@ -1,4 +1,4 @@
-import cxsync from 'cxsync'
+import cxsync from '@everydayhero/cxsync'
 import React from 'react'
 import rug from '@everydayhero/rug'
 

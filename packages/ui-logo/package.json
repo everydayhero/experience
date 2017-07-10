@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/ui-logo",
-  "description": "Logo component for doing Everydayhero branding in React apps",
-  "version": "2.3.1",
+  "description": "Everydayhero logo component for doing branding in React apps",
+  "version": "6.0.2",
   "publishConfig": {
     "access": "public"
   },
@@ -11,17 +11,20 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@everydayhero/brand-assets": "^2.1.2",
-    "@everydayhero/stranger": "2.0.0",
+    "@everydayhero/brand-assets": "^4.2.4",
+    "@everydayhero/stranger": "^6.0.2",
     "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
+    "babel-loader": "^7.1.1",
     "babel-preset-latest": "^6.24.0",
     "babel-preset-react": "^6.23.0",
     "babel-preset-stage-0": "^6.22.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
-    "react-svg-inline": "^1.2.0",
+    "prop-types": "^15.5.10",
+    "react-svg-inline": "^2.0.0",
     "webpack": "^2.3.2"
+  },
+  "peerDependencies": {
+    "react": ">= 15.6.1 < 17",
+    "react-dom": ">= 15.6.1 < 17"
   },
   "devDependencies": {
     "enzyme": "^2.8.0",

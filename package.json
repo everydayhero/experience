@@ -3,6 +3,7 @@
     "lerna": "2.0.0-rc.5"
   },
   "dependencies": {
+    "babel-preset-env": "^1.6.0",
     "boiler-room-builder": "next"
   }
 }
