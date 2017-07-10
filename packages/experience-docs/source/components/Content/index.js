@@ -15,10 +15,7 @@ const StyledContent = comp(({
   flex: '1',
   maxWidth: measure.wide,
   minWidth: measure.minimum,
-  marginBottom: size(5),
-  ' .source': {
-    display: 'none'
-  }
+  marginBottom: size(5)
 }))('div')
 
 const Content = ({

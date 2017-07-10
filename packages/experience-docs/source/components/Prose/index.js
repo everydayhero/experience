@@ -1,3 +1,4 @@
+import './prism.css'
 import {comp} from '@everydayhero/stranger'
 
 const Prose = comp(({
@@ -7,7 +8,8 @@ const Prose = comp(({
     font,
     leading,
     measure,
-    media
+    media,
+    radius
   }
 }) => ({
   ' h1': {
@@ -94,6 +96,16 @@ const Prose = comp(({
     marginBottom: size(6),
     marginTop: size(6),
     color: color.silver
+  },
+  ' code': {
+    display: 'block',
+    background: color.bg.light,
+    marginTop: size(4),
+    padding: size(3),
+    borderRadius: radius(3),
+    [media.md]: {
+      padding: size(4)
+    }
   }
 }))('div')
 

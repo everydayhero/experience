@@ -14,6 +14,8 @@
   },
   "author": "everydayhero",
   "dependencies": {
+    "@everydayhero/ui-logo": "^2.1.2",
+    "@everydayhero/react-markdown-loader": "^2.1.2",
     "@everydayhero/brand-assets": "^4.2.4",
     "@everydayhero/rug": "^6.0.2",
     "@everydayhero/stranger": "^6.0.2",
@@ -28,7 +30,6 @@
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-helmet": "^3.2.2",
-    "react-markdown-loader": "^1.1.10",
     "react-svg-inline": "^1.2.0"
   },
   "devDependencies": {

@@ -25,7 +25,7 @@ module.exports = {
               presets: ['latest', 'stage-0', 'react']
             }
           },
-          'react-markdown-loader'
+          '@everydayhero/react-markdown-loader'
         ]
       },
       {
