@@ -9,15 +9,15 @@ const statusColors = {
 const Dot = comp(({
   props: {status = 'red'},
   traits: {
-    color,
+    colors,
     size,
     radius
   }
 }) => ({
-  backgroundColor: color[statusColors[status]],
+  backgroundColor: colors[statusColors[status]],
   width: '1em',
   height: '1em',
-  borderRadius: radius(5)
-}))('div', {removeProps: ['status']})
+  borderRadius: radius.circle
+}))('div')
 
 export default Dot

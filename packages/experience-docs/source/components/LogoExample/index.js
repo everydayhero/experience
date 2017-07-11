@@ -2,7 +2,9 @@ import {comp} from '@everydayhero/stranger'
 import Logo from '../Logo'
 
 const LogoImg = comp(({
-  traits: {size}
+  traits: {
+    size
+  }
 }) => ({
   display: 'flex',
   alignItems: 'center',

@@ -5,17 +5,17 @@ import NavigationList from '../NavigationList'
 
 const StyledNavigation = comp(({
   traits: {
-    color,
+    colors,
     size,
-    font,
+    type,
     media
   }
 }) => ({
   paddingTop: size(5),
   paddingBottom: size(5),
-  backgroundColor: color.bg.light,
+  backgroundColor: colors.theme.soft,
   [media.sm]: {
-    fontSize: font.scale(1)
+    fontSize: type.scale(1)
   },
   [media.md]: {
     position: 'fixed',

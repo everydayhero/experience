@@ -10,15 +10,15 @@ const renderScripts = (scripts) => (
 )
 const Root = comp(({
   traits: {
-    color,
-    font,
+    colors,
+    type,
     media
   }
 }) => ({
-  color: color.text.darker,
+  color: colors.theme.dark,
   fontSize: '100%',
-  fontFamily: `"proxima-nova", ${font.family.ui}`,
-  fontWeight: font.weight.normal,
+  fontFamily: `"proxima-nova", ${type.family.ui}`,
+  fontWeight: type.weight.normal,
   [media.md]: {
     fontSize: 'calc(1em + (1.125 - 1) * (100vw - 25em) / (62.5 - 25))'
   }

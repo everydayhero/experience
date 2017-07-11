@@ -2,15 +2,13 @@ import {comp} from '@everydayhero/stranger'
 
 const Lead = comp(({
   traits: {
-    measure,
     size,
-    leading,
-    font
+    type
   }
 }) => ({
-  fontSize: font.scale(1),
-  lineHeight: leading.prose,
-  maxWidth: measure.normal,
+  fontSize: type.scale(1),
+  lineHeight: type.leading.prose,
+  maxWidth: type.measure.normal,
   marginBottom: size(5)
 }))('p')
 

@@ -3,50 +3,52 @@ import {comp} from '@everydayhero/stranger'
 const Prose = comp(({
   traits: {
     size,
-    color,
-    font,
-    leading,
-    measure,
+    colors,
+    type,
+    radius,
     media
   }
 }) => ({
   ' h1': {
     marginTop: size(6),
     marginBottom: size(5),
-    lineHeight: leading.display,
-    fontSize: font.scale(5),
-    fontWeight: font.weight.bold,
+    lineHeight: type.leading.tightest,
+    letterSpacing: type.tracking.tightest,
+    fontSize: type.scale(5),
+    fontWeight: type.weight.bold,
     [media.md]: {
       marginTop: size(7)
     }
   },
   ' h2': {
-    lineHeight: leading.display,
+    lineHeight: type.leading.tightest,
+    letterSpacing: type.tracking.tightest,
     marginTop: size(6),
     marginBottom: size(3),
-    fontSize: font.scale(4),
-    fontWeight: font.weight.bold
+    fontSize: type.scale(4),
+    fontWeight: type.weight.bold
   },
   ' h3': {
-    lineHeight: leading.display,
+    lineHeight: type.leading.tightest,
+    letterSpacing: type.tracking.tightest,
     marginTop: size(5),
     marginBottom: size(3),
-    fontSize: font.scale(2),
-    fontWeight: font.weight.bold
+    fontSize: type.scale(2),
+    fontWeight: type.weight.bold
   },
   ' h4': {
-    lineHeight: leading.display,
-    marginTop: size(4),
+    lineHeight: type.leading.tightest,
+    letterSpacing: type.tracking.tight,
     marginBottom: size(2),
-    fontSize: font.scale(1),
-    fontWeight: font.weight.bold
+    fontSize: type.scale(1),
+    fontWeight: type.weight.bold
   },
   ' p': {
-    lineHeight: leading.prose,
+    lineHeight: type.leading.prose,
     marginBottom: '1.125em'
   },
   ' li': {
-    lineHeight: leading.prose
+    lineHeight: type.leading.prose
   },
   ' ul': {
     paddingLeft: size(4),
@@ -78,22 +80,30 @@ const Prose = comp(({
     listStyle: 'decimal'
   },
   ' strong': {
-    fontWeight: font.weight.bold
+    fontWeight: type.weight.bold
   },
   ' a': {
-    fontWeight: font.weight.bold,
+    fontWeight: type.weight.bold,
     textDecoration: 'underline',
-    color: color.action.medium
+    color: colors.theme.action
   },
   ' blockquote': {
-    borderLeft: `${size(2)} solid ${color.border.light}`,
+    borderLeft: `${size(2)} solid ${colors.theme.soft}`,
     paddingLeft: size(4)
   },
   ' hr': {
     borderWidth: size(1),
     marginBottom: size(6),
     marginTop: size(6),
-    color: color.silver
+    color: colors.silver
+  },
+  'code': {
+    display: 'inline-block',
+    lineHeight: type.leading.tight,
+    padding: `${size(1)} ${size(2)}`,
+    fontFamily: type.family.code,
+    backgroundColor: colors.theme.soft,
+    borderRadius: radius.sm
   }
 }))('div')
 

@@ -26,14 +26,14 @@ const ImgBase = comp(({
   },
   traits: {
     size,
-    measure
+    type
   }
 }) => ({
   display: 'block',
   marginBottom: size(5),
   marginLeft: (align === 'center' || align === 'right') && 'auto',
   marginRight: align === 'center' && 'auto',
-  maxWidth: width && measure[width],
+  maxWidth: width && type.measure[width],
   borderRadius: size(3),
   overflow: 'hidden'
 }), { removeProps: ['width', 'align'] })

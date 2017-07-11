@@ -163,7 +163,6 @@ const Icon = comp({
 
 const IconWrapper = comp(({
   traits: {
-    color,
     size
   }
 }) => ({
@@ -179,25 +178,24 @@ const IconWrapper = comp(({
 
 const Background = comp(({
   traits: {
-    color,
+    colors,
     size,
     radius
   }
 }) => ({
   padding: `${size(3)} ${size(4)}`,
-  backgroundColor: color.bg.light,
-  borderRadius: radius(3)
+  backgroundColor: colors.theme.soft,
+  borderRadius: radius.md
 }))('div')
 
 const IconCaption = comp(({
   traits: {
     size,
-    color,
-    font
+    type
   }
 }) => ({
   marginTop: size(3),
-  fontSize: font.scale(-1),
-  fontWeight: font.weight.bold,
+  fontSize: type.scale(-1),
+  fontWeight: type.weight.bold,
   textAlign: 'center'
 }))('div')

@@ -2,7 +2,6 @@ import {comp} from '@everydayhero/stranger'
 
 const ContentWrapper = comp(({
   traits: {
-    measure,
     media,
     size
   }
