@@ -7,7 +7,7 @@
   "scripts": {
     "start": "npm run build && npm run serve",
     "serve": "brb serve --config='./webpack.shared.config'",
-    "build": "brb build --config='./webpack.shared.config'",
+    "build": "rm -rf dist && brb build --config='./webpack.shared.config'",
     "deploy": "brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.do && brb deploy --target s3 --bucket everydayhero.do --prefix experience.everydayhero.com",
     "lint": "standard",
     "prepublish": "npm run build"
@@ -17,7 +17,7 @@
     "@everydayhero/brand-assets": "^4.2.4",
     "@everydayhero/rug": "^7.0.0",
     "@everydayhero/stranger": "^7.0.0",
-    "boiler-room-builder": "next",
+    "boiler-room-builder": "^2.0.0-17",
     "boiler-room-runner": "next",
     "color": "^2.0.0",
     "dotenv-webpack": "^1.3.1",
