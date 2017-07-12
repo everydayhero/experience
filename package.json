@@ -4,6 +4,6 @@
   },
   "dependencies": {
     "babel-preset-env": "^1.6.0",
-    "boiler-room-builder": "next"
+    "boiler-room-builder": "^2.0.0-17"
   }
 }
