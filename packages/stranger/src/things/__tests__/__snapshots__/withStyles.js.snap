@@ -1,17 +1,17 @@
 exports[`comp should make traits available to style objects 1`] = `
 Object {
-  "child": "bc-rgb255_255_255",
-  "root": "c-rgb27_171_107",
+  "child": "bc-ebf1f3",
+  "root": "c-1bab6b",
 }
 `;
 
 exports[`comp should make traits available to style objects 2`] = `
 Object {
   "child": Object {
-    "backgroundColor": "rgb(255,255,255)",
+    "backgroundColor": "#ebf1f3",
   },
   "root": Object {
-    "color": "rgb(27,171,107)",
+    "color": "#1bab6b",
   },
 }
 `;
