@@ -1,6 +1,8 @@
 import React from 'react'
-import { shallow } from 'enzyme'
+import ReactShallowRenderer from 'react-test-renderer/shallow'
 import withStyles from '../withStyles.js'
+
+const shallow = new ReactShallowRenderer()
 
 describe('comp', () => {
   it('should turn a style object into classes and passes down all styles', () => {
@@ -21,20 +23,20 @@ describe('comp', () => {
       </div>
     )
     const ComponentWithStyles = withStyles(styles)(MyComponent)
-    const componentObj = shallow(
+    const actual = shallow.render(
       <ComponentWithStyles makeit='green' />
     )
-    expect(componentObj.props().classNames).toMatchSnapshot()
-    expect(componentObj.props().styles).toMatchSnapshot()
+    expect(actual.props.classNames).toMatchSnapshot()
+    expect(actual.props.styles).toMatchSnapshot()
   })
 
   it('should make traits available to style objects', () => {
-    const styles = ({ traits: { color } }) => ({
+    const styles = ({ traits: { colors } }) => ({
       root: {
-        color: color.green
+        color: colors.green
       },
       child: {
-        backgroundColor: color.bg.lighter
+        backgroundColor: colors.theme.soft
       }
     })
     const MyComponent = ({
@@ -46,10 +48,10 @@ describe('comp', () => {
       </div>
     )
     const ComponentWithStyles = withStyles(styles)(MyComponent)
-    const componentObj = shallow(
+    const actual = shallow.render(
       <ComponentWithStyles />
     )
-    expect(componentObj.props().classNames).toMatchSnapshot()
-    expect(componentObj.props().styles).toMatchSnapshot()
+    expect(actual.props.classNames).toMatchSnapshot()
+    expect(actual.props.styles).toMatchSnapshot()
   })
 })

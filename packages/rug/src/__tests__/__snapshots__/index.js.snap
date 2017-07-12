@@ -1,0 +1,9 @@
+exports[`size should always include an exponent 1`] = `"Please provide a *number* greater or equal to 0 and less than or equal to 10"`;
+
+exports[`size should only accept between 0 and 10 as an exponent 1`] = `"Please provide a *number* greater or equal to 0 and less than or equal to 10"`;
+
+exports[`size should only accept between 0 and 10 as an exponent 2`] = `"Please provide a *number* greater or equal to 0 and less than or equal to 10"`;
+
+exports[`type scale should always include an exponent 1`] = `"Please provide a *number* greater or equal to -1 and less than or equal to 6"`;
+
+exports[`type scale should only accept exponents -1 or above 1`] = `"Please provide a *number* greater or equal to -1 and less than or equal to 6"`;

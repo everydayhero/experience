@@ -19,7 +19,9 @@ const Status = ({
 )
 
 const Wrapper = comp(({
-  traits: {size}
+  traits: {
+    size
+  }
 }) => ({
   display: 'flex',
   alignItems: 'center',
@@ -30,16 +32,15 @@ const Wrapper = comp(({
 
 const Text = comp(({
   traits: {
-    color,
-    font,
-    scale
+    colors,
+    type
   }
 }) => ({
   flex: 1,
-  fontSize: scale(-1),
+  fontSize: type.scale(-1),
   whiteSpace: 'nowrap',
-  color: color.charcoal,
-  fontWeight: font.weight.bold
+  color: colors.charcoal,
+  fontWeight: type.weight.bold
 }))('div')
 
 Status.propTypes = {

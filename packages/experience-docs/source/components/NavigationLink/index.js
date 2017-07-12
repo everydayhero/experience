@@ -1,7 +1,7 @@
 import {Link} from 'react-router'
 import React from 'react'
 import {comp} from '@everydayhero/stranger'
-import { utils } from '@everydayhero/rug'
+import { opacify } from '@everydayhero/rug'
 
 import Dot from '../Dot'
 
@@ -12,9 +12,8 @@ const StyledNavigationLink = comp(({
   },
   traits: {
     size,
-    color,
-    font,
-    leading,
+    colors,
+    type,
     radius
   }
 }) => ({
@@ -22,16 +21,16 @@ const StyledNavigationLink = comp(({
   paddingBottom: size(3),
   paddingLeft: child ? size(6) : size(5),
   paddingRight: size(5),
-  lineHeight: leading.ui,
+  lineHeight: type.leading.tight,
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  color: active ? color.text.darker : color.text.dark,
-  fontWeight: active && font.weight.bold,
+  color: active ? colors.theme.dark : colors.theme.muted,
+  fontWeight: active && type.weight.bold,
   transition: 'all .2s ease-in-out',
   ':hover': {
-    color: color.text.darker,
-    backgroundColor: utils.opacify(color.bg.darker, 0.05),
+    color: colors.theme.dark,
+    backgroundColor: opacify(colors.theme.dark, 0.05),
     '> :last-child': {
       opacity: 1
     }

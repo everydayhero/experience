@@ -1,7 +1,9 @@
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { shallow } from 'enzyme'
+import ReactShallowRenderer from 'react-test-renderer/shallow'
 import comp from '../component.js'
+
+const shallow = new ReactShallowRenderer()
 
 describe('comp', () => {
   it('should allow removing props from output components to avoid warnings', () => {
@@ -23,14 +25,14 @@ describe('comp', () => {
     const StyledCompInehrit = comp(({ props }) => ({
       backgroundColor: props.black || 'black'
     }))(StyledComp)
-    const componentObj = shallow(
+    const actualShallow = shallow.render(
       <StyledCompInehrit black='white' />
     )
-    const component = renderer.create(
+    const actualComponent = renderer.create(
       <StyledCompInehrit black='white' />
     )
-    const tree = component.toJSON()
-    expect(componentObj.props()).toMatchSnapshot()
+    const tree = actualComponent.toJSON()
+    expect(actualShallow.props).toMatchSnapshot()
     expect(tree).toMatchSnapshot()
   })
 })

@@ -22,19 +22,19 @@ const Wrapper = comp(({
 }) => ({
   display: 'flex',
   flexWrap: 'wrap',
-  justifyContent: 'center',
   margin: `${size(4)} 0 ${size(5)}`
 }))('div')
 
-const redLine = (color, deg, thickness) => ({
+const redLine = (color, deg, thickness, width) => ({
   content: '""',
   display: 'block',
   height: thickness,
-  width: '100%',
+  borderRadius: thickness,
+  width: width,
   backgroundColor: color,
   position: 'absolute',
-  left: '50%',
-  top: '50%',
+  left: thickness,
+  top: thickness,
   transform: `translate(-50%, -50%) rotate(${deg}deg)`
 })
 
@@ -45,23 +45,24 @@ const Swatch = comp(({
     textColor
   },
   traits: {
-    font,
-    color,
-    size
+    type,
+    colors,
+    size,
+    shadows
   }
 }) => ({
   position: 'relative',
-  margin: `0 auto ${size(3)}`,
-  border: `${size(1)} solid ${color.border.medium}`,
+  margin: `0 ${size(3)} ${size(4)}`,
+  boxShadow: shadows[1],
   borderRadius: size(5),
   width: size(7),
   height: size(6),
   lineHeight: size(6),
   textAlign: 'center',
-  color: color[textColor],
-  fontWeight: font.weight.bold,
-  fontSize: font.scale(0),
-  backgroundColor: color[backgroundColor],
-  ':before': !bad ? {} : redLine(color.red, 30, size(1)),
-  ':after': !bad ? {} : redLine(color.red, -30, size(1))
-}))('div', {removeProps: ['bad', 'backgroundColor', 'textColor']})
+  color: colors[textColor],
+  fontWeight: type.weight.bold,
+  fontSize: type.scale(0),
+  backgroundColor: colors[backgroundColor],
+  ':before': bad && redLine(colors.red, 45, size(3), size(5)),
+  ':after': bad && redLine(colors.red, -45, size(3), size(5))
+}))('div')

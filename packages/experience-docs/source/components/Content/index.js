@@ -5,16 +5,12 @@ import Prose from '../Prose'
 const StyledContent = comp(({
   traits: {
     size,
-    color,
-    font,
-    leading,
-    measure,
-    media
+    type
   }
 }) => ({
   flex: '1',
-  maxWidth: measure.wide,
-  minWidth: measure.minimum,
+  maxWidth: type.measure.wide,
+  minWidth: type.measure.minimum,
   marginBottom: size(5),
   ' .source': {
     display: 'none'

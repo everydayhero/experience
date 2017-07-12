@@ -2,7 +2,6 @@ import {comp} from '@everydayhero/stranger'
 
 const PageWrapper = comp(({
   traits: {
-    size,
     media
   }
 }) => ({

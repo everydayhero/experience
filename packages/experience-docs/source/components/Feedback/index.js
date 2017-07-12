@@ -14,11 +14,11 @@ const FeedbackContainer = comp(({
 const FeedbackProse = comp(({
   traits: {
     size,
-    font
+    type
   }
 }) => ({
   ' h2': {
-    fontSize: font.scale(2),
+    fontSize: type.scale(2),
     marginBottom: size(4)
   },
   ' ul': {

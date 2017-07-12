@@ -1,23 +1,13 @@
 import React from 'react'
 import {comp} from '@everydayhero/stranger'
 import upperFirst from 'lodash/upperFirst'
-import parse from 'pure-color/parse/rgb'
-import rgb2hex from 'pure-color/convert/rgb2hex'
-import rgb2cmyk from 'pure-color/convert/rgb2cmyk'
+import Color from 'color'
 import rug from '@everydayhero/rug'
 
-const {round} = Math
-const prettifyCMYK = (cmyk) => cmyk.map((c) => round(c)).join(' ')
-const prettifyRGB = (rgb) => rgb.replace(/,/g, ', ')
-const prettifyHEX = (hex) => hex.toUpperCase()
-const hex = (rgb) => rgb2hex(parse(rgb))
-const cmyk = (rgb) => rgb2cmyk(parse(rgb))
-
 const methods = {
-  hex: (colorName) => prettifyHEX(hex(rug.color[colorName])),
-  rgb: (colorName) => prettifyRGB(rug.color[colorName]),
-  cmyk: (colorName) => prettifyCMYK(cmyk(rug.color[colorName])),
-  rug: (colorName) => `color.${colorName}`
+  hex: (colorName) => rug.colors[colorName],
+  rgb: (colorName) => Color(rug.colors[colorName]).rgb().string(),
+  rug: (colorName) => `colors.${colorName}`
 }
 
 const Code = ({
@@ -26,7 +16,7 @@ const Code = ({
 }) => (
   <tr>
     <td>{label}:</td>
-    <td>{code}</td>
+    <td><code>{code}</code></td>
   </tr>
 )
 
@@ -39,7 +29,12 @@ const ColorSwatch = ({
       <h4>{upperFirst(color)}</h4>
       <Table>
         <tbody>
-          {['hex', 'rgb', 'cmyk', 'rug'].map((code) => <Code key={code} label={code.toUpperCase()} code={methods[code](color)} />)}
+          {['hex', 'rgb', 'rug'].map((code) =>
+            <Code
+              key={code}
+              label={code.toUpperCase()}
+              code={methods[code](color)} />
+          )}
         </tbody>
       </Table>
     </SwatchDetails>
@@ -48,10 +43,15 @@ const ColorSwatch = ({
 
 export default ColorSwatch
 
-const Wrapper = comp({
+const Wrapper = comp(({
+  traits: {
+    space
+  }
+}) => ({
   display: 'flex',
-  alignItems: 'center'
-})('div')
+  alignItems: 'center',
+  marginBottom: space(4)
+}))('div')
 
 const SwatchDetails = comp(({
   traits: {size}
@@ -65,16 +65,17 @@ const SwatchDetails = comp(({
 const Swatch = comp(({
   props: {colorName},
   traits: {
-    color,
+    colors,
     size,
-    media
+    media,
+    shadows
   }
 }) => ({
-  border: `${size(1)} solid ${color.border.medium}`,
+  boxShadow: shadows[1],
   borderRadius: '50%',
   width: size(6),
   height: size(6),
-  backgroundColor: color[colorName],
+  backgroundColor: colors[colorName],
   [media.md]: {
     width: size(7),
     height: size(7)
@@ -82,13 +83,14 @@ const Swatch = comp(({
 }))('div', {removeProps: ['colorName']})
 
 const Table = comp(({
-  traits: {color, size}
+  traits: {
+    type,
+    size
+  }
 }) => ({
   padding: size(4),
   ' td': {
     padding: `0 ${size(4)} ${size(2)} 0`,
-    ':first-child': {
-      color: color.text.dark
-    }
+    lineHeight: type.leading.prose
   }
 }))('table')

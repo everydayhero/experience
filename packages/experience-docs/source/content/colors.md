@@ -64,44 +64,12 @@ Here is a visual guide on how to prioritise color use.
 <Image src={colorRelationshipSvg} width='normal' />
 ```
 
-### Calls to action
-```render html
-<ColorPalette palette='cta' />
-```
+### Theme Colors
 
-### Text
-```render html
-<ColorPalette palette='text' />
-```
+These colors live in `rug` under the object `rug.colors.theme.['name']`.
 
-### Backgrounds
 ```render html
-<ColorPalette palette='bg' />
-```
-
-### Borders
-```render html
-<ColorPalette palette='border' />
-```
-
-### Actions
-```render html
-<ColorPalette palette='action' />
-```
-
-### Callout
-```render html
-<ColorPalette palette='callout' />
-```
-
-### Accents
-```render html
-<ColorPalette palette='accent' />
-```
-
-### Status indications
-```render html
-<ColorPalette palette='status' />
+<ColorPalette palette='theme' />
 ```
 
 ### Accessibility
