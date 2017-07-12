@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/stranger",
-  "version": "6.0.2",
+  "version": "7.0.0",
   "description": "A wrapper around existing CSS in JS solutions with as little complexity as possible",
   "main": "dist/index.js",
   "publishConfig": {
@@ -35,7 +35,7 @@
   },
   "dependencies": {
     "@everydayhero/cxsync": "^6.0.1",
-    "@everydayhero/rug": "^6.0.2",
+    "@everydayhero/rug": "^7.0.0",
     "cxs": "^3.0.0",
     "inline-style-prefixer": "^2.0.5",
     "lodash": "^4.17.4",
