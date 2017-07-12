@@ -33,11 +33,11 @@
     "rimraf": "^2.5.4"
   },
   "peerDependencies": {
-    "react": ">= 15.6.1 < 17"
+    "react": ">= 15.6.1 < 17",
+    "@everydayhero/rug": "^6.0.2"
   },
   "dependencies": {
     "@everydayhero/cxsync": "^6.0.1",
-    "@everydayhero/rug": "^6.0.2",
     "cxs": "^3.0.0",
     "inline-style-prefixer": "^2.0.5",
     "lodash": "^4.17.4",
