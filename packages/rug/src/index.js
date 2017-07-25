@@ -234,9 +234,9 @@ const type = {
 
 const radius = {
   sm: size(2),
-  md: size(2),
-  lg: size(2),
-  xl: size(2),
+  md: size(3),
+  lg: size(4),
+  xl: size(5),
   circle: '100vw'
 }
 
