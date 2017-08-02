@@ -62,10 +62,10 @@ const SVGIcon = comp(({
     fade
   },
   traits: {
-    scale
+    type
   }
 }) => ({
-  ...kindsReducer(kinds, kind, scale),
+  ...kindsReducer(kinds, kind, type.scale),
   opacity: fade ? 0.6 : 1,
   display: 'inline-flex',
   alignItems: 'center',
