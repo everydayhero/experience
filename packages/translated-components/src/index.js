@@ -114,12 +114,16 @@ const translateWithDefaults = ({
   locale,
   defaultLocale,
   reducer
-}) => (
-  reduce({
+}) => {
+  if (!defaultLocale) {
+    throw new Error('Translated Component must be rendered inside of a LocaleProvider')
+  }
+
+  return reduce({
     ...translations[defaultLocale],
     ...translations[locale]
   }, reducer, {})
-)
+}
 
 const getRegionCurrency = (region) => (
   currencies[countries[region].currencies[0]]
