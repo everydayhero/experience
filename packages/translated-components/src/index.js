@@ -41,7 +41,8 @@ const translated = ({
 }) => {
   const warmTranslations = preHeat(translations, format)
   return (Component) => {
-    const TranslatedComponent = ({locale, defaultLocale, ...props}) => {
+    const TranslatedComponent = (props) => {
+      const {locale, defaultLocale} = props
       return <Component {...props}
         {...mapTranslationsToProps(translateWithDefaults({
           translations: warmTranslations,
