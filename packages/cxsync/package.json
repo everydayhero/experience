@@ -1,6 +1,6 @@
 {
   "name": "@everydayhero/cxsync",
-  "version": "6.0.1",
+  "version": "7.0.3",
   "description": "A CSS-in-JS solution for CSS in functional UI components",
   "main": "dist/index.js",
   "scripts": {
