@@ -52,9 +52,9 @@ We use three different, relative leading options.
 ### Tracking
 Normal tracking should be used for the majority of type. But a tight option can be used for large display type/headings
 
-- `type.leading.tighter: -0.03em`
-- `type.leading.tight: -0.01em`
-- `type.leading.normal: 0`
+- `type.tracking.tighter: -0.03em`
+- `type.tracking.tight: -0.01em`
+- `type.tracking.normal: 0`
 
 ### Measure
 Line length should ideally be around 60 characters and should not exceed 80 characters.
