@@ -8,6 +8,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack",
+    "generate-components": "node ./scripts/build.js",
     "prepublish": "npm run build"
   },
   "dependencies": {
@@ -28,6 +29,7 @@
     "react-dom": ">= 15.6.1 < 17"
   },
   "devDependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "enzyme": "^2.8.0",
     "power-assert": "^1.4.2",
     "sinon": "^2.1.0"
