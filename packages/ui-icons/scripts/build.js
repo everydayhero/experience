@@ -1,8 +1,9 @@
 const fs = require('fs')
-const {camelCase, upperFirst, mapKeys} = require('lodash')
-const {join, basename, extname, resolve} = require('path')
+const {mapKeys} = require('lodash')
+const {join, resolve} = require('path')
 const {promisify, inspect} = require('util')
 const {load} = require('cheerio')
+const {iconName} = require('../utils')
 
 const {assign} = Object
 const readDir = promisify(fs.readdir)
@@ -55,25 +56,43 @@ const generateNode = ({
 const generate = ({
   name,
   content
-}) => (`var React = require('react')
-var defaultTransform = function (name, props) {
-  return props
-}
+}) => {
+  const { attribs, children } = load(content.toString())('svg').get(0)
 
-module.exports = function ${name} (props) {
-  var transform = props.transform || defaultTransform
-  return ${generateNode(load(content.toString())('svg').get(0))}
-}
-`)
+  return (`
+    var React = require('react')
+    var defaultTransform = function (name, props) {
+      return props
+    }
 
-const filename = (path) => (
-  basename(path, extname(path))
-)
+    exports.Inline${name} = function Inline${name} (props) {
+      var transform = props.transform || defaultTransform
+      return ${generateNode({
+        name: 'svg',
+        children,
+        attribs: assign(attribs, {
+          width: '1em',
+          height: '1em',
+          style: { transform: 'translate(0, 0.18em)' }
+        })
+      })}
+    }
+
+    exports.${name} = function ${name} (props) {
+      var transform = props.transform || defaultTransform
+      return ${generateNode({
+        name: 'svg',
+        children,
+        attribs
+      })}
+    }
+  `)
+}
 
 sources(SOURCE_DIR).then((svgs) => (
   Promise.all(
     svgs.map(({ content, path }) => {
-      const name = upperFirst(camelCase(filename(path)))
+      const name = iconName(path)
       return writeFile(
         join(OUTPUT_DIR, `${name}.js`),
         generate({ name, content })
