@@ -9,7 +9,7 @@
   "scripts": {
     "build": "webpack",
     "generate-components": "node ./scripts/build.js",
-    "test": "mocha ./__tests__/*-test.js",
+    "test": "mocha --delay ./__tests__/*-test.js",
     "prepublish": "npm run build"
   },
   "dependencies": {
