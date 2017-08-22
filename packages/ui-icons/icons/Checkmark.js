@@ -6,11 +6,11 @@
 
     exports.InlineCheckmark = function InlineCheckmark (props) {
       var transform = props.transform || defaultTransform
-      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32', width: '1em', height: '1em', style: { verticalAlign: '-0.18em' } }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, className: 'a', d: 'M29.8,5.3a3.5,3.5,0,0,0-4.9-.4c-4,3.9-8.9,9-12.8,13.1L7.2,13.1a3.5,3.5,0,0,0-4.9.4,3.9,3.9,0,0,0-.4,5.1,83.2,83.2,0,0,0,6.6,7L10,27.2a3,3,0,0,0,4.1,0l1.6-1.6C20.3,21,25.8,15.3,30.2,10.4A3.9,3.9,0,0,0,29.8,5.3Z' }), [])])
+      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32', width: '1em', height: '1em', style: { verticalAlign: '-0.18em' } }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, d: 'M29.78,5.27a3.49,3.49,0,0,0-4.94-.43c-4,3.92-8.95,9-12.77,13.12-.63-.68-2-2-4.92-4.87a3.49,3.49,0,0,0-4.94.43,3.85,3.85,0,0,0-.41,5.14,83.16,83.16,0,0,0,6.61,7L10,27.18a3,3,0,0,0,4.13,0l1.6-1.59C20.33,21,25.84,15.27,30.2,10.41A3.85,3.85,0,0,0,29.78,5.27Z', fill: 'currentColor' }), [])])
     }
 
     exports.Checkmark = function Checkmark (props) {
       var transform = props.transform || defaultTransform
-      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32', width: '1em', height: '1em', style: { verticalAlign: '-0.18em' } }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, className: 'a', d: 'M29.8,5.3a3.5,3.5,0,0,0-4.9-.4c-4,3.9-8.9,9-12.8,13.1L7.2,13.1a3.5,3.5,0,0,0-4.9.4,3.9,3.9,0,0,0-.4,5.1,83.2,83.2,0,0,0,6.6,7L10,27.2a3,3,0,0,0,4.1,0l1.6-1.6C20.3,21,25.8,15.3,30.2,10.4A3.9,3.9,0,0,0,29.8,5.3Z' }), [])])
+      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32', width: '1em', height: '1em', style: { verticalAlign: '-0.18em' } }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, d: 'M29.78,5.27a3.49,3.49,0,0,0-4.94-.43c-4,3.92-8.95,9-12.77,13.12-.63-.68-2-2-4.92-4.87a3.49,3.49,0,0,0-4.94.43,3.85,3.85,0,0,0-.41,5.14,83.16,83.16,0,0,0,6.61,7L10,27.18a3,3,0,0,0,4.13,0l1.6-1.59C20.33,21,25.84,15.27,30.2,10.41A3.85,3.85,0,0,0,29.78,5.27Z', fill: 'currentColor' }), [])])
     }
   
