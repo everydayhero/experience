@@ -31,10 +31,24 @@ const attribMap = {
   'xlink': 'xmlnsXlink'
 }
 
-const attribsToProps = (attribs) => (
+const convertKeys = (attribs) => (
   mapKeys(attribs, (v, k) => (
     attribMap[k] || k
   ))
+)
+
+const convertFill = (attribs) => {
+  if (attribs.fill !== '#203a44') {
+    return attribs
+  }
+
+  return assign(attribs, {
+    fill: 'currentColor'
+  })
+}
+
+const convertAttribs = (attribs) => (
+  convertKeys(convertFill(attribs))
 )
 
 const allowed = ({ name }) => (
@@ -47,7 +61,7 @@ const generateNode = ({
   children = []
 }, index = 0) => (
   `React.createElement('${name}', transform('${name}', ${
-    inspect(assign({ key: index }, attribsToProps(attribs)), { breakLength: Infinity })
+    inspect(assign({ key: index }, convertAttribs(attribs)), { breakLength: Infinity })
   }), [${
     children.filter(allowed).map(generateNode).join(', ')
   }])`
