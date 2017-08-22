@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/ui-icons",
   "description": "Everydayhero icon component for React apps",
-  "version": "7.0.3",
+  "version": "7.1.0-0",
   "publishConfig": {
     "access": "public"
   },
