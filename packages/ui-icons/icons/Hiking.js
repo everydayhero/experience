@@ -1,0 +1,16 @@
+
+    var React = require('react')
+    var defaultTransform = function (name, props) {
+      return props
+    }
+
+    exports.InlineHiking = function InlineHiking (props) {
+      var transform = props.transform || defaultTransform
+      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32', width: '1em', height: '1em', style: { verticalAlign: '-0.18em' } }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, d: 'M18.42,16.32a4.59,4.59,0,0,0,3.26.91,12.87,12.87,0,0,0,3.24-.63c1.12-.49.38-2.11-.87-2.17-1.07-.05-2.14.06-3.21-.05-.65-.07-1.36-1.15-1.81-1.58a7.64,7.64,0,0,0-1.57-1.36A4.26,4.26,0,0,0,14,11.29a1.17,1.17,0,0,0-.72.67,30.74,30.74,0,0,0-1.06,3.32,34.17,34.17,0,0,0-.89,4.1c-.07.66-.13,1.32-.18,2C11,23.57,9.09,28.5,9.09,29.88a1.33,1.33,0,0,0,2.46.48c.71-1.19,3.25-7.29,3.31-7.51.15-.57.59-.66.86-.09,2.51,5.14,1.68,8.4,3.9,8.24s1-4.7-.55-9.76A31.71,31.71,0,0,1,18,16.33C18,16.24,18.12,16,18.42,16.32Z', fill: 'currentColor' }), []), React.createElement('path', transform('path', { key: 2, d: 'M9.26,19.63a35,35,0,0,1,.84-4.06,22.08,22.08,0,0,1,1.45-4.24c.33-.73-.25-.85-.64-1.06C8.63,9.07,6.31,12,5.63,16,4.86,20.59,7.84,20.11,9,19.84A.58.58,0,0,0,9.26,19.63Z', fill: 'currentColor' }), []), React.createElement('circle', transform('circle', { key: 3, cx: '16', cy: '5', r: '4', fill: 'currentColor' }), []), React.createElement('path', transform('path', { key: 4, d: 'M26.35,24.82a20.45,20.45,0,0,0-.86-5.11,1,1,0,0,0-1.95.2,20.53,20.53,0,0,0,.12,5.19,44.55,44.55,0,0,0,.86,5.11,1,1,0,0,0,1.95-.2A44.74,44.74,0,0,0,26.35,24.82Z', fill: 'currentColor' }), [])])
+    }
+
+    exports.Hiking = function Hiking (props) {
+      var transform = props.transform || defaultTransform
+      return React.createElement('svg', transform('svg', { key: 0, xmlns: 'http://www.w3.org/2000/svg', viewBox: '0 0 32 32' }), [React.createElement('title', transform('title', { key: 0 }), []), React.createElement('path', transform('path', { key: 1, d: 'M18.42,16.32a4.59,4.59,0,0,0,3.26.91,12.87,12.87,0,0,0,3.24-.63c1.12-.49.38-2.11-.87-2.17-1.07-.05-2.14.06-3.21-.05-.65-.07-1.36-1.15-1.81-1.58a7.64,7.64,0,0,0-1.57-1.36A4.26,4.26,0,0,0,14,11.29a1.17,1.17,0,0,0-.72.67,30.74,30.74,0,0,0-1.06,3.32,34.17,34.17,0,0,0-.89,4.1c-.07.66-.13,1.32-.18,2C11,23.57,9.09,28.5,9.09,29.88a1.33,1.33,0,0,0,2.46.48c.71-1.19,3.25-7.29,3.31-7.51.15-.57.59-.66.86-.09,2.51,5.14,1.68,8.4,3.9,8.24s1-4.7-.55-9.76A31.71,31.71,0,0,1,18,16.33C18,16.24,18.12,16,18.42,16.32Z', fill: 'currentColor' }), []), React.createElement('path', transform('path', { key: 2, d: 'M9.26,19.63a35,35,0,0,1,.84-4.06,22.08,22.08,0,0,1,1.45-4.24c.33-.73-.25-.85-.64-1.06C8.63,9.07,6.31,12,5.63,16,4.86,20.59,7.84,20.11,9,19.84A.58.58,0,0,0,9.26,19.63Z', fill: 'currentColor' }), []), React.createElement('circle', transform('circle', { key: 3, cx: '16', cy: '5', r: '4', fill: 'currentColor' }), []), React.createElement('path', transform('path', { key: 4, d: 'M26.35,24.82a20.45,20.45,0,0,0-.86-5.11,1,1,0,0,0-1.95.2,20.53,20.53,0,0,0,.12,5.19,44.55,44.55,0,0,0,.86,5.11,1,1,0,0,0,1.95-.2A44.74,44.74,0,0,0,26.35,24.82Z', fill: 'currentColor' }), [])])
+    }
+  

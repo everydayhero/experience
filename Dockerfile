@@ -1,4 +1,4 @@
-FROM node:6
+FROM node:8
 MAINTAINER Ghost Developer <edh-dev@everydayhero.com.au>
 
 RUN npm install -g lerna@2.0.0
