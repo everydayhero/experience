@@ -73,7 +73,7 @@ const generate = ({
         attribs: assign(attribs, {
           width: '1em',
           height: '1em',
-          style: { transform: 'translate(0, 0.18em)' }
+          style: { verticalAlign: '-0.18em' }
         })
       })}
     }

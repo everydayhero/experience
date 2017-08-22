@@ -39,11 +39,11 @@ readDir(SOURCE_DIR).then((files) => {
           assert.equal(wrapper.find('svg').attr('width'), '1em')
         })
 
-        it('has a style attribute with a vertical transform of 0.18em', () => {
+        it('has a style attribute with a vertical align of -0.18em', () => {
           const subject = module[`Inline${name}`]
           const wrapper = render(React.createElement(subject))
 
-          assert.equal(wrapper.find('svg').attr('style'), 'transform:translate(0, 0.18em);')
+          assert.equal(wrapper.find('svg').attr('style'), 'vertical-align:-0.18em;')
         })
       })
     })
