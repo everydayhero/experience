@@ -1,37 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import reduce from 'lodash/reduce'
 import kebabCase from 'lodash/kebabCase'
 import isString from 'lodash/isString'
 import isNumber from 'lodash/isNumber'
 import IntlFormat from 'intl-messageformat'
-import {countries, currencies} from 'country-data'
+import { countries, currencies } from 'country-data'
+import { Broadcast, Subscriber } from 'react-broadcast'
 
-export class LocaleProvider extends React.Component {
-  getChildContext () {
-    return {
-      locale: this.props.locale,
-      defaultLocale: this.props.defaultLocale || 'en_AU'
-    }
-  }
-
-  render () {
-    return <div>{this.props.children}</div>
-  }
-}
-LocaleProvider.childContextTypes = {
-  locale: PropTypes.string,
-  defaultLocale: PropTypes.string
-}
-
-const withLocale = (Component) => {
-  const LocaleConsumer = (props, context) => <Component {...context} {...props} />
-  LocaleConsumer.contextTypes = {
-    locale: PropTypes.string,
-    defaultLocale: PropTypes.string
-  }
-  return LocaleConsumer
-}
+export const LocaleProvider = ({
+  locale,
+  defaultLocale = 'en_AU',
+  children
+}) => (
+  <Broadcast
+    value={{locale, defaultLocale}}
+    channel='providedLocale'
+    children={children}
+  />
+)
 
 const translated = ({
   translations,
@@ -41,18 +27,27 @@ const translated = ({
 }) => {
   const warmTranslations = preHeat(translations, format)
   return (Component) => {
-    const TranslatedComponent = (props) => {
-      const {locale, defaultLocale} = props
-      return <Component {...props}
-        {...mapTranslationsToProps(translateWithDefaults({
-          translations: warmTranslations,
-          locale: locale || defaultLocale,
-          defaultLocale,
-          reducer: templateReducer(templateParamValues(props, params))
-        }), props)}
-      />
+    return (props) => {
+      return (
+        <Subscriber channel='providedLocale'>
+          {(providedLocale) => {
+            const {locale, defaultLocale} = providedLocale
+            return (
+              <Component
+                {...props}
+                {...mapTranslationsToProps(translateWithDefaults({
+                  translations: warmTranslations,
+                  locale: props.locale || locale || defaultLocale,
+                  defaultLocale,
+                  reducer: templateReducer(templateParamValues(props, params))
+                }))}
+              />
+            )
+          }}
+
+        </Subscriber>
+      )
     }
-    return withLocale(TranslatedComponent)
   }
 }
 
