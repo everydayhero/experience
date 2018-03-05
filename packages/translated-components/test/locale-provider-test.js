@@ -6,7 +6,7 @@ import {mount} from 'enzyme'
 import translated, {LocaleProvider} from '../src'
 
 class UpdateBlocker extends Component {
-  shouldComponentUpdate() {
+  shouldComponentUpdate () {
     return false
   }
 
