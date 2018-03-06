@@ -40,7 +40,7 @@ const translated = ({
                   locale: props.locale || locale || defaultLocale,
                   defaultLocale,
                   reducer: templateReducer(templateParamValues(props, params))
-                }))}
+                }), props)}
               />
             )
           }}
