@@ -28,7 +28,8 @@
     "babel-preset-stage-0": "^6.16.0",
     "bundle-size": "^1.1.5",
     "jest-cli": "^16.0.1",
-    "rimraf": "^2.5.4"
+    "rimraf": "^2.5.4",
+    "standard": "^11.0.0"
   },
   "eslintConfig": {
     "env": {
