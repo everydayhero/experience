@@ -210,4 +210,31 @@ describe('Translate', () => {
 
     assert(wrapper.text().includes(translations['en_AU'].two))
   })
+
+  it('should execute a custom mapTranslationsToProps to provide interpolated translations, if it exists', () => {
+    const translations = {
+      en_AU: {
+        one: 'AUOne',
+        two: 'AUTwo'
+      },
+      en_NZ: {
+        one: 'NZOne'
+      }
+    }
+    const mapTranslationsToProps = (translations, props) => {
+      return {
+        ...translations,
+        three: props.three + ' Extra info!'
+      }
+    }
+    const Dummy = (props) => <div>{props.one}{props.two}{props.three}</div>
+    const DummyTranslated = translated({translations, mapTranslationsToProps})(Dummy)
+    const wrapper = mount(
+      <LocaleProvider locale='en_NZ' defaultLocale='en_AU'>
+        <DummyTranslated three='Three' />
+      </LocaleProvider>
+    )
+
+    assert(wrapper.text().includes('Three Extra info!'))
+  })
 })
