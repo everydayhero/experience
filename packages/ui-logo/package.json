@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/ui-logo",
   "description": "Everydayhero logo component for doing branding in React apps",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "publishConfig": {
     "access": "public"
   },
@@ -11,8 +11,8 @@
     "prepublish": "npm run build"
   },
   "dependencies": {
-    "@everydayhero/brand-assets": "^7.1.0",
-    "@everydayhero/stranger": "^7.1.0",
+    "@everydayhero/brand-assets": "^7.1.1",
+    "@everydayhero/stranger": "^7.1.1",
     "babel-core": "^6.24.0",
     "babel-loader": "^7.1.1",
     "babel-preset-latest": "^6.24.0",

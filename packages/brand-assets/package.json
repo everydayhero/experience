@@ -1,7 +1,7 @@
 {
   "name": "@everydayhero/brand-assets",
   "description": "Logos and the like for everydayhero sites",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "main": "dist/index.js",
   "scripts": {
     "build": "webpack --config webpack.config.js",
